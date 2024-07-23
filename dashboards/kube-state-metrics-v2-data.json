@@ -1,0 +1,1260 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Cluster",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Pod Requested query",
+                    "options": {
+                        "description": "Cluster Pod Requested query",
+                        "label": "Cluster Pod Requested",
+                        "order": 1,
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_info{}) / sum(kube_node_status_allocatable{resource='pods'})&duration=1h&step=5m",
+                    "schema": "kube_pod_info"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster CPU Requested query",
+                    "options": {
+                        "description": "Cluster CPU Requested query",
+                        "label": "Cluster CPU Requested",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests{resource='cpu'})/ sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Memory  Requested query",
+                    "options": {
+                        "description": "Cluster Memory  Requested query",
+                        "label": "Cluster Memory  Requested",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests{resource='memory'}) / sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Pod Capacity - allocatable query",
+                    "options": {
+                        "description": "Cluster Pod Capacity - allocatable query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_allocatable{resource='pods'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Pod Capacity - requested query",
+                    "options": {
+                        "description": "Cluster Pod Capacity - requested query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_info{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster CPU Capacity - allocatable query",
+                    "options": {
+                        "description": "Cluster CPU Capacity - allocatable query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_capacity{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster CPU Capacity - capacity query",
+                    "options": {
+                        "description": "Cluster CPU Capacity - capacity query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster CPU Capacity - requested query",
+                    "options": {
+                        "description": "Cluster CPU Capacity - requested query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests{resource='cpu'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster CPU Capacity - limited query",
+                    "options": {
+                        "description": "Cluster CPU Capacity - limited query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_limits{resource='cpu'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Mem Capacity - allocatable query",
+                    "options": {
+                        "description": "Cluster Mem Capacity - allocatable query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Mem Capacity - capacity query",
+                    "options": {
+                        "description": "Cluster Mem Capacity - capacity query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_capacity{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Mem Capacity - requested query",
+                    "options": {
+                        "description": "Cluster Mem Capacity - requested query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests{resource='memory'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cluster Mem Capacity - limited query",
+                    "options": {
+                        "description": "Cluster Mem Capacity - limited query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_limits{resource='memory'})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Cluster",
+            "type": "metrics"
+        },
+        {
+            "key": "Node",
+            "order": "2",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Number Of Nodes query",
+                    "options": {
+                        "description": "Number Of Nodes query",
+                        "label": "Number Of Nodes",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_info{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Nodes Unavailable query",
+                    "options": {
+                        "description": "Nodes Unavailable query",
+                        "label": "Nodes Unavailable",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_spec_unschedulable{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Node NotReady query",
+                    "options": {
+                        "description": "Node NotReady query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_node_status_condition{condition='Ready',status='false'}==1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Node Pressure query",
+                    "options": {
+                        "description": "Node Pressure query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_node_status_condition{condition='DiskPressure'status='true'}==1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Node Pressure query",
+                    "options": {
+                        "description": "Node Pressure query",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_node_status_condition{condition='MemoryPressure'}==1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Node Pressure query",
+                    "options": {
+                        "description": "Node Pressure query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_node_status_condition{condition=~'PIDPressure'}==1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "node number query",
+                    "options": {
+                        "description": "node number query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_info{})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Node",
+            "type": "metrics"
+        },
+        {
+            "key": "Deployments",
+            "order": "3",
+            "queriesList": [
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Deployment Replicas - Up To Date query",
+                    "options": {
+                        "description": "Deployment Replicas - Up To Date query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_deployment_status_replicas{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Deployment Replicas query",
+                    "options": {
+                        "description": "Deployment Replicas query",
+                        "label": "Deployment Replicas",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_deployment_status_replicas{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Deployment Replicas - Updated query",
+                    "options": {
+                        "description": "Deployment Replicas - Updated query",
+                        "label": "Deployment Replicas - Updated",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_deployment_status_replicas_updated{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Deployment Replicas - Unavailable query",
+                    "options": {
+                        "description": "Deployment Replicas - Unavailable query",
+                        "label": "Deployment Replicas - Unavailable",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_deployment_status_replicas_unavailable{})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Deployments",
+            "type": "metrics"
+        },
+        {
+            "key": "Statefuleset",
+            "order": "4",
+            "queriesList": [
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Statefulset Replicas - Up To Date query",
+                    "options": {
+                        "description": "Statefulset Replicas - Up To Date query",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_statefulset_status_replicas_ready{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Statefulset replicas query",
+                    "options": {
+                        "description": "Statefulset replicas query",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_statefulset_status_replicas_ready{}/kube_statefulset_status_replicas{}*100&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Statefuleset",
+            "type": "metrics"
+        },
+        {
+            "key": "Pods",
+            "order": "5",
+            "queriesList": [
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods restart in 30m query",
+                    "options": {
+                        "description": "Pods restart in 30m query",
+                        "order": 32,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "changes(kube_pod_container_status_restarts_total{}[30m])\u003e1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Evicted query",
+                    "options": {
+                        "description": "Evicted query",
+                        "order": 33,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_pod_status_reason{ reason='Evicted'}==1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods Running query",
+                    "options": {
+                        "description": "Pods Running query",
+                        "label": "Pods Running",
+                        "order": 34,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase{ phase='Running'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods Succeeded query",
+                    "options": {
+                        "description": "Pods Succeeded query",
+                        "label": "Pods Succeeded",
+                        "order": 35,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase{ phase='Succeeded'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods Failed query",
+                    "options": {
+                        "description": "Pods Failed query",
+                        "label": "Pods Failed",
+                        "order": 36,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase{ phase='Failed'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods Pending query",
+                    "options": {
+                        "description": "Pods Pending query",
+                        "label": "Pods Pending",
+                        "order": 37,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase{ phase='Pending'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Pods Unknown query",
+                    "options": {
+                        "description": "Pods Unknown query",
+                        "label": "Pods Unknown",
+                        "order": 38,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase{ phase='Unknown'})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Pods",
+            "type": "metrics"
+        },
+        {
+            "key": "Containers",
+            "order": "6",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Containers Running query",
+                    "options": {
+                        "description": "Containers Running query",
+                        "label": "Containers Running",
+                        "order": 40,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_status_running{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Containers Waiting query",
+                    "options": {
+                        "description": "Containers Waiting query",
+                        "label": "Containers Waiting",
+                        "order": 41,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_status_waiting{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Containers Terminated query",
+                    "options": {
+                        "description": "Containers Terminated query",
+                        "label": "Containers Terminated",
+                        "order": 42,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_status_terminated{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Containers Restarts (Last 30 Minutes) query",
+                    "options": {
+                        "description": "Containers Restarts (Last 30 Minutes) query",
+                        "label": "Containers Restarts (Last 30 Minutes)",
+                        "order": 43,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(changes(kube_pod_container_status_restarts_total{}[30m]))&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Cores Requested by Containers query",
+                    "options": {
+                        "description": "CPU Cores Requested by Containers query",
+                        "label": "CPU Cores Requested by Containers",
+                        "order": 44,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests_cpu_cores{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Requested By Containers query",
+                    "options": {
+                        "description": "Memory Requested By Containers query",
+                        "label": "Memory Requested By Containers",
+                        "order": 45,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_container_resource_requests_memory_bytes{})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Containers",
+            "type": "metrics"
+        },
+        {
+            "key": "HPA",
+            "order": "7",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "hpa - current query",
+                    "options": {
+                        "description": "hpa - current query",
+                        "order": 47,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_hpa_status_current_replicas{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "hpa - max query",
+                    "options": {
+                        "description": "hpa - max query",
+                        "order": 48,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_hpa_spec_max_replicas{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "hpa - min query",
+                    "options": {
+                        "description": "hpa - min query",
+                        "order": 49,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_hpa_spec_min_replicas{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "total-hpa-current - kube hpa status current replicas query",
+                    "options": {
+                        "description": "total-hpa-current - kube hpa status current replicas query",
+                        "order": 50,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_hpa_status_current_replicas{hpa=~'.*'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "current==max query",
+                    "options": {
+                        "description": "current==max query",
+                        "order": 51,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_hpa_status_current_replicas{hpa=~'.*'} == kube_hpa_spec_max_replicas{hpa=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "current==min query",
+                    "options": {
+                        "description": "current==min query",
+                        "order": 52,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_hpa_status_current_replicas{hpa=~'.*'} == kube_hpa_spec_min_replicas{hpa=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "HPA",
+            "type": "metrics"
+        },
+        {
+            "key": "Jobs",
+            "order": "8",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Jobs Succeeded query",
+                    "options": {
+                        "description": "Jobs Succeeded query",
+                        "label": "Jobs Succeeded",
+                        "order": 54,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_job_status_succeeded{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Job last success time from now query",
+                    "options": {
+                        "description": "Job last success time from now query",
+                        "order": 55,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(time()-kube_job_status_completion_time{})/60/60/24\u003e1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Job failed query",
+                    "options": {
+                        "description": "Job failed query",
+                        "order": 56,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_job_status_failed{}\u003e1&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Jobs Active query",
+                    "options": {
+                        "description": "Jobs Active query",
+                        "label": "Jobs Active",
+                        "order": 57,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_job_status_active{})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Jobs Failed query",
+                    "options": {
+                        "description": "Jobs Failed query",
+                        "label": "Jobs Failed",
+                        "order": 58,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_job_status_failed{})&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Jobs",
+            "type": "metrics"
+        },
+        {
+            "key": "PVC",
+            "order": "9",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "pvc is bound query",
+                    "options": {
+                        "description": "pvc is bound query",
+                        "label": "pvc is bound",
+                        "order": 60,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase='Bound'}==1)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "pvc is not bound query",
+                    "options": {
+                        "description": "pvc is not bound query",
+                        "label": "pvc is not bound",
+                        "order": 61,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase!='Bound'}==1)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "pvc query",
+                    "options": {
+                        "description": "pvc query",
+                        "order": 62,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kube_persistentvolumeclaim_resource_requests_storage_bytes/1024/1024/1024&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "PVC",
+            "type": "metrics"
+        }
+    ]
+}
