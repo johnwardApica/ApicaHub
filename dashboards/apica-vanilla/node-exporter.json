@@ -4,7 +4,7 @@
         "dropdowns": [
             {
               "instance": {
-                "query": "group by (instance) (node_disk_info{instance=~'.*'})",
+                "query": "count(node_disk_info) by (instance, job)",
                 "name": "Instance Selection",
                 "data_source_name": "Apica Monitoring"
               }
@@ -33,7 +33,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "irate(node_pressure_cpu_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_cpu_waiting_seconds_total"
@@ -55,7 +59,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "irate(node_pressure_memory_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_memory_waiting_seconds_total"
@@ -77,7 +85,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "irate(node_pressure_io_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_io_waiting_seconds_total"
@@ -99,7 +111,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "100 * (1 - avg(rate(node_cpu_seconds_total{mode='idle',instance=~'.*'}[1h])))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
@@ -121,7 +137,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "scalar(node_load1{instance=~'.*'}) * 100 / count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu))&duration=1h&step=5m",
                     "schema": ""
@@ -143,7 +163,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "((node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'}) / node_memory_MemTotal_bytes{instance=~'.*'}) * 100&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
@@ -165,7 +189,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "(1 - (node_memory_MemAvailable_bytes{instance=~'.*'} / node_memory_MemTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
                     "schema": "node_memory_MemAvailable_bytes"
@@ -187,7 +215,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "((node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'}) / (node_memory_SwapTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
                     "schema": "node_memory_SwapTotal_bytes"
@@ -209,7 +241,11 @@
                             ],
                             "yLabel": "value"
                         },
-                        "upperLimit": ""
+                        "upperLimit": "",
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
+                        }
                     },
                     "query": "100 - ((node_filesystem_avail_bytes{fstype!='rootfs',instance=~'.*'} * 100) / node_filesystem_size_bytes{fstype!='rootfs',instance=~'.*'})&duration=1h&step=5m",
                     "schema": "node_filesystem_avail_bytes"
@@ -492,50 +528,6 @@
                     },
                     "query": "node_memory_MemTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Memory Basic - RAM Used query",
-                    "options": {
-                        "description": "Memory Basic - RAM Used query",
-                        "order": 8,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'} - (node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'})&duration=1h&step=5m",
-                    "schema": "node_memory_MemTotal_bytes"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Memory Basic - RAM Cache   Buffer query",
-                    "options": {
-                        "description": "Memory Basic - RAM Cache   Buffer query",
-                        "order": 9,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_memory_Cached_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2470,28 +2462,6 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Processes State query",
-                    "options": {
-                        "description": "Processes State query",
-                        "order": 3,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_processes_state{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_processes_state"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
                     "name": "Processes  Forks - Processes forks second query",
                     "options": {
                         "description": "Processes  Forks - Processes forks second query",
@@ -2532,28 +2502,6 @@
                     },
                     "query": "irate(process_virtual_memory_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "process_virtual_memory_bytes"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Processes Memory - Maximum amount of virtual memory available in bytes query",
-                    "options": {
-                        "description": "Processes Memory - Maximum amount of virtual memory available in bytes query",
-                        "order": 6,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "process_resident_memory_max_bytes{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "process_resident_memory_max_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2602,50 +2550,6 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "PIDs Number and Limit - Number of PIDs query",
-                    "options": {
-                        "description": "PIDs Number and Limit - Number of PIDs query",
-                        "order": 9,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_processes_pids{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_processes_pids"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "PIDs Number and Limit - PIDs limit query",
-                    "options": {
-                        "description": "PIDs Number and Limit - PIDs limit query",
-                        "order": 10,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_processes_max_processes{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_processes_max_processes"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
                     "name": "Process schedule stats Running / Waiting - CPU   seconds spent running a process query",
                     "options": {
                         "description": "Process schedule stats Running / Waiting - CPU   seconds spent running a process query",
@@ -2686,50 +2590,6 @@
                     },
                     "query": "irate(node_schedstat_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_schedstat_waiting_seconds_total"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Threads Number and Limit - Allocated threads query",
-                    "options": {
-                        "description": "Threads Number and Limit - Allocated threads query",
-                        "order": 13,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_processes_threads{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_processes_threads"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Threads Number and Limit - Threads limit query",
-                    "options": {
-                        "description": "Threads Number and Limit - Threads limit query",
-                        "order": 14,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_processes_max_threads{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_processes_max_threads"
                 }
             ],
             "title": "System Processes",
@@ -3028,28 +2888,6 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Interrupts Detail query",
-                    "options": {
-                        "description": "Interrupts Detail query",
-                        "order": 28,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "irate(node_interrupts_total{instance=~'.*'}[1h])&duration=1h&step=5m",
-                    "schema": "node_interrupts_total"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
                     "name": "Schedule timeslices executed by each cpu - CPU query",
                     "options": {
                         "description": "Schedule timeslices executed by each cpu - CPU query",
@@ -3230,28 +3068,6 @@
                     },
                     "query": "node_hwmon_temp_crit_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_crit_celsius"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Hardware temperature monitor - Critical Historical query",
-                    "options": {
-                        "description": "Hardware temperature monitor - Critical Historical query",
-                        "order": 37,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "node_hwmon_temp_crit_hyst_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
-                    "schema": "node_hwmon_temp_crit_hyst_celsius"
                 },
                 {
                     "chart_type": "line",
