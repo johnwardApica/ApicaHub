@@ -87,7 +87,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_node_status_allocatable{resource='pods'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_node_status_allocatable"
                 },
                 {
                     "chart_type": "line",

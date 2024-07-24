@@ -28,7 +28,7 @@
                         "upperLimit": ""
                     },
                     "query": "avg(1-rate(node_cpu_seconds_total{mode='idle', job='node-exporter'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -116,7 +116,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_requests{unit='byte'}) / sum(machine_memory_bytes)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_requests"
                 },
                 {
                     "chart_type": "gauge",
@@ -138,7 +138,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_limits{unit='byte'}) / sum(machine_memory_bytes)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_limits"
                 },
                 {
                     "chart_type": "counter",
@@ -161,7 +161,7 @@
                         "upperLimit": ""
                     },
                     "query": "count(up{job='node-exporter'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "up"
                 },
                 {
                     "chart_type": "line",
@@ -183,7 +183,7 @@
                         "upperLimit": ""
                     },
                     "query": "count by(namespace) (rate(kube_pod_container_status_running{}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_status_running"
                 },
                 {
                     "chart_type": "counter",
@@ -206,7 +206,7 @@
                         "upperLimit": ""
                     },
                     "query": "count(kube_namespace_created)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_namespace_created"
                 },
                 {
                     "chart_type": "counter",
@@ -229,7 +229,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(1-rate(node_cpu_seconds_total{mode='idle', job='node-exporter'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "counter",
@@ -252,7 +252,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_requests{unit='core'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_requests"
                 },
                 {
                     "chart_type": "counter",
@@ -275,7 +275,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_limits{unit='core'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_limits"
                 },
                 {
                     "chart_type": "counter",
@@ -298,7 +298,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(machine_cpu_cores)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "machine_cpu_cores"
                 },
                 {
                     "chart_type": "counter",
@@ -321,7 +321,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(node_memory_MemTotal_bytes{job='node-exporter'} - node_memory_MemAvailable_bytes{job='node-exporter'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_memory_MemTotal_bytes"
                 },
                 {
                     "chart_type": "counter",
@@ -344,7 +344,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_requests{unit='byte'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_requests"
                 },
                 {
                     "chart_type": "counter",
@@ -367,7 +367,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_container_resource_limits{unit='byte'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_limits"
                 },
                 {
                     "chart_type": "counter",
@@ -390,7 +390,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(machine_memory_bytes)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "machine_memory_bytes"
                 },
                 {
                     "chart_type": "counter",
@@ -413,7 +413,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(kube_pod_status_phase{phase='Running'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_status_phase"
                 },
                 {
                     "chart_type": "gauge",
@@ -435,7 +435,7 @@
                         "upperLimit": ""
                     },
                     "query": "avg(1-rate(node_cpu_seconds_total{mode='idle', job='node-exporter'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -479,7 +479,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(id) (rate(container_network_receive_bytes_total{instance=~'.+', id='/', interface=~'.+'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_network_receive_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -501,7 +501,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(id) (rate(container_network_transmit_bytes_total{instance=~'.+', id='/', interface=~'.+'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_network_transmit_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -523,7 +523,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(device) (rate(node_disk_read_bytes_total{device='sda', instance=~'.+'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_disk_read_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -545,7 +545,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(device) (rate(node_disk_written_bytes_total{device='sda', instance=~'.+'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_disk_written_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -567,7 +567,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(namespace) (rate(container_cpu_usage_seconds_total{}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_cpu_usage_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -589,7 +589,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(namespace) (rate(container_memory_working_set_bytes{namespace=~'.*'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_memory_working_set_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -611,7 +611,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(rate(coredns_forward_requests_total[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "coredns_forward_requests_total"
                 },
                 {
                     "chart_type": "line",
@@ -633,7 +633,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(coredns_cache_entries) by (type)&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "coredns_cache_entries"
                 },
                 {
                     "chart_type": "line",
@@ -655,7 +655,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum by(interface) (rate(container_network_receive_bytes_total{id='/'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_network_receive_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -677,7 +677,7 @@
                         "upperLimit": ""
                     },
                     "query": "avg by(pod) (rate(container_fs_writes_total{id=~'.+', device=~'.+', pod=~'.+'}[1h]))&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "container_fs_writes_total"
                 },
                 {
                     "chart_type": "line",
@@ -699,7 +699,7 @@
                         "upperLimit": ""
                     },
                     "query": "max by(pod) (kube_pod_container_resource_limits{pod=~'.+', resource='cpu', unit='core'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_limits"
                 },
                 {
                     "chart_type": "line",
@@ -721,7 +721,7 @@
                         "upperLimit": ""
                     },
                     "query": "max by(pod) (kube_pod_container_resource_limits{pod=~'.+', resource='memory', unit='byte'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_limits"
                 },
                 {
                     "chart_type": "line",
@@ -743,7 +743,7 @@
                         "upperLimit": ""
                     },
                     "query": "max by(pod) (kube_pod_container_resource_requests{pod=~'.+', resource='cpu', unit='core'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_requests"
                 },
                 {
                     "chart_type": "line",
@@ -765,7 +765,7 @@
                         "upperLimit": ""
                     },
                     "query": "max by(pod) (kube_pod_container_resource_requests{pod=~'.+', resource='memory', unit='byte'})&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "kube_pod_container_resource_requests"
                 }
             ],
             "title": "Row title",

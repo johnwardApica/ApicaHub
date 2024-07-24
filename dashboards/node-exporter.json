@@ -1,7 +1,15 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [
+            {
+                "host": {
+                  "query": "sum by (instance) (node_dmi_info{instance=~'.*'})",
+                  "name": "Host Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+            }
+        ]
     },
     "tabs": [
         {
@@ -27,8 +35,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_cpu_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_pressure_cpu_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_cpu_waiting_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -49,8 +57,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_memory_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_pressure_memory_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_memory_waiting_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -71,8 +79,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_io_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_pressure_io_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_io_waiting_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -93,8 +101,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 * (1 - avg(rate(node_cpu_seconds_total{mode='idle'}[1h])))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "100 * (1 - avg(rate(node_cpu_seconds_total{mode='idle',instance=~'.*'}[1h])))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "gauge",
@@ -115,7 +123,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "scalar(node_load1{}) * 100 / count(count(node_cpu_seconds_total{}) by (cpu))&duration=1h&step=5m",
+                    "query": "scalar(node_load1{instance=~'.*'}) * 100 / count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu))&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -137,8 +145,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "((node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{}) / node_memory_MemTotal_bytes{}) * 100&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "((node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'}) / node_memory_MemTotal_bytes{instance=~'.*'}) * 100&duration=1h&step=5m",
+                    "schema": "node_memory_MemTotal_bytes"
                 },
                 {
                     "chart_type": "gauge",
@@ -159,8 +167,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(1 - (node_memory_MemAvailable_bytes{} / node_memory_MemTotal_bytes{})) * 100&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "(1 - (node_memory_MemAvailable_bytes{instance=~'.*'} / node_memory_MemTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
+                    "schema": "node_memory_MemAvailable_bytes"
                 },
                 {
                     "chart_type": "gauge",
@@ -181,8 +189,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "((node_memory_SwapTotal_bytes{} - node_memory_SwapFree_bytes{}) / (node_memory_SwapTotal_bytes{})) * 100&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "((node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'}) / (node_memory_SwapTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
+                    "schema": "node_memory_SwapTotal_bytes"
                 },
                 {
                     "chart_type": "gauge",
@@ -203,8 +211,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 - ((node_filesystem_avail_bytes{fstype!='rootfs'} * 100) / node_filesystem_size_bytes{fstype!='rootfs'})&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "100 - ((node_filesystem_avail_bytes{fstype!='rootfs',instance=~'.*'} * 100) / node_filesystem_size_bytes{fstype!='rootfs',instance=~'.*'})&duration=1h&step=5m",
+                    "schema": "node_filesystem_avail_bytes"
                 },
                 {
                     "chart_type": "counter",
@@ -226,8 +234,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "count(count(node_cpu_seconds_total{}) by (cpu))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "counter",
@@ -249,7 +257,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_time_seconds{} - node_boot_time_seconds{}&duration=1h&step=5m",
+                    "query": "node_time_seconds{instance=~'.*'} - node_boot_time_seconds{instance=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -272,8 +280,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{fstype!='rootfs'}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_size_bytes{fstype!='rootfs',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_size_bytes"
                 },
                 {
                     "chart_type": "counter",
@@ -295,8 +303,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_MemTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_MemTotal_bytes"
                 },
                 {
                     "chart_type": "counter",
@@ -318,8 +326,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SwapTotal_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_SwapTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_SwapTotal_bytes"
                 }
             ],
             "title": "Quick CPU / Mem / Disk",
@@ -350,8 +358,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -372,8 +380,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -394,8 +402,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -416,8 +424,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -438,8 +446,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -460,8 +468,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -482,8 +490,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_MemTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_MemTotal_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -504,7 +512,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{} - (node_memory_Cached_bytes{} + node_memory_Buffers_bytes{} + node_memory_SReclaimable_bytes{})&duration=1h&step=5m",
+                    "query": "node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'} - (node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'})&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -526,7 +534,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Cached_bytes{} + node_memory_Buffers_bytes{} + node_memory_SReclaimable_bytes{}&duration=1h&step=5m",
+                    "query": "node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -548,8 +556,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemFree_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_MemFree_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_MemFree_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -570,7 +578,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(node_memory_SwapTotal_bytes{} - node_memory_SwapFree_bytes{})&duration=1h&step=5m",
+                    "query": "(node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'})&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -592,8 +600,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_bytes_total{}[1h])*8&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "schema": "node_network_receive_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -614,8 +622,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_bytes_total{}[1h])*8&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "schema": "node_network_transmit_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -636,8 +644,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 - ((node_filesystem_avail_bytes{} * 100) / node_filesystem_size_bytes{})&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "100 - ((node_filesystem_avail_bytes{instance=~'.*'} * 100) / node_filesystem_size_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "schema": "node_filesystem_avail_bytes"
                 }
             ]
         },
@@ -664,8 +672,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -686,15 +694,15 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "CPU - Nice   Niced processes executing in user mode query",
+                    "name": "CPU - Nice  Nice processes executing in user mode query",
                     "options": {
-                        "description": "CPU - Nice   Niced processes executing in user mode query",
+                        "description": "CPU - Nice  Nice processes executing in user mode query",
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
@@ -708,8 +716,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -730,8 +738,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum by(instance) (irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -752,8 +760,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -774,8 +782,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -796,8 +804,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -818,8 +826,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{}[1h])) / scalar(count(count(node_cpu_seconds_total{}) by (cpu)))&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "schema": "node_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -840,8 +848,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{} - node_memory_MemFree_bytes{} - node_memory_Buffers_bytes{} - node_memory_Cached_bytes{} - node_memory_Slab_bytes{} - node_memory_PageTables_bytes{} - node_memory_SwapCached_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'} - node_memory_Buffers_bytes{instance=~'.*'} - node_memory_Cached_bytes{instance=~'.*'} - node_memory_Slab_bytes{instance=~'.*'} - node_memory_PageTables_bytes{instance=~'.*'} - node_memory_SwapCached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_MemTotal_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -862,8 +870,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_PageTables_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_PageTables_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_PageTables_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -884,8 +892,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SwapCached_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_SwapCached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_SwapCached_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -906,8 +914,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Slab_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Slab_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Slab_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -928,8 +936,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Cached_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Cached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Cached_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -950,8 +958,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Buffers_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Buffers_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Buffers_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -972,8 +980,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemFree_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_MemFree_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_MemFree_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -994,8 +1002,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(node_memory_SwapTotal_bytes{} - node_memory_SwapFree_bytes{})&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "(node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "schema": "node_memory_SwapTotal_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1016,8 +1024,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HardwareCorrupted_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_HardwareCorrupted_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_HardwareCorrupted_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1038,8 +1046,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_bytes_total{}[1h])*8&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "schema": "node_network_receive_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -1060,8 +1068,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_bytes_total{}[1h])*8&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "schema": "node_network_transmit_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -1082,8 +1090,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{} - node_filesystem_avail_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_size_bytes{instance=~'.*'} - node_filesystem_avail_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_size_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1104,8 +1112,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_reads_completed_total"
                 },
                 {
                     "chart_type": "line",
@@ -1126,8 +1134,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_writes_completed_total"
                 },
                 {
                     "chart_type": "line",
@@ -1148,8 +1156,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_bytes_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_read_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_read_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -1170,8 +1178,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_written_bytes_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_written_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_written_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -1192,8 +1200,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_seconds_total{} [1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_io_time_seconds_total{instance=~'.*'} [1h])&duration=1h&step=5m",
+                    "schema": "node_disk_io_time_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -1214,7 +1222,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{}[1m])))&duration=1h&step=5m",
+                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{instance=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{instance=~'.*'}[1m])))&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -1236,7 +1244,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{}[1m])))&duration=1h&step=5m",
+                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{instance=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{instance=~'.*'}[1m])))&duration=1h&step=5m",
                     "schema": ""
                 }
             ],
@@ -1266,8 +1274,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Inactive_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Inactive_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1288,8 +1296,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Active_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Active_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1310,8 +1318,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Committed_AS_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Committed_AS_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Committed_AS_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1332,8 +1340,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_CommitLimit_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_CommitLimit_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_CommitLimit_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1354,8 +1362,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_file_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Inactive_file_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Inactive_file_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1376,8 +1384,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_anon_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Inactive_anon_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Inactive_anon_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1398,8 +1406,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_file_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Active_file_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Active_file_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1420,8 +1428,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_anon_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Active_anon_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Active_anon_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1442,8 +1450,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Writeback_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Writeback_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Writeback_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1464,8 +1472,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_WritebackTmp_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_WritebackTmp_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_WritebackTmp_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1486,8 +1494,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Dirty_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Dirty_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Dirty_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1508,8 +1516,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Mapped_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Mapped_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Mapped_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1530,8 +1538,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Shmem_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Shmem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Shmem_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1552,8 +1560,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_ShmemHugePages_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_ShmemHugePages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_ShmemHugePages_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1574,8 +1582,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_ShmemPmdMapped_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_ShmemPmdMapped_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_ShmemPmdMapped_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1596,8 +1604,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SUnreclaim_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_SUnreclaim_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_SUnreclaim_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1618,8 +1626,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SReclaimable_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_SReclaimable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_SReclaimable_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1640,8 +1648,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocChunk_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_VmallocChunk_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_VmallocChunk_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1662,8 +1670,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocTotal_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_VmallocTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_VmallocTotal_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1684,8 +1692,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocUsed_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_VmallocUsed_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_VmallocUsed_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1706,8 +1714,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Bounce_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Bounce_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Bounce_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1728,8 +1736,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_AnonHugePages_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_AnonHugePages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_AnonHugePages_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1750,8 +1758,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_AnonPages_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_AnonPages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_AnonPages_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1772,8 +1780,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_KernelStack_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_KernelStack_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_KernelStack_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1794,8 +1802,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Percpu_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Percpu_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Percpu_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1816,8 +1824,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Free{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_HugePages_Free{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_HugePages_Free"
                 },
                 {
                     "chart_type": "line",
@@ -1838,8 +1846,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Rsvd{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_HugePages_Rsvd{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_HugePages_Rsvd"
                 },
                 {
                     "chart_type": "line",
@@ -1860,8 +1868,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Surp{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_HugePages_Surp{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_HugePages_Surp"
                 },
                 {
                     "chart_type": "line",
@@ -1882,8 +1890,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Total{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_HugePages_Total{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_HugePages_Total"
                 },
                 {
                     "chart_type": "line",
@@ -1904,8 +1912,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Hugepagesize_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Hugepagesize_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Hugepagesize_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1926,8 +1934,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap1G_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_DirectMap1G_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_DirectMap1G_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1948,8 +1956,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap2M_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_DirectMap2M_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_DirectMap2M_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1970,8 +1978,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap4k_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_DirectMap4k_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_DirectMap4k_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -1992,8 +2000,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Unevictable_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Unevictable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Unevictable_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2014,8 +2022,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Mlocked_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_Mlocked_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_Mlocked_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2036,8 +2044,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_NFS_Unstable_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_memory_NFS_Unstable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_memory_NFS_Unstable_bytes"
                 }
             ],
             "title": "Memory Meminfo",
@@ -2066,8 +2074,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgpgin{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pgpgin{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pgpgin"
                 },
                 {
                     "chart_type": "line",
@@ -2088,8 +2096,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgpgout{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pgpgout{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pgpgout"
                 },
                 {
                     "chart_type": "line",
@@ -2110,8 +2118,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pswpin{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pswpin{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pswpin"
                 },
                 {
                     "chart_type": "line",
@@ -2132,8 +2140,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pswpout{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pswpout{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pswpout"
                 },
                 {
                     "chart_type": "line",
@@ -2154,8 +2162,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgfault{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pgfault{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pgfault"
                 },
                 {
                     "chart_type": "line",
@@ -2176,8 +2184,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgmajfault{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_pgmajfault{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_pgmajfault"
                 },
                 {
                     "chart_type": "line",
@@ -2198,7 +2206,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgfault{}[1h])  - irate(node_vmstat_pgmajfault{}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgfault{instance=~'.*'}[1h])  - irate(node_vmstat_pgmajfault{instance=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -2220,8 +2228,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_oom_kill{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_vmstat_oom_kill{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_vmstat_oom_kill"
                 }
             ],
             "title": "Memory Vmstat",
@@ -2250,8 +2258,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_estimated_error_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_estimated_error_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_estimated_error_seconds"
                 },
                 {
                     "chart_type": "line",
@@ -2272,8 +2280,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_offset_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_offset_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_offset_seconds"
                 },
                 {
                     "chart_type": "line",
@@ -2294,8 +2302,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_maxerror_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_maxerror_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_maxerror_seconds"
                 },
                 {
                     "chart_type": "line",
@@ -2316,8 +2324,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_loop_time_constant{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_loop_time_constant{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_loop_time_constant"
                 },
                 {
                     "chart_type": "line",
@@ -2338,8 +2346,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_sync_status{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_sync_status{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_sync_status"
                 },
                 {
                     "chart_type": "line",
@@ -2360,8 +2368,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_frequency_adjustment_ratio{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_frequency_adjustment_ratio{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_frequency_adjustment_ratio"
                 },
                 {
                     "chart_type": "line",
@@ -2382,8 +2390,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_tick_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_tick_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_tick_seconds"
                 },
                 {
                     "chart_type": "line",
@@ -2404,8 +2412,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_tai_offset_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_timex_tai_offset_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_timex_tai_offset_seconds"
                 }
             ],
             "title": "System Timesync",
@@ -2434,8 +2442,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_procs_blocked{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_procs_blocked{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_procs_blocked"
                 },
                 {
                     "chart_type": "line",
@@ -2456,8 +2464,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_procs_running{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_procs_running{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_procs_running"
                 },
                 {
                     "chart_type": "line",
@@ -2478,8 +2486,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_state{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_processes_state{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_processes_state"
                 },
                 {
                     "chart_type": "line",
@@ -2500,8 +2508,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_forks_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_forks_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_forks_total"
                 },
                 {
                     "chart_type": "line",
@@ -2522,8 +2530,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_bytes{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(process_virtual_memory_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "process_virtual_memory_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2544,8 +2552,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_resident_memory_max_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "process_resident_memory_max_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_resident_memory_max_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2566,8 +2574,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_bytes{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(process_virtual_memory_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "process_virtual_memory_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2588,8 +2596,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_max_bytes{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(process_virtual_memory_max_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "process_virtual_memory_max_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -2610,8 +2618,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_pids{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_processes_pids{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_processes_pids"
                 },
                 {
                     "chart_type": "line",
@@ -2632,8 +2640,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_max_processes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_processes_max_processes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_processes_max_processes"
                 },
                 {
                     "chart_type": "line",
@@ -2654,8 +2662,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_running_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_schedstat_running_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_schedstat_running_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -2676,8 +2684,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_schedstat_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_schedstat_waiting_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -2698,8 +2706,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_threads{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_processes_threads{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_processes_threads"
                 },
                 {
                     "chart_type": "line",
@@ -2720,8 +2728,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_max_threads{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_processes_max_threads{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_processes_max_threads"
                 }
             ],
             "title": "System Processes",
@@ -2750,8 +2758,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_context_switches_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_context_switches_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_context_switches_total"
                 },
                 {
                     "chart_type": "line",
@@ -2772,8 +2780,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_intr_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_intr_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_intr_total"
                 },
                 {
                     "chart_type": "line",
@@ -2794,8 +2802,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load1{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_load1{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_load1"
                 },
                 {
                     "chart_type": "line",
@@ -2816,8 +2824,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load5{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_load5{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_load5"
                 },
                 {
                     "chart_type": "line",
@@ -2838,8 +2846,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load15{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_load15{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_load15"
                 },
                 {
                     "chart_type": "line",
@@ -2860,8 +2868,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cpu_scaling_frequency_hertz{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_cpu_scaling_frequency_hertz{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_cpu_scaling_frequency_hertz"
                 },
                 {
                     "chart_type": "line",
@@ -2882,8 +2890,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(node_cpu_scaling_frequency_max_hertz{})&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "avg(node_cpu_scaling_frequency_max_hertz{instance=~'.*'})&duration=1h&step=5m",
+                    "schema": "node_cpu_scaling_frequency_max_hertz"
                 },
                 {
                     "chart_type": "line",
@@ -2904,8 +2912,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(node_cpu_scaling_frequency_min_hertz{})&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "avg(node_cpu_scaling_frequency_min_hertz{instance=~'.*'})&duration=1h&step=5m",
+                    "schema": "node_cpu_scaling_frequency_min_hertz"
                 },
                 {
                     "chart_type": "line",
@@ -2926,8 +2934,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_cpu_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "rate(node_pressure_cpu_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_cpu_waiting_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -2948,8 +2956,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_memory_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "rate(node_pressure_memory_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_memory_waiting_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -2970,8 +2978,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_memory_stalled_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "rate(node_pressure_memory_stalled_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_memory_stalled_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -2992,8 +3000,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_io_waiting_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "rate(node_pressure_io_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_io_waiting_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3014,8 +3022,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_io_stalled_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "rate(node_pressure_io_stalled_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_pressure_io_stalled_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3036,8 +3044,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_interrupts_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_interrupts_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_interrupts_total"
                 },
                 {
                     "chart_type": "line",
@@ -3058,8 +3066,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_timeslices_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_schedstat_timeslices_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_schedstat_timeslices_total"
                 },
                 {
                     "chart_type": "line",
@@ -3080,8 +3088,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_entropy_available_bits{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_entropy_available_bits{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_entropy_available_bits"
                 },
                 {
                     "chart_type": "line",
@@ -3102,8 +3110,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_cpu_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(process_cpu_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "process_cpu_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3124,8 +3132,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_max_fds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "process_max_fds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_max_fds"
                 },
                 {
                     "chart_type": "line",
@@ -3146,8 +3154,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_open_fds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "process_open_fds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_open_fds"
                 }
             ],
             "title": "System Misc",
@@ -3176,8 +3184,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_celsius{} * on(chip) group_left(chip_name) node_hwmon_chip_names{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_hwmon_temp_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_hwmon_temp_celsius"
                 },
                 {
                     "chart_type": "line",
@@ -3198,8 +3206,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_alarm_celsius{} * on(chip) group_left(chip_name) node_hwmon_chip_names{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_hwmon_temp_crit_alarm_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_hwmon_temp_crit_alarm_celsius"
                 },
                 {
                     "chart_type": "line",
@@ -3220,8 +3228,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_celsius{} * on(chip) group_left(chip_name) node_hwmon_chip_names{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_hwmon_temp_crit_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_hwmon_temp_crit_celsius"
                 },
                 {
                     "chart_type": "line",
@@ -3242,8 +3250,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_hyst_celsius{} * on(chip) group_left(chip_name) node_hwmon_chip_names{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_hwmon_temp_crit_hyst_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_hwmon_temp_crit_hyst_celsius"
                 },
                 {
                     "chart_type": "line",
@@ -3264,8 +3272,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_max_celsius{} * on(chip) group_left(chip_name) node_hwmon_chip_names{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_hwmon_temp_max_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_hwmon_temp_max_celsius"
                 },
                 {
                     "chart_type": "line",
@@ -3286,8 +3294,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cooling_device_cur_state{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_cooling_device_cur_state{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_cooling_device_cur_state"
                 },
                 {
                     "chart_type": "line",
@@ -3308,8 +3316,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cooling_device_max_state{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_cooling_device_max_state{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_cooling_device_max_state"
                 },
                 {
                     "chart_type": "line",
@@ -3330,8 +3338,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_power_supply_online{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_power_supply_online{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_power_supply_online"
                 }
             ],
             "title": "Hardware Misc",
@@ -3362,8 +3370,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_systemd_socket_accepted_connections_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_systemd_socket_accepted_connections_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_systemd_socket_accepted_connections_total"
                 },
                 {
                     "chart_type": "line",
@@ -3384,8 +3392,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_systemd_units"
                 },
                 {
                     "chart_type": "line",
@@ -3406,8 +3414,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_systemd_units"
                 },
                 {
                     "chart_type": "line",
@@ -3428,8 +3436,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_systemd_units"
                 },
                 {
                     "chart_type": "line",
@@ -3450,8 +3458,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_systemd_units"
                 },
                 {
                     "chart_type": "line",
@@ -3472,8 +3480,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_systemd_units"
                 }
             ]
         },
@@ -3502,8 +3510,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_reads_completed_total"
                 },
                 {
                     "chart_type": "line",
@@ -3524,8 +3532,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_writes_completed_total"
                 },
                 {
                     "chart_type": "line",
@@ -3546,8 +3554,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_bytes_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_read_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_read_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -3568,8 +3576,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_written_bytes_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_written_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_written_bytes_total"
                 },
                 {
                     "chart_type": "line",
@@ -3590,8 +3598,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_time_seconds_total{}[1h]) / irate(node_disk_reads_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_read_time_seconds_total{instance=~'.*'}[1h]) / irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_read_time_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3612,8 +3620,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_write_time_seconds_total{}[1h]) / irate(node_disk_writes_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_write_time_seconds_total{instance=~'.*'}[1h]) / irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_write_time_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3634,8 +3642,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_weighted_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_io_time_weighted_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_io_time_weighted_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3656,8 +3664,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_merged_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_reads_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_reads_merged_total"
                 },
                 {
                     "chart_type": "line",
@@ -3678,8 +3686,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_merged_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_writes_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_writes_merged_total"
                 },
                 {
                     "chart_type": "line",
@@ -3700,8 +3708,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_io_time_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_io_time_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3722,8 +3730,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discard_time_seconds_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_discard_time_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_discard_time_seconds_total"
                 },
                 {
                     "chart_type": "line",
@@ -3744,8 +3752,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_disk_io_now{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_disk_io_now{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_disk_io_now"
                 },
                 {
                     "chart_type": "line",
@@ -3766,8 +3774,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discards_completed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_discards_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_discards_completed_total"
                 },
                 {
                     "chart_type": "line",
@@ -3788,8 +3796,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discards_merged_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_disk_discards_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_disk_discards_merged_total"
                 }
             ]
         },
@@ -3818,8 +3826,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_avail_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_avail_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_avail_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -3840,8 +3848,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_free_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_free_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_free_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -3862,8 +3870,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_size_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_size_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -3884,8 +3892,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_files_free{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_files_free{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_files_free"
                 },
                 {
                     "chart_type": "line",
@@ -3906,8 +3914,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filefd_maximum{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filefd_maximum{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filefd_maximum"
                 },
                 {
                     "chart_type": "line",
@@ -3928,8 +3936,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filefd_allocated{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filefd_allocated{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filefd_allocated"
                 },
                 {
                     "chart_type": "line",
@@ -3950,8 +3958,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_files{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_files{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_files"
                 },
                 {
                     "chart_type": "line",
@@ -3972,8 +3980,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_readonly{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_filesystem_readonly{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_filesystem_readonly"
                 },
                 {
                     "chart_type": "line",
@@ -3995,7 +4003,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_filesystem_device_error{fstype!~'tmpfs'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_filesystem_device_error"
                 }
             ]
         },
@@ -4024,8 +4032,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_packets_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_packets_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_packets_total"
                 },
                 {
                     "chart_type": "line",
@@ -4046,8 +4054,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_packets_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_packets_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_packets_total"
                 },
                 {
                     "chart_type": "line",
@@ -4068,8 +4076,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_errs_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_errs_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_errs_total"
                 },
                 {
                     "chart_type": "line",
@@ -4090,8 +4098,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_errs_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_errs_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_errs_total"
                 },
                 {
                     "chart_type": "line",
@@ -4112,8 +4120,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_drop_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_drop_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_drop_total"
                 },
                 {
                     "chart_type": "line",
@@ -4134,8 +4142,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_drop_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_drop_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_drop_total"
                 },
                 {
                     "chart_type": "line",
@@ -4156,8 +4164,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_compressed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_compressed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_compressed_total"
                 },
                 {
                     "chart_type": "line",
@@ -4178,8 +4186,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_compressed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_compressed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_compressed_total"
                 },
                 {
                     "chart_type": "line",
@@ -4200,8 +4208,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_multicast_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_multicast_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_multicast_total"
                 },
                 {
                     "chart_type": "line",
@@ -4222,8 +4230,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_fifo_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_fifo_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_fifo_total"
                 },
                 {
                     "chart_type": "line",
@@ -4244,8 +4252,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_fifo_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_fifo_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_fifo_total"
                 },
                 {
                     "chart_type": "line",
@@ -4266,8 +4274,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_frame_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_receive_frame_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_receive_frame_total"
                 },
                 {
                     "chart_type": "line",
@@ -4288,8 +4296,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_carrier_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_carrier_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_carrier_total"
                 },
                 {
                     "chart_type": "line",
@@ -4310,8 +4318,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_colls_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_network_transmit_colls_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_network_transmit_colls_total"
                 },
                 {
                     "chart_type": "line",
@@ -4332,8 +4340,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_nf_conntrack_entries{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_nf_conntrack_entries{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_nf_conntrack_entries"
                 },
                 {
                     "chart_type": "line",
@@ -4354,8 +4362,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_nf_conntrack_entries_limit{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_nf_conntrack_entries_limit{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_nf_conntrack_entries_limit"
                 },
                 {
                     "chart_type": "line",
@@ -4376,8 +4384,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_arp_entries{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_arp_entries{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_arp_entries"
                 },
                 {
                     "chart_type": "line",
@@ -4398,8 +4406,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_mtu_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_network_mtu_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_network_mtu_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -4420,8 +4428,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_speed_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_network_speed_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_network_speed_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -4442,8 +4450,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_transmit_queue_length{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_network_transmit_queue_length{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_network_transmit_queue_length"
                 },
                 {
                     "chart_type": "line",
@@ -4464,8 +4472,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_processed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_softnet_processed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_softnet_processed_total"
                 },
                 {
                     "chart_type": "line",
@@ -4486,8 +4494,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_dropped_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_softnet_dropped_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_softnet_dropped_total"
                 },
                 {
                     "chart_type": "line",
@@ -4508,8 +4516,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_times_squeezed_total{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_softnet_times_squeezed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_softnet_times_squeezed_total"
                 },
                 {
                     "chart_type": "line",
@@ -4531,7 +4539,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_network_up{operstate='up'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_network_up"
                 },
                 {
                     "chart_type": "line",
@@ -4552,8 +4560,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_carrier{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_network_carrier{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_network_carrier"
                 }
             ]
         },
@@ -4582,8 +4590,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_alloc{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_alloc{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_alloc"
                 },
                 {
                     "chart_type": "line",
@@ -4604,8 +4612,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_inuse{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_inuse"
                 },
                 {
                     "chart_type": "line",
@@ -4626,8 +4634,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_mem{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_mem{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_mem"
                 },
                 {
                     "chart_type": "line",
@@ -4648,8 +4656,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_orphan{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_orphan{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_orphan"
                 },
                 {
                     "chart_type": "line",
@@ -4670,8 +4678,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_tw{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_tw{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_tw"
                 },
                 {
                     "chart_type": "line",
@@ -4692,8 +4700,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDPLITE_inuse{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_UDPLITE_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_UDPLITE_inuse"
                 },
                 {
                     "chart_type": "line",
@@ -4714,8 +4722,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_inuse{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_UDP_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_UDP_inuse"
                 },
                 {
                     "chart_type": "line",
@@ -4736,8 +4744,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_mem{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_UDP_mem{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_UDP_mem"
                 },
                 {
                     "chart_type": "line",
@@ -4758,8 +4766,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_FRAG_inuse{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_FRAG_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_FRAG_inuse"
                 },
                 {
                     "chart_type": "line",
@@ -4780,8 +4788,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_RAW_inuse{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_RAW_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_RAW_inuse"
                 },
                 {
                     "chart_type": "line",
@@ -4802,8 +4810,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_mem_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_TCP_mem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_TCP_mem_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -4824,8 +4832,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_mem_bytes{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_UDP_mem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_UDP_mem_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -4846,8 +4854,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_FRAG_memory{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_FRAG_memory{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_FRAG_memory"
                 },
                 {
                     "chart_type": "line",
@@ -4868,8 +4876,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_sockets_used{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_sockstat_sockets_used{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_sockstat_sockets_used"
                 }
             ]
         },
@@ -4898,8 +4906,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_IpExt_InOctets{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_IpExt_InOctets{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_IpExt_InOctets"
                 },
                 {
                     "chart_type": "line",
@@ -4920,8 +4928,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_IpExt_OutOctets{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_IpExt_OutOctets{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_IpExt_OutOctets"
                 },
                 {
                     "chart_type": "line",
@@ -4942,8 +4950,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Ip_Forwarding{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Ip_Forwarding{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Ip_Forwarding"
                 },
                 {
                     "chart_type": "line",
@@ -4964,8 +4972,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_InMsgs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Icmp_InMsgs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Icmp_InMsgs"
                 },
                 {
                     "chart_type": "line",
@@ -4986,8 +4994,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_OutMsgs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Icmp_OutMsgs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Icmp_OutMsgs"
                 },
                 {
                     "chart_type": "line",
@@ -5008,8 +5016,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_InErrors{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Icmp_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Icmp_InErrors"
                 },
                 {
                     "chart_type": "line",
@@ -5030,8 +5038,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_InDatagrams{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_InDatagrams{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_InDatagrams"
                 },
                 {
                     "chart_type": "line",
@@ -5052,8 +5060,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_OutDatagrams{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_OutDatagrams{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_OutDatagrams"
                 },
                 {
                     "chart_type": "line",
@@ -5074,8 +5082,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_InErrors{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_InErrors"
                 },
                 {
                     "chart_type": "line",
@@ -5096,8 +5104,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_NoPorts{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_NoPorts{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_NoPorts"
                 },
                 {
                     "chart_type": "line",
@@ -5118,8 +5126,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_UdpLite_InErrors{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_UdpLite_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_UdpLite_InErrors"
                 },
                 {
                     "chart_type": "line",
@@ -5140,8 +5148,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_RcvbufErrors{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_RcvbufErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_RcvbufErrors"
                 },
                 {
                     "chart_type": "line",
@@ -5162,8 +5170,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_SndbufErrors{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Udp_SndbufErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Udp_SndbufErrors"
                 },
                 {
                     "chart_type": "line",
@@ -5184,8 +5192,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_InSegs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_InSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_InSegs"
                 },
                 {
                     "chart_type": "line",
@@ -5206,8 +5214,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_OutSegs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_OutSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_OutSegs"
                 },
                 {
                     "chart_type": "line",
@@ -5228,8 +5236,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_ListenOverflows{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_ListenOverflows{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_ListenOverflows"
                 },
                 {
                     "chart_type": "line",
@@ -5250,8 +5258,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_ListenDrops{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_ListenDrops{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_ListenDrops"
                 },
                 {
                     "chart_type": "line",
@@ -5272,8 +5280,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPSynRetrans{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_TCPSynRetrans{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_TCPSynRetrans"
                 },
                 {
                     "chart_type": "line",
@@ -5294,8 +5302,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_RetransSegs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_RetransSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_RetransSegs"
                 },
                 {
                     "chart_type": "line",
@@ -5316,8 +5324,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_InErrs{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_InErrs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_InErrs"
                 },
                 {
                     "chart_type": "line",
@@ -5338,8 +5346,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_OutRsts{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_OutRsts{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_OutRsts"
                 },
                 {
                     "chart_type": "line",
@@ -5360,8 +5368,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPRcvQDrop{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_TCPRcvQDrop{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_TCPRcvQDrop"
                 },
                 {
                     "chart_type": "line",
@@ -5382,8 +5390,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPOFOQueue{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_TCPOFOQueue{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_TCPOFOQueue"
                 },
                 {
                     "chart_type": "line",
@@ -5404,8 +5412,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_netstat_Tcp_CurrEstab{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_netstat_Tcp_CurrEstab{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_CurrEstab"
                 },
                 {
                     "chart_type": "line",
@@ -5426,8 +5434,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_netstat_Tcp_MaxConn{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_netstat_Tcp_MaxConn{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_MaxConn"
                 },
                 {
                     "chart_type": "line",
@@ -5448,8 +5456,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesFailed{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_SyncookiesFailed{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_SyncookiesFailed"
                 },
                 {
                     "chart_type": "line",
@@ -5470,8 +5478,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesRecv{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_SyncookiesRecv{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_SyncookiesRecv"
                 },
                 {
                     "chart_type": "line",
@@ -5492,8 +5500,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesSent{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_TcpExt_SyncookiesSent{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_TcpExt_SyncookiesSent"
                 },
                 {
                     "chart_type": "line",
@@ -5514,8 +5522,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_ActiveOpens{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_ActiveOpens{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_ActiveOpens"
                 },
                 {
                     "chart_type": "line",
@@ -5536,8 +5544,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_PassiveOpens{}[1h])&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "irate(node_netstat_Tcp_PassiveOpens{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "schema": "node_netstat_Tcp_PassiveOpens"
                 },
                 {
                     "chart_type": "line",
@@ -5559,7 +5567,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_tcp_connection_states{state='established'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_tcp_connection_states"
                 },
                 {
                     "chart_type": "line",
@@ -5581,7 +5589,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_tcp_connection_states{state='fin_wait2'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_tcp_connection_states"
                 },
                 {
                     "chart_type": "line",
@@ -5603,7 +5611,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_tcp_connection_states{state='listen'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_tcp_connection_states"
                 },
                 {
                     "chart_type": "line",
@@ -5625,7 +5633,7 @@
                         "upperLimit": ""
                     },
                     "query": "node_tcp_connection_states{state='time_wait'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "node_tcp_connection_states"
                 }
             ]
         },
@@ -5654,8 +5662,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_scrape_collector_duration_seconds{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_scrape_collector_duration_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_scrape_collector_duration_seconds"
                 },
                 {
                     "chart_type": "line",
@@ -5676,8 +5684,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_scrape_collector_success{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_scrape_collector_success{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_scrape_collector_success"
                 },
                 {
                     "chart_type": "line",
@@ -5698,8 +5706,8 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_textfile_scrape_error{}&duration=1h&step=5m",
-                    "schema": ""
+                    "query": "node_textfile_scrape_error{instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "node_textfile_scrape_error"
                 }
             ]
         }
