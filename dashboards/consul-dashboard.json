@@ -1,7 +1,29 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [
+            {
+                "customer": {
+                  "query": "group by (customer) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Customer Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "hostname": {
+                  "query": "group by (hostname) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Host Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "runtime": {
+                  "query": "group by (runtime) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Runtime selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              }
+        ]
     },
     "tabs": [
         {
