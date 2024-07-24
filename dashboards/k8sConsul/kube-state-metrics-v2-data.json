@@ -1,7 +1,29 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [
+            {
+                "customer": {
+                  "query": "group by (customer) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Customer Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "hostname": {
+                  "query": "group by (hostname) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Host Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "runtime": {
+                  "query": "group by (runtime) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Runtime selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              }
+        ]
     },
     "tabs": [
         {
@@ -11,9 +33,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Pod Requested query",
+                    "name": "Cluster Pod Requested",
                     "options": {
-                        "description": "Cluster Pod Requested query",
+                        "description": "Cluster Pod Requested",
                         "label": "Cluster Pod Requested",
                         "order": 1,
                         "upperLimit": ""
@@ -24,9 +46,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster CPU Requested query",
+                    "name": "Cluster CPU Requested",
                     "options": {
-                        "description": "Cluster CPU Requested query",
+                        "description": "Cluster CPU Requested",
                         "label": "Cluster CPU Requested",
                         "order": 3,
                         "plot": {
@@ -47,7 +69,7 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Memory  Requested query",
+                    "name": "Cluster Memory Requested",
                     "options": {
                         "description": "Cluster Memory  Requested query",
                         "label": "Cluster Memory  Requested",

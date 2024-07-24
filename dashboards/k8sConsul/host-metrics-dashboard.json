@@ -35,12 +35,12 @@
           {
             "query": "sum by (hostname) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
             "chart_type": "Table",
-            "name": "Atom Status",
+            "name": "Host Status",
             "schema": "target_info",
             "options": {
               "label": "Actual",
               "order": 1,
-              "description": "Atom Status",
+              "description": "Host Status",
               "plot": {
                 "xLabel": "Timestamp",
                 "yLabel": "value",
