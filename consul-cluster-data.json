@@ -27,7 +27,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_degraded_probe{namespace=~\"{{namespace}}\"}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_degraded_probe{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -49,7 +49,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_degraded_timeout{namespace=~\"{{namespace}}\"}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_degraded_timeout{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -71,7 +71,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~\"{{namespace}}\"}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -93,7 +93,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_health_score{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_health_score{namespace=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -115,7 +115,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~\"{{namespace}}\"}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -137,7 +137,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_tcp_accept{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_tcp_accept{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -159,7 +159,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_udp_sent{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_udp_sent{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -181,7 +181,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_udp_received{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_udp_received{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -203,7 +203,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -225,7 +225,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -247,7 +247,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_tcp_sent{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_tcp_sent{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -269,7 +269,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_gossip{namespace=~\"{{namespace}}\" quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.5\"}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -291,7 +291,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_gossip{namespace=~\"{{namespace}}\" quantile=~\"0.9\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.9\"}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -313,7 +313,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_gossip{namespace=~\"{{namespace}}\" quantile=~\"0.99\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.99\"}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -335,7 +335,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_gossip_count{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_gossip_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -357,7 +357,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_alive{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_alive{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -379,7 +379,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -401,7 +401,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -423,7 +423,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -445,7 +445,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_serf_member_failed{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_serf_member_failed{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -467,7 +467,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_serf_member_flap{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_serf_member_flap{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -489,7 +489,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_serf_member_left{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_serf_member_left{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -511,7 +511,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_serf_events{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_serf_events{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -533,7 +533,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_autopilot_failure_tolerance{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "query": "consul_autopilot_failure_tolerance{namespace=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -555,7 +555,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_autopilot_healthy{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "query": "consul_autopilot_healthy{namespace=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -577,7 +577,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_session_ttl_active{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "query": "consul_session_ttl_active{namespace=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -599,7 +599,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_probeNode{namespace=~\"{{namespace}}\"quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_probeNode{namespace=~'.*'quantile=~\"0.5\"}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -621,7 +621,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -643,7 +643,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_memberlist_pushPullNode{namespace=~\"{{namespace}}\"quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "query": "consul_memberlist_pushPullNode{namespace=~'.*'quantile=~\"0.5\"}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -665,7 +665,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_pushPullNode_count{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_memberlist_pushPullNode_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -687,7 +687,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_catalog_service_query{namespace=~\"{{namespace}}\"}[1m])) by (exported_service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_catalog_service_query{namespace=~'.*'}[1m])) by (exported_service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -709,7 +709,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_catalog_service_query_tags{namespace=~\"{{namespace}}\"}[1m])) by (exported_service)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_catalog_service_query_tags{namespace=~'.*'}[1m])) by (exported_service)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -731,7 +731,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_health_service_query{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_health_service_query{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -753,7 +753,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_health_service_query_tags{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "query": "sum(rate(consul_health_service_query_tags{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
                     "schema": ""
                 }
             ],
