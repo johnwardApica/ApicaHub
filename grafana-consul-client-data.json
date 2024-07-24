@@ -1,0 +1,808 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "consul_client_1",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client ACL Blocked Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client ACL Blocked Count Rate [ /minute ] query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_acl_blocked_service_registration{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Request Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Request Count Rate [ /minute ] query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Exceeded Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Exceeded Count Rate [ /minute ] query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_exceeded{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Failed Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Failed Count Rate [ /minute ] query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_failed{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Register Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Register Count Rate [ /minute ] query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_register{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Success Catalog Register Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Success Catalog Register Count Rate [ /minute ] query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_register{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Register Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Register Count Rate [ /minute ] query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_register{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Error Catalog Deregister Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Error Catalog Deregister Count Rate [ /minute ] query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_deregister{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Deregister Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Deregister Count Rate [ /minute ] query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_deregister{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Datacenter Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Datacenter Count Rate [ /minute ] query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_datacenters{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Success Catalog Datacenter Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Success Catalog Datacenter Count Rate [ /minute ] query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_datacenters{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Error Catalog Datacenter Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Error Catalog Datacenter Count Rate [ /minute ] query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_error_catalog_datacenters{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Nodes Count Rate [ /minute ] query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Success Catalog Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Success Catalog Nodes Count Rate [ /minute ] query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Nodes Count Rate [ /minute ] query",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Services Count Rate [ /minute ] query",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Success Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Success Services Count Rate [ /minute ] query",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Services Count Rate [ /minute ] query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Service Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Service Nodes Count Rate [ /minute ] query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_service_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Success Catalog Service Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Success Catalog Service Nodes Count Rate [ /minute ] query",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_service_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Service Nodes Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Service Nodes Count Rate [ /minute ] query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_service_nodes{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Catalog Node Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Catalog Node Services Count Rate [ /minute ] query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_catalog_node_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client API Success Catalog Node Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client API Success Catalog Node Services Count Rate [ /minute ] query",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_api_success_catalog_node_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client RPC Error Catalog Node Services Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client RPC Error Catalog Node Services Count Rate [ /minute ] query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_client_rpc_error_catalog_node_services{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client Runtime Num of Go Routines query",
+                    "options": {
+                        "description": "Client Runtime Num of Go Routines query",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_runtime_num_goroutines{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client Runtime Bytes Allocated query",
+                    "options": {
+                        "description": "Client Runtime Bytes Allocated query",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_runtime_alloc_bytes{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client Runtime Heap Objects query",
+                    "options": {
+                        "description": "Client Runtime Heap Objects query",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_runtime_heap_objects{namespace=~\"{{namespace}}\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client ACL Cache Hit Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client ACL Cache Hit Count Rate [ /minute ] query",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_acl_cache_hit{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client ACL Cache Miss Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client ACL Cache Miss Count Rate [ /minute ] query",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_acl_cache_miss{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client ACL Replication Hit Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client ACL Replication Hit Count Rate [ /minute ] query",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_acl_replication_hit{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client DNS Stale Queries Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client DNS Stale Queries Count Rate [ /minute ] query",
+                        "order": 31,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_dns_stale_queries{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client DNS PTR query Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client DNS PTR query Count Rate [ /minute ] query",
+                        "order": 32,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_dns_ptr_query{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client DNS Domain Query Count Rate [ /minute ] query",
+                    "options": {
+                        "description": "Client DNS Domain Query Count Rate [ /minute ] query",
+                        "order": 33,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_dns_domain_query{namespace=~\"{{namespace}}\"}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client consul_http_GET_* Time p50 - p50 query",
+                    "options": {
+                        "description": "Client consul_http_GET_* Time p50 - p50 query",
+                        "order": 34,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "{__name__=~\"consul_http_GET_.*[^count|sum]\",namespace=~\"{{namespace}}\"quantile=\"0.5\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client consul_http_GET_* Time p90 - p50 query",
+                    "options": {
+                        "description": "Client consul_http_GET_* Time p90 - p50 query",
+                        "order": 35,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "{__name__=~\"consul_http_GET_.*[^count|sum]\",namespace=~\"{{namespace}}\"quantile=\"0.9\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Client consul_http_GET_* Time p99 - p50 query",
+                    "options": {
+                        "description": "Client consul_http_GET_* Time p99 - p50 query",
+                        "order": 36,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "{__name__=~\"consul_http_GET_.*[^count|sum]\",namespace=~\"{{namespace}}\"quantile=\"0.99\"}&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "consul_client_1",
+            "type": "metrics"
+        }
+    ]
+}

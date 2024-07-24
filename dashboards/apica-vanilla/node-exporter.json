@@ -4,21 +4,21 @@
         "dropdowns": [
             {
               "customer": {
-                "query": "group by (customer) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                "query": "group by (customer) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                 "name": "Customer Selection",
                 "data_source_name": "Apica Monitoring"
               }
             },
             {
               "hostname": {
-                "query": "group by (hostname) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                "query": "group by (hostname) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                 "name": "Host Selection",
                 "data_source_name": "Apica Monitoring"
               }
             },
             {
               "runtime": {
-                "query": "group by (runtime) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
+                "query": "group by (runtime) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                 "name": "Runtime selection",
                 "data_source_name": "Apica Monitoring"
               }
@@ -49,7 +49,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_cpu_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_pressure_cpu_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_cpu_waiting_seconds_total"
                 },
                 {
@@ -71,7 +71,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_memory_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_pressure_memory_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_memory_waiting_seconds_total"
                 },
                 {
@@ -93,7 +93,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_pressure_io_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_pressure_io_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_io_waiting_seconds_total"
                 },
                 {
@@ -115,7 +115,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 * (1 - avg(rate(node_cpu_seconds_total{mode='idle',instance=~'.*'}[1h])))&duration=1h&step=5m",
+                    "query": "100 * (1 - avg(rate(node_cpu_seconds_total{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'}[1h])))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -137,7 +137,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "scalar(node_load1{instance=~'.*'}) * 100 / count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu))&duration=1h&step=5m",
+                    "query": "scalar(node_load1{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'}) * 100 / count(count(node_cpu_seconds_total{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'}) by (cpu))&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -159,7 +159,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "((node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'}) / node_memory_MemTotal_bytes{instance=~'.*'}) * 100&duration=1h&step=5m",
+                    "query": "((node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_MemFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}) / node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}) * 100&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
                 },
                 {
@@ -181,7 +181,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(1 - (node_memory_MemAvailable_bytes{instance=~'.*'} / node_memory_MemTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
+                    "query": "(1 - (node_memory_MemAvailable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} / node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})) * 100&duration=1h&step=5m",
                     "schema": "node_memory_MemAvailable_bytes"
                 },
                 {
@@ -203,7 +203,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "((node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'}) / (node_memory_SwapTotal_bytes{instance=~'.*'})) * 100&duration=1h&step=5m",
+                    "query": "((node_memory_SwapTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_SwapFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}) / (node_memory_SwapTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})) * 100&duration=1h&step=5m",
                     "schema": "node_memory_SwapTotal_bytes"
                 },
                 {
@@ -225,7 +225,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 - ((node_filesystem_avail_bytes{fstype!='rootfs',instance=~'.*'} * 100) / node_filesystem_size_bytes{fstype!='rootfs',instance=~'.*'})&duration=1h&step=5m",
+                    "query": "100 - ((node_filesystem_avail_bytes{fstype!='rootfs',customer=~'.*',hostname=~'.*',runtime=~'.*'} * 100) / node_filesystem_size_bytes{fstype!='rootfs',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "node_filesystem_avail_bytes"
                 },
                 {
@@ -248,7 +248,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu))&duration=1h&step=5m",
+                    "query": "count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -271,7 +271,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_time_seconds{instance=~'.*'} - node_boot_time_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_time_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_boot_time_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -294,7 +294,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{fstype!='rootfs',instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_size_bytes{fstype!='rootfs',customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_size_bytes"
                 },
                 {
@@ -317,7 +317,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
                 },
                 {
@@ -340,7 +340,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SwapTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_SwapTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_SwapTotal_bytes"
                 }
             ],
@@ -372,7 +372,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -394,7 +394,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -416,7 +416,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -438,7 +438,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -460,7 +460,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq',customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -482,7 +482,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -504,7 +504,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
                 },
                 {
@@ -526,7 +526,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'} - (node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_MemFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - (node_memory_Cached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} + node_memory_Buffers_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} + node_memory_SReclaimable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -548,7 +548,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Cached_bytes{instance=~'.*'} + node_memory_Buffers_bytes{instance=~'.*'} + node_memory_SReclaimable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Cached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} + node_memory_Buffers_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} + node_memory_SReclaimable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -570,7 +570,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemFree_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_MemFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemFree_bytes"
                 },
                 {
@@ -592,7 +592,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "(node_memory_SwapTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_SwapFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -614,7 +614,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])*8&duration=1h&step=5m",
                     "schema": "node_network_receive_bytes_total"
                 },
                 {
@@ -636,7 +636,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])*8&duration=1h&step=5m",
                     "schema": "node_network_transmit_bytes_total"
                 },
                 {
@@ -658,7 +658,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "100 - ((node_filesystem_avail_bytes{instance=~'.*'} * 100) / node_filesystem_size_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "100 - ((node_filesystem_avail_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} * 100) / node_filesystem_size_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "node_filesystem_avail_bytes"
                 }
             ]
@@ -686,7 +686,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -708,7 +708,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -730,7 +730,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -752,7 +752,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum by(instance) (irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -774,7 +774,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -796,7 +796,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -818,7 +818,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -840,7 +840,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(irate(node_cpu_seconds_total{instance=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{instance=~'.*'}) by (cpu)))&duration=1h&step=5m",
+                    "query": "sum(irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])) / scalar(count(count(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}) by (cpu)))&duration=1h&step=5m",
                     "schema": "node_cpu_seconds_total"
                 },
                 {
@@ -862,7 +862,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemTotal_bytes{instance=~'.*'} - node_memory_MemFree_bytes{instance=~'.*'} - node_memory_Buffers_bytes{instance=~'.*'} - node_memory_Cached_bytes{instance=~'.*'} - node_memory_Slab_bytes{instance=~'.*'} - node_memory_PageTables_bytes{instance=~'.*'} - node_memory_SwapCached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_MemTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_MemFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_Buffers_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_Cached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_Slab_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_PageTables_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_SwapCached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemTotal_bytes"
                 },
                 {
@@ -884,7 +884,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_PageTables_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_PageTables_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_PageTables_bytes"
                 },
                 {
@@ -906,7 +906,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SwapCached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_SwapCached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_SwapCached_bytes"
                 },
                 {
@@ -928,7 +928,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Slab_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Slab_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Slab_bytes"
                 },
                 {
@@ -950,7 +950,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Cached_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Cached_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Cached_bytes"
                 },
                 {
@@ -972,7 +972,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Buffers_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Buffers_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Buffers_bytes"
                 },
                 {
@@ -994,7 +994,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_MemFree_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_MemFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_MemFree_bytes"
                 },
                 {
@@ -1016,7 +1016,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(node_memory_SwapTotal_bytes{instance=~'.*'} - node_memory_SwapFree_bytes{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "(node_memory_SwapTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_memory_SwapFree_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "node_memory_SwapTotal_bytes"
                 },
                 {
@@ -1038,7 +1038,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HardwareCorrupted_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_HardwareCorrupted_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_HardwareCorrupted_bytes"
                 },
                 {
@@ -1060,7 +1060,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])*8&duration=1h&step=5m",
                     "schema": "node_network_receive_bytes_total"
                 },
                 {
@@ -1082,7 +1082,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_bytes_total{instance=~'.*'}[1h])*8&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])*8&duration=1h&step=5m",
                     "schema": "node_network_transmit_bytes_total"
                 },
                 {
@@ -1104,7 +1104,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{instance=~'.*'} - node_filesystem_avail_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_size_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'} - node_filesystem_avail_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_size_bytes"
                 },
                 {
@@ -1126,7 +1126,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_reads_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_reads_completed_total"
                 },
                 {
@@ -1148,7 +1148,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_writes_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_writes_completed_total"
                 },
                 {
@@ -1170,7 +1170,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_read_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_read_bytes_total"
                 },
                 {
@@ -1192,7 +1192,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_written_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_written_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_written_bytes_total"
                 },
                 {
@@ -1214,7 +1214,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_seconds_total{instance=~'.*'} [1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_io_time_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'} [1h])&duration=1h&step=5m",
                     "schema": "node_disk_io_time_seconds_total"
                 },
                 {
@@ -1236,7 +1236,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{instance=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{instance=~'.*'}[1m])))&duration=1h&step=5m",
+                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1m])))&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -1258,7 +1258,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{instance=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{instance=~'.*'}[1m])))&duration=1h&step=5m",
+                    "query": "sum by(instance) (irate(node_cpu_guest_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1m])) / on(instance) group_left sum by (instance)((irate(node_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1m])))&duration=1h&step=5m",
                     "schema": ""
                 }
             ],
@@ -1288,7 +1288,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Inactive_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Inactive_bytes"
                 },
                 {
@@ -1310,7 +1310,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Active_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Active_bytes"
                 },
                 {
@@ -1332,7 +1332,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Committed_AS_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Committed_AS_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Committed_AS_bytes"
                 },
                 {
@@ -1354,7 +1354,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_CommitLimit_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_CommitLimit_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_CommitLimit_bytes"
                 },
                 {
@@ -1376,7 +1376,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_file_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Inactive_file_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Inactive_file_bytes"
                 },
                 {
@@ -1398,7 +1398,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Inactive_anon_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Inactive_anon_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Inactive_anon_bytes"
                 },
                 {
@@ -1420,7 +1420,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_file_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Active_file_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Active_file_bytes"
                 },
                 {
@@ -1442,7 +1442,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Active_anon_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Active_anon_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Active_anon_bytes"
                 },
                 {
@@ -1464,7 +1464,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Writeback_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Writeback_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Writeback_bytes"
                 },
                 {
@@ -1486,7 +1486,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_WritebackTmp_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_WritebackTmp_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_WritebackTmp_bytes"
                 },
                 {
@@ -1508,7 +1508,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Dirty_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Dirty_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Dirty_bytes"
                 },
                 {
@@ -1530,7 +1530,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Mapped_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Mapped_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Mapped_bytes"
                 },
                 {
@@ -1552,7 +1552,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Shmem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Shmem_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Shmem_bytes"
                 },
                 {
@@ -1574,7 +1574,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_ShmemHugePages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_ShmemHugePages_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_ShmemHugePages_bytes"
                 },
                 {
@@ -1596,7 +1596,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_ShmemPmdMapped_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_ShmemPmdMapped_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_ShmemPmdMapped_bytes"
                 },
                 {
@@ -1618,7 +1618,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SUnreclaim_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_SUnreclaim_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_SUnreclaim_bytes"
                 },
                 {
@@ -1640,7 +1640,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_SReclaimable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_SReclaimable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_SReclaimable_bytes"
                 },
                 {
@@ -1662,7 +1662,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocChunk_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_VmallocChunk_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_VmallocChunk_bytes"
                 },
                 {
@@ -1684,7 +1684,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocTotal_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_VmallocTotal_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_VmallocTotal_bytes"
                 },
                 {
@@ -1706,7 +1706,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_VmallocUsed_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_VmallocUsed_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_VmallocUsed_bytes"
                 },
                 {
@@ -1728,7 +1728,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Bounce_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Bounce_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Bounce_bytes"
                 },
                 {
@@ -1750,7 +1750,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_AnonHugePages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_AnonHugePages_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_AnonHugePages_bytes"
                 },
                 {
@@ -1772,7 +1772,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_AnonPages_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_AnonPages_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_AnonPages_bytes"
                 },
                 {
@@ -1794,7 +1794,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_KernelStack_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_KernelStack_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_KernelStack_bytes"
                 },
                 {
@@ -1816,7 +1816,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Percpu_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Percpu_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Percpu_bytes"
                 },
                 {
@@ -1838,7 +1838,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Free{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_HugePages_Free{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_HugePages_Free"
                 },
                 {
@@ -1860,7 +1860,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Rsvd{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_HugePages_Rsvd{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_HugePages_Rsvd"
                 },
                 {
@@ -1882,7 +1882,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Surp{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_HugePages_Surp{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_HugePages_Surp"
                 },
                 {
@@ -1904,7 +1904,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_HugePages_Total{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_HugePages_Total{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_HugePages_Total"
                 },
                 {
@@ -1926,7 +1926,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Hugepagesize_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Hugepagesize_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Hugepagesize_bytes"
                 },
                 {
@@ -1948,7 +1948,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap1G_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_DirectMap1G_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_DirectMap1G_bytes"
                 },
                 {
@@ -1970,7 +1970,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap2M_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_DirectMap2M_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_DirectMap2M_bytes"
                 },
                 {
@@ -1992,7 +1992,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_DirectMap4k_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_DirectMap4k_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_DirectMap4k_bytes"
                 },
                 {
@@ -2014,7 +2014,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Unevictable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Unevictable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Unevictable_bytes"
                 },
                 {
@@ -2036,7 +2036,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_Mlocked_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_Mlocked_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_Mlocked_bytes"
                 },
                 {
@@ -2058,7 +2058,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_memory_NFS_Unstable_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_memory_NFS_Unstable_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_memory_NFS_Unstable_bytes"
                 }
             ],
@@ -2088,7 +2088,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgpgin{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgpgin{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pgpgin"
                 },
                 {
@@ -2110,7 +2110,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgpgout{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgpgout{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pgpgout"
                 },
                 {
@@ -2132,7 +2132,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pswpin{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pswpin{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pswpin"
                 },
                 {
@@ -2154,7 +2154,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pswpout{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pswpout{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pswpout"
                 },
                 {
@@ -2176,7 +2176,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgfault{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgfault{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pgfault"
                 },
                 {
@@ -2198,7 +2198,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgmajfault{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgmajfault{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_pgmajfault"
                 },
                 {
@@ -2220,7 +2220,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_pgfault{instance=~'.*'}[1h])  - irate(node_vmstat_pgmajfault{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_pgfault{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])  - irate(node_vmstat_pgmajfault{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -2242,7 +2242,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_vmstat_oom_kill{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_vmstat_oom_kill{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_vmstat_oom_kill"
                 }
             ],
@@ -2272,7 +2272,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_estimated_error_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_estimated_error_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_estimated_error_seconds"
                 },
                 {
@@ -2294,7 +2294,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_offset_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_offset_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_offset_seconds"
                 },
                 {
@@ -2316,7 +2316,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_maxerror_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_maxerror_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_maxerror_seconds"
                 },
                 {
@@ -2338,7 +2338,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_loop_time_constant{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_loop_time_constant{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_loop_time_constant"
                 },
                 {
@@ -2360,7 +2360,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_sync_status{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_sync_status{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_sync_status"
                 },
                 {
@@ -2382,7 +2382,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_frequency_adjustment_ratio{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_frequency_adjustment_ratio{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_frequency_adjustment_ratio"
                 },
                 {
@@ -2404,7 +2404,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_tick_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_tick_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_tick_seconds"
                 },
                 {
@@ -2426,7 +2426,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_timex_tai_offset_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_timex_tai_offset_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_timex_tai_offset_seconds"
                 }
             ],
@@ -2456,7 +2456,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_procs_blocked{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_procs_blocked{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_procs_blocked"
                 },
                 {
@@ -2478,7 +2478,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_procs_running{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_procs_running{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_procs_running"
                 },
                 {
@@ -2500,7 +2500,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_state{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_processes_state{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_processes_state"
                 },
                 {
@@ -2522,7 +2522,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_forks_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_forks_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_forks_total"
                 },
                 {
@@ -2544,7 +2544,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(process_virtual_memory_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "process_virtual_memory_bytes"
                 },
                 {
@@ -2566,7 +2566,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_resident_memory_max_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "process_resident_memory_max_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "process_resident_memory_max_bytes"
                 },
                 {
@@ -2588,7 +2588,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(process_virtual_memory_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "process_virtual_memory_bytes"
                 },
                 {
@@ -2610,7 +2610,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_virtual_memory_max_bytes{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(process_virtual_memory_max_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "process_virtual_memory_max_bytes"
                 },
                 {
@@ -2632,7 +2632,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_pids{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_processes_pids{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_processes_pids"
                 },
                 {
@@ -2654,7 +2654,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_max_processes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_processes_max_processes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_processes_max_processes"
                 },
                 {
@@ -2676,7 +2676,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_running_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_schedstat_running_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_schedstat_running_seconds_total"
                 },
                 {
@@ -2698,7 +2698,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_schedstat_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_schedstat_waiting_seconds_total"
                 },
                 {
@@ -2720,7 +2720,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_threads{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_processes_threads{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_processes_threads"
                 },
                 {
@@ -2742,7 +2742,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_processes_max_threads{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_processes_max_threads{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_processes_max_threads"
                 }
             ],
@@ -2772,7 +2772,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_context_switches_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_context_switches_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_context_switches_total"
                 },
                 {
@@ -2794,7 +2794,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_intr_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_intr_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_intr_total"
                 },
                 {
@@ -2816,7 +2816,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load1{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_load1{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_load1"
                 },
                 {
@@ -2838,7 +2838,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load5{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_load5{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_load5"
                 },
                 {
@@ -2860,7 +2860,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_load15{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_load15{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_load15"
                 },
                 {
@@ -2882,7 +2882,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cpu_scaling_frequency_hertz{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_cpu_scaling_frequency_hertz{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_cpu_scaling_frequency_hertz"
                 },
                 {
@@ -2904,7 +2904,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(node_cpu_scaling_frequency_max_hertz{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "avg(node_cpu_scaling_frequency_max_hertz{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "node_cpu_scaling_frequency_max_hertz"
                 },
                 {
@@ -2926,7 +2926,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "avg(node_cpu_scaling_frequency_min_hertz{instance=~'.*'})&duration=1h&step=5m",
+                    "query": "avg(node_cpu_scaling_frequency_min_hertz{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "node_cpu_scaling_frequency_min_hertz"
                 },
                 {
@@ -2948,7 +2948,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_cpu_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "rate(node_pressure_cpu_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_cpu_waiting_seconds_total"
                 },
                 {
@@ -2970,7 +2970,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_memory_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "rate(node_pressure_memory_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_memory_waiting_seconds_total"
                 },
                 {
@@ -2992,7 +2992,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_memory_stalled_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "rate(node_pressure_memory_stalled_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_memory_stalled_seconds_total"
                 },
                 {
@@ -3014,7 +3014,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_io_waiting_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "rate(node_pressure_io_waiting_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_io_waiting_seconds_total"
                 },
                 {
@@ -3036,7 +3036,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(node_pressure_io_stalled_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "rate(node_pressure_io_stalled_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_pressure_io_stalled_seconds_total"
                 },
                 {
@@ -3058,7 +3058,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_interrupts_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_interrupts_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_interrupts_total"
                 },
                 {
@@ -3080,7 +3080,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_schedstat_timeslices_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_schedstat_timeslices_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_schedstat_timeslices_total"
                 },
                 {
@@ -3102,7 +3102,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_entropy_available_bits{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_entropy_available_bits{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_entropy_available_bits"
                 },
                 {
@@ -3124,7 +3124,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(process_cpu_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(process_cpu_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "process_cpu_seconds_total"
                 },
                 {
@@ -3146,7 +3146,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_max_fds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "process_max_fds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "process_max_fds"
                 },
                 {
@@ -3168,7 +3168,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "process_open_fds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "process_open_fds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "process_open_fds"
                 }
             ],
@@ -3198,7 +3198,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_hwmon_temp_celsius{customer=~'.*',hostname=~'.*',runtime=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_celsius"
                 },
                 {
@@ -3220,7 +3220,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_alarm_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_hwmon_temp_crit_alarm_celsius{customer=~'.*',hostname=~'.*',runtime=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_crit_alarm_celsius"
                 },
                 {
@@ -3242,7 +3242,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_hwmon_temp_crit_celsius{customer=~'.*',hostname=~'.*',runtime=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_crit_celsius"
                 },
                 {
@@ -3264,7 +3264,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_crit_hyst_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_hwmon_temp_crit_hyst_celsius{customer=~'.*',hostname=~'.*',runtime=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_crit_hyst_celsius"
                 },
                 {
@@ -3286,7 +3286,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_hwmon_temp_max_celsius{instance=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_hwmon_temp_max_celsius{customer=~'.*',hostname=~'.*',runtime=~'.*'} * on(chip) group_left(chip_name) node_hwmon_chip_names{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_hwmon_temp_max_celsius"
                 },
                 {
@@ -3308,7 +3308,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cooling_device_cur_state{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_cooling_device_cur_state{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_cooling_device_cur_state"
                 },
                 {
@@ -3330,7 +3330,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_cooling_device_max_state{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_cooling_device_max_state{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_cooling_device_max_state"
                 },
                 {
@@ -3352,7 +3352,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_power_supply_online{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_power_supply_online{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_power_supply_online"
                 }
             ],
@@ -3384,7 +3384,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_systemd_socket_accepted_connections_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_systemd_socket_accepted_connections_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_systemd_socket_accepted_connections_total"
                 },
                 {
@@ -3406,7 +3406,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_systemd_units{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_systemd_units"
                 },
                 {
@@ -3428,7 +3428,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_systemd_units{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_systemd_units"
                 },
                 {
@@ -3450,7 +3450,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_systemd_units{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_systemd_units"
                 },
                 {
@@ -3472,7 +3472,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_systemd_units{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_systemd_units"
                 },
                 {
@@ -3494,7 +3494,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_systemd_units{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_systemd_units{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_systemd_units"
                 }
             ]
@@ -3524,7 +3524,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_reads_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_reads_completed_total"
                 },
                 {
@@ -3546,7 +3546,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_writes_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_writes_completed_total"
                 },
                 {
@@ -3568,7 +3568,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_read_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_read_bytes_total"
                 },
                 {
@@ -3590,7 +3590,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_written_bytes_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_written_bytes_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_written_bytes_total"
                 },
                 {
@@ -3612,7 +3612,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_read_time_seconds_total{instance=~'.*'}[1h]) / irate(node_disk_reads_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_read_time_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h]) / irate(node_disk_reads_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_read_time_seconds_total"
                 },
                 {
@@ -3634,7 +3634,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_write_time_seconds_total{instance=~'.*'}[1h]) / irate(node_disk_writes_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_write_time_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h]) / irate(node_disk_writes_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_write_time_seconds_total"
                 },
                 {
@@ -3656,7 +3656,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_weighted_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_io_time_weighted_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_io_time_weighted_seconds_total"
                 },
                 {
@@ -3678,7 +3678,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_reads_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_reads_merged_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_reads_merged_total"
                 },
                 {
@@ -3700,7 +3700,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_writes_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_writes_merged_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_writes_merged_total"
                 },
                 {
@@ -3722,7 +3722,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_io_time_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_io_time_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_io_time_seconds_total"
                 },
                 {
@@ -3744,7 +3744,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discard_time_seconds_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_discard_time_seconds_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_discard_time_seconds_total"
                 },
                 {
@@ -3766,7 +3766,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_disk_io_now{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_disk_io_now{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_disk_io_now"
                 },
                 {
@@ -3788,7 +3788,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discards_completed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_discards_completed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_discards_completed_total"
                 },
                 {
@@ -3810,7 +3810,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_disk_discards_merged_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_disk_discards_merged_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_disk_discards_merged_total"
                 }
             ]
@@ -3840,7 +3840,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_avail_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_avail_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_avail_bytes"
                 },
                 {
@@ -3862,7 +3862,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_free_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_free_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_free_bytes"
                 },
                 {
@@ -3884,7 +3884,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_size_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_size_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_size_bytes"
                 },
                 {
@@ -3906,7 +3906,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_files_free{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_files_free{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_files_free"
                 },
                 {
@@ -3928,7 +3928,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filefd_maximum{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filefd_maximum{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filefd_maximum"
                 },
                 {
@@ -3950,7 +3950,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filefd_allocated{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filefd_allocated{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filefd_allocated"
                 },
                 {
@@ -3972,7 +3972,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_files{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_files{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_files"
                 },
                 {
@@ -3994,7 +3994,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_filesystem_readonly{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_filesystem_readonly{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_filesystem_readonly"
                 },
                 {
@@ -4046,7 +4046,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_packets_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_packets_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_packets_total"
                 },
                 {
@@ -4068,7 +4068,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_packets_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_packets_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_packets_total"
                 },
                 {
@@ -4090,7 +4090,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_errs_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_errs_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_errs_total"
                 },
                 {
@@ -4112,7 +4112,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_errs_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_errs_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_errs_total"
                 },
                 {
@@ -4134,7 +4134,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_drop_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_drop_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_drop_total"
                 },
                 {
@@ -4156,7 +4156,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_drop_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_drop_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_drop_total"
                 },
                 {
@@ -4178,7 +4178,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_compressed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_compressed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_compressed_total"
                 },
                 {
@@ -4200,7 +4200,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_compressed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_compressed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_compressed_total"
                 },
                 {
@@ -4222,7 +4222,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_multicast_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_multicast_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_multicast_total"
                 },
                 {
@@ -4244,7 +4244,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_fifo_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_fifo_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_fifo_total"
                 },
                 {
@@ -4266,7 +4266,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_fifo_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_fifo_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_fifo_total"
                 },
                 {
@@ -4288,7 +4288,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_receive_frame_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_receive_frame_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_receive_frame_total"
                 },
                 {
@@ -4310,7 +4310,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_carrier_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_carrier_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_carrier_total"
                 },
                 {
@@ -4332,7 +4332,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_network_transmit_colls_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_network_transmit_colls_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_network_transmit_colls_total"
                 },
                 {
@@ -4354,7 +4354,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_nf_conntrack_entries{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_nf_conntrack_entries{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_nf_conntrack_entries"
                 },
                 {
@@ -4376,7 +4376,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_nf_conntrack_entries_limit{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_nf_conntrack_entries_limit{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_nf_conntrack_entries_limit"
                 },
                 {
@@ -4398,7 +4398,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_arp_entries{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_arp_entries{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_arp_entries"
                 },
                 {
@@ -4420,7 +4420,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_mtu_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_network_mtu_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_network_mtu_bytes"
                 },
                 {
@@ -4442,7 +4442,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_speed_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_network_speed_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_network_speed_bytes"
                 },
                 {
@@ -4464,7 +4464,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_transmit_queue_length{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_network_transmit_queue_length{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_network_transmit_queue_length"
                 },
                 {
@@ -4486,7 +4486,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_processed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_softnet_processed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_softnet_processed_total"
                 },
                 {
@@ -4508,7 +4508,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_dropped_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_softnet_dropped_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_softnet_dropped_total"
                 },
                 {
@@ -4530,7 +4530,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_softnet_times_squeezed_total{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_softnet_times_squeezed_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_softnet_times_squeezed_total"
                 },
                 {
@@ -4574,7 +4574,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_network_carrier{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_network_carrier{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_network_carrier"
                 }
             ]
@@ -4604,7 +4604,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_alloc{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_alloc{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_alloc"
                 },
                 {
@@ -4626,7 +4626,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_inuse{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_inuse"
                 },
                 {
@@ -4648,7 +4648,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_mem{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_mem{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_mem"
                 },
                 {
@@ -4670,7 +4670,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_orphan{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_orphan{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_orphan"
                 },
                 {
@@ -4692,7 +4692,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_tw{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_tw{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_tw"
                 },
                 {
@@ -4714,7 +4714,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDPLITE_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_UDPLITE_inuse{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_UDPLITE_inuse"
                 },
                 {
@@ -4736,7 +4736,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_UDP_inuse{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_UDP_inuse"
                 },
                 {
@@ -4758,7 +4758,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_mem{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_UDP_mem{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_UDP_mem"
                 },
                 {
@@ -4780,7 +4780,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_FRAG_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_FRAG_inuse{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_FRAG_inuse"
                 },
                 {
@@ -4802,7 +4802,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_RAW_inuse{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_RAW_inuse{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_RAW_inuse"
                 },
                 {
@@ -4824,7 +4824,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_TCP_mem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_TCP_mem_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_TCP_mem_bytes"
                 },
                 {
@@ -4846,7 +4846,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_UDP_mem_bytes{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_UDP_mem_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_UDP_mem_bytes"
                 },
                 {
@@ -4868,7 +4868,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_FRAG_memory{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_FRAG_memory{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_FRAG_memory"
                 },
                 {
@@ -4890,7 +4890,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_sockstat_sockets_used{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_sockstat_sockets_used{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_sockstat_sockets_used"
                 }
             ]
@@ -4920,7 +4920,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_IpExt_InOctets{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_IpExt_InOctets{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_IpExt_InOctets"
                 },
                 {
@@ -4942,7 +4942,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_IpExt_OutOctets{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_IpExt_OutOctets{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_IpExt_OutOctets"
                 },
                 {
@@ -4964,7 +4964,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Ip_Forwarding{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Ip_Forwarding{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Ip_Forwarding"
                 },
                 {
@@ -4986,7 +4986,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_InMsgs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Icmp_InMsgs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Icmp_InMsgs"
                 },
                 {
@@ -5008,7 +5008,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_OutMsgs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Icmp_OutMsgs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Icmp_OutMsgs"
                 },
                 {
@@ -5030,7 +5030,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Icmp_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Icmp_InErrors{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Icmp_InErrors"
                 },
                 {
@@ -5052,7 +5052,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_InDatagrams{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_InDatagrams{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_InDatagrams"
                 },
                 {
@@ -5074,7 +5074,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_OutDatagrams{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_OutDatagrams{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_OutDatagrams"
                 },
                 {
@@ -5096,7 +5096,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_InErrors{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_InErrors"
                 },
                 {
@@ -5118,7 +5118,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_NoPorts{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_NoPorts{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_NoPorts"
                 },
                 {
@@ -5140,7 +5140,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_UdpLite_InErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_UdpLite_InErrors{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_UdpLite_InErrors"
                 },
                 {
@@ -5162,7 +5162,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_RcvbufErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_RcvbufErrors{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_RcvbufErrors"
                 },
                 {
@@ -5184,7 +5184,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Udp_SndbufErrors{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Udp_SndbufErrors{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Udp_SndbufErrors"
                 },
                 {
@@ -5206,7 +5206,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_InSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_InSegs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_InSegs"
                 },
                 {
@@ -5228,7 +5228,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_OutSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_OutSegs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_OutSegs"
                 },
                 {
@@ -5250,7 +5250,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_ListenOverflows{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_ListenOverflows{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_ListenOverflows"
                 },
                 {
@@ -5272,7 +5272,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_ListenDrops{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_ListenDrops{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_ListenDrops"
                 },
                 {
@@ -5294,7 +5294,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPSynRetrans{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_TCPSynRetrans{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_TCPSynRetrans"
                 },
                 {
@@ -5316,7 +5316,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_RetransSegs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_RetransSegs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_RetransSegs"
                 },
                 {
@@ -5338,7 +5338,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_InErrs{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_InErrs{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_InErrs"
                 },
                 {
@@ -5360,7 +5360,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_OutRsts{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_OutRsts{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_OutRsts"
                 },
                 {
@@ -5382,7 +5382,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPRcvQDrop{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_TCPRcvQDrop{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_TCPRcvQDrop"
                 },
                 {
@@ -5404,7 +5404,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_TCPOFOQueue{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_TCPOFOQueue{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_TCPOFOQueue"
                 },
                 {
@@ -5426,7 +5426,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_netstat_Tcp_CurrEstab{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_netstat_Tcp_CurrEstab{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_CurrEstab"
                 },
                 {
@@ -5448,7 +5448,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_netstat_Tcp_MaxConn{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_netstat_Tcp_MaxConn{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_MaxConn"
                 },
                 {
@@ -5470,7 +5470,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesFailed{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_SyncookiesFailed{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_SyncookiesFailed"
                 },
                 {
@@ -5492,7 +5492,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesRecv{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_SyncookiesRecv{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_SyncookiesRecv"
                 },
                 {
@@ -5514,7 +5514,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_TcpExt_SyncookiesSent{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_TcpExt_SyncookiesSent{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_TcpExt_SyncookiesSent"
                 },
                 {
@@ -5536,7 +5536,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_ActiveOpens{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_ActiveOpens{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_ActiveOpens"
                 },
                 {
@@ -5558,7 +5558,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(node_netstat_Tcp_PassiveOpens{instance=~'.*'}[1h])&duration=1h&step=5m",
+                    "query": "irate(node_netstat_Tcp_PassiveOpens{customer=~'.*',hostname=~'.*',runtime=~'.*'}[1h])&duration=1h&step=5m",
                     "schema": "node_netstat_Tcp_PassiveOpens"
                 },
                 {
@@ -5676,7 +5676,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_scrape_collector_duration_seconds{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_scrape_collector_duration_seconds{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_scrape_collector_duration_seconds"
                 },
                 {
@@ -5698,7 +5698,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_scrape_collector_success{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_scrape_collector_success{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_scrape_collector_success"
                 },
                 {
@@ -5720,7 +5720,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "node_textfile_scrape_error{instance=~'.*'}&duration=1h&step=5m",
+                    "query": "node_textfile_scrape_error{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "node_textfile_scrape_error"
                 }
             ]

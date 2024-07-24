@@ -1,0 +1,414 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Dashboard Row",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Consul Leader query",
+                    "options": {
+                        "description": "Consul Leader query",
+                        "label": "Consul Leader",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_leader_lastcontact_count&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "# servers in cluster query",
+                    "options": {
+                        "description": "# servers in cluster query",
+                        "label": "# servers in cluster",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "COUNT (changes(consul_memberlist_gossep_sum[1m]) \u003e 0) BY (labels)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Idle query",
+                    "options": {
+                        "description": "CPU Idle query",
+                        "label": "CPU Idle",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(irate(node_cpu{mode=\"idle\"}[1m])) * 100 / count_scalar(node_cpu{mode=\"user\"})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Load 1 query",
+                    "options": {
+                        "description": "Load 1 query",
+                        "label": "Load 1",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "node_load1{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Load 5 query",
+                    "options": {
+                        "description": "Load 5 query",
+                        "label": "Load 5",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "node_load5{}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Load 15 query",
+                    "options": {
+                        "description": "Load 15 query",
+                        "label": "Load 15",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "node_load15{}&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        },
+        {
+            "key": "Dashboard Row",
+            "order": "2",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memberlist TCP Messages query",
+                    "options": {
+                        "description": "Memberlist TCP Messages query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "irate(consul_memberlist_tcp{}[1m])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memberlist UDP Messages query",
+                    "options": {
+                        "description": "Memberlist UDP Messages query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "irate(consul_memberlist_udp{}[1m])&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        },
+        {
+            "key": "Dashboard Row",
+            "order": "3",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Log replication from leader to servers query",
+                    "options": {
+                        "description": "Log replication from leader to servers query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_replication_appendEntries_rpc&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "consul_raft_replication_heartbeat query",
+                    "options": {
+                        "description": "consul_raft_replication_heartbeat query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_replication_heartbeat&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        },
+        {
+            "key": "Dashboard Row",
+            "order": "4",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Write logs query",
+                    "options": {
+                        "description": "Write logs query",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_leader_dispatchLog&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Commit time Leader query",
+                    "options": {
+                        "description": "Commit time Leader query",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_commitTime&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        },
+        {
+            "key": "Dashboard Row",
+            "order": "5",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Raft Transactions - Transactions query",
+                    "options": {
+                        "description": "Raft Transactions - Transactions query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "delta(consul_raft_apply[30s])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Leader lastContact query",
+                    "options": {
+                        "description": "Leader lastContact query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_raft_leader_lastcontact&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        },
+        {
+            "key": "Dashboard Row",
+            "order": "6",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "RPC Requests - Requests query",
+                    "options": {
+                        "description": "RPC Requests - Requests query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "delta(consul_rpc_query{}[30s])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Serf Coordinates query",
+                    "options": {
+                        "description": "Serf Coordinates query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_serf_coordinate_adjustment_ms{}&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ],
+            "title": "Dashboard Row",
+            "type": "metrics"
+        }
+    ]
+}
