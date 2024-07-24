@@ -15,13 +15,6 @@
                   "name": "Host Selection",
                   "data_source_name": "Apica Monitoring"
                 }
-              },
-              {
-                "runtime": {
-                  "query": "group by (runtime) (target_info{customer=~'jpmc.*',hostname=~'.*',runtime=~'.*'})",
-                  "name": "Runtime selection",
-                  "data_source_name": "Apica Monitoring"
-                }
               }
         ]
     },
@@ -51,7 +44,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_catalog_services&duration=1h&step=5m",
+                    "query": "consul_catalog_services{}&duration=1h&step=5m",
                     "schema": "consul_catalog_services"
                 },
                 {
