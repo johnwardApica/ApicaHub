@@ -1,7 +1,29 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [
+            {
+                "customer": {
+                  "query": "group by (customer) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Customer Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "hostname": {
+                  "query": "group by (hostname) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Host Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "runtime": {
+                  "query": "group by (runtime) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "name": "Runtime selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              }
+        ]
     },
     "tabs": [
         {
@@ -28,7 +50,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(sum(kube_pod_container_resource_requests{resource='cpu'})/ sum(kube_node_status_allocatable{}))*1024^3*100&duration=1h&step=5m",
+                    "query": "(sum(kube_pod_container_resource_requests{resource='cpu',customer=~'.*',hostname=~'.*',runtime=~'.*'})/ sum(kube_node_status_allocatable{customer=~'.*',hostname=~'.*',runtime=~'.*'}))*1024^3*100&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests"
                 },
                 {
@@ -51,7 +73,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_requests{resource='memory'}) / sum(kube_node_status_allocatable{})*100",
+                    "query": "sum(kube_pod_container_resource_requests{resource='memory',customer=~'.*',hostname=~'.*',runtime=~'.*'}) / sum(kube_node_status_allocatable{customer=~'.*',hostname=~'.*',runtime=~'.*'})*100",
                     "schema": "kube_pod_container_resource_requests"
                 },
                 {
@@ -73,7 +95,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_status_allocatable{resource='pods'})&duration=1h&step=5m",
+                    "query": "sum(kube_node_status_allocatable{resource='pods',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_status_allocatable"
                 },
                 {
@@ -95,7 +117,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_info{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_info"
                 },
                 {
@@ -117,7 +139,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_status_capacity{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_status_capacity{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_status_capacity"
                 },
                 {
@@ -139,7 +161,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_status_allocatable{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_status_allocatable"
                 },
                 {
@@ -161,7 +183,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_requests{resource='cpu'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_requests{resource='cpu',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests"
                 },
                 {
@@ -183,7 +205,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_limits{resource='cpu'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_limits{resource='cpu',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_limits"
                 },
                 {
@@ -205,7 +227,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_status_allocatable{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_status_allocatable{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_status_allocatable"
                 },
                 {
@@ -227,7 +249,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_status_capacity{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_status_capacity{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_status_capacity"
                 },
                 {
@@ -249,7 +271,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_requests{resource='memory'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_requests{resource='memory',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests"
                 },
                 {
@@ -271,7 +293,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_limits{resource='memory'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_limits{resource='memory',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_limits"
                 }
             ],
@@ -302,7 +324,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_info{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_info"
                 },
                 {
@@ -325,7 +347,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_spec_unschedulable{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_spec_unschedulable{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_spec_unschedulable"
                 },
                 {
@@ -347,7 +369,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_node_status_condition{condition='Ready',status='false'}==1&duration=1h&step=5m",
+                    "query": "kube_node_status_condition{condition='Ready',status='false',customer=~'.*',hostname=~'.*',runtime=~'.*'}==1&duration=1h&step=5m",
                     "schema": "kube_node_status_condition"
                 },
                 {
@@ -369,7 +391,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_node_status_condition{condition='MemoryPressure'}==1&duration=1h&step=5m",
+                    "query": "kube_node_status_condition{condition='MemoryPressure',customer=~'.*',hostname=~'.*',runtime=~'.*'}==1&duration=1h&step=5m",
                     "schema": "kube_node_status_condition"
                 },
                 {
@@ -391,7 +413,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_node_status_condition{condition=~'PIDPressure'}==1&duration=1h&step=5m",
+                    "query": "kube_node_status_condition{condition=~'PIDPressure',customer=~'.*',hostname=~'.*',runtime=~'.*'}==1&duration=1h&step=5m",
                     "schema": "kube_node_status_condition"
                 },
                 {
@@ -413,7 +435,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_node_info{})&duration=1h&step=5m",
+                    "query": "sum(kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_node_info"
                 }
             ],
@@ -443,7 +465,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_deployment_status_replicas{}&duration=1h&step=5m",
+                    "query": "kube_deployment_status_replicas{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "kube_deployment_status_replicas"
                 },
                 {
@@ -466,7 +488,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_deployment_status_replicas{})&duration=1h&step=5m",
+                    "query": "sum(kube_deployment_status_replicas{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_deployment_status_replicas"
                 },
                 {
@@ -489,7 +511,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_deployment_status_replicas_updated{})&duration=1h&step=5m",
+                    "query": "sum(kube_deployment_status_replicas_updated{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_deployment_status_replicas_updated"
                 },
                 {
@@ -512,7 +534,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_deployment_status_replicas_unavailable{})&duration=1h&step=5m",
+                    "query": "sum(kube_deployment_status_replicas_unavailable{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_deployment_status_replicas_unavailable"
                 }
             ],
@@ -542,7 +564,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_statefulset_status_replicas_ready{}&duration=1h&step=5m",
+                    "query": "kube_statefulset_status_replicas_ready{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "kube_statefulset_status_replicas_ready"
                 }
             ],
@@ -572,7 +594,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "changes(kube_pod_container_status_restarts_total{}[30m])\u003e1&duration=1h&step=5m",
+                    "query": "changes(kube_pod_container_status_restarts_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[30m])\u003e1&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_restarts_total"
                 },
                 {
@@ -594,7 +616,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_pod_status_reason{reason='Evicted'}&duration=1h&step=5m",
+                    "query": "kube_pod_status_reason{reason='Evicted',customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "kube_pod_status_reason"
                 },
                 {
@@ -617,7 +639,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_status_phase{ phase='Running'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_status_phase{phase='Running',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_status_phase"
                 },
                 {
@@ -640,7 +662,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_status_phase{ phase='Succeeded'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_status_phase{phase='Succeeded',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_status_phase"
                 },
                 {
@@ -663,7 +685,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_status_phase{ phase='Failed'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_status_phase{phase='Failed',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_status_phase"
                 },
                 {
@@ -686,7 +708,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_status_phase{ phase='Pending'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_status_phase{phase='Pending',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_status_phase"
                 },
                 {
@@ -709,7 +731,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_status_phase{ phase='Unknown'})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_status_phase{ phase='Unknown',customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_status_phase"
                 }
             ],
@@ -740,7 +762,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_status_running{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_status_running{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_running"
                 },
                 {
@@ -763,7 +785,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_status_waiting{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_status_waiting{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_waiting"
                 },
                 {
@@ -786,7 +808,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_status_terminated{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_status_terminated{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_terminated"
                 },
                 {
@@ -809,7 +831,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(changes(kube_pod_container_status_restarts_total{}[30m]))&duration=1h&step=5m",
+                    "query": "sum(changes(kube_pod_container_status_restarts_total{customer=~'.*',hostname=~'.*',runtime=~'.*'}[30m]))&duration=1h&step=5m",
                     "schema": "kube_pod_container_status_restarts_total"
                 },
                 {
@@ -832,7 +854,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_requests_cpu_cores{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_requests_cpu_cores{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests_cpu_cores"
                 },
                 {
@@ -855,7 +877,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_pod_container_resource_requests_memory_bytes{})&duration=1h&step=5m",
+                    "query": "sum(kube_pod_container_resource_requests_memory_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests_memory_bytes"
                 }
             ],
@@ -886,7 +908,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_job_status_succeeded{})&duration=1h&step=5m",
+                    "query": "sum(kube_job_status_succeeded{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_job_status_succeeded"
                 },
                 {
@@ -908,7 +930,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(time()-kube_job_status_completion_time{})/60/60/24\u003e1&duration=1h&step=5m",
+                    "query": "(time()-kube_job_status_completion_time{customer=~'.*',hostname=~'.*',runtime=~'.*'})/60/60/24\u003e1&duration=1h&step=5m",
                     "schema": "kube_job_status_completion_time"
                 },
                 {
@@ -931,7 +953,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_job_status_failed{})&duration=1h&step=5m",
+                    "query": "sum(kube_job_status_failed{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_job_status_failed"
                 },
                 {
@@ -953,7 +975,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_job_status_failed{}&duration=1h&step=5m",
+                    "query": "kube_job_status_failed{customer=~'.*',hostname=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "kube_job_status_failed"
                 },
                 {
@@ -976,7 +998,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_job_status_active{})&duration=1h&step=5m",
+                    "query": "sum(kube_job_status_active{customer=~'.*',hostname=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                     "schema": "kube_job_status_active"
                 }
             ],
@@ -1007,7 +1029,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase='Bound'}==1)&duration=1h&step=5m",
+                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase='Bound',customer=~'.*',hostname=~'.*',runtime=~'.*'}==1)&duration=1h&step=5m",
                     "schema": "kube_persistentvolumeclaim_status_phase"
                 },
                 {
@@ -1030,7 +1052,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase!='Bound'}==1)&duration=1h&step=5m",
+                    "query": "sum(kube_persistentvolumeclaim_status_phase{phase!='Bound',customer=~'.*',hostname=~'.*',runtime=~'.*'}==1)&duration=1h&step=5m",
                     "schema": "kube_persistentvolumeclaim_status_phase"
                 },
                 {
@@ -1052,7 +1074,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_persistentvolumeclaim_resource_requests_storage_bytes/1024/1024/1024&duration=1h&step=5m",
+                    "query": "kube_persistentvolumeclaim_resource_requests_storage_bytes{customer=~'.*',hostname=~'.*',runtime=~'.*'}/1024/1024/1024&duration=1h&step=5m",
                     "schema": "kube_persistentvolumeclaim_resource_requests_storage_bytes"
                 }
             ],
