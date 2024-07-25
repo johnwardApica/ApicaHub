@@ -4,21 +4,21 @@
         "dropdowns": [
             {
                 "customer": {
-                  "query": "group by (customer) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "query": "group by (customer) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Customer Selection",
                   "data_source_name": "Apica Monitoring"
                 }
               },
               {
                 "hostname": {
-                  "query": "group by (hostname) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "query": "group by (hostname) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Host Selection",
                   "data_source_name": "Apica Monitoring"
                 }
               },
               {
                 "runtime": {
-                  "query": "group by (runtime) (target_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
+                  "query": "group by (runtime) (kube_node_info{customer=~'.*',hostname=~'.*',runtime=~'.*'})",
                   "name": "Runtime selection",
                   "data_source_name": "Apica Monitoring"
                 }

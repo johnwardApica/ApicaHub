@@ -4,14 +4,14 @@
         "dropdowns": [
             {
                 "customer": {
-                  "query": "group by (customer) (target_info{customer=~'.*',runtime=~'.*'})",
+                  "query": "group by (customer) (consul_autopilot_healthy{customer=~'.*',runtime=~'.*'})",
                   "name": "Customer Selection",
                   "data_source_name": "Apica Monitoring"
                 }
               },
               {
                 "runtime": {
-                  "query": "group by (runtime) (target_info{customer=~'.*',runtime=~'.*'})",
+                  "query": "group by (runtime) (consul_autopilot_healthy{customer=~'.*',runtime=~'.*'})",
                   "name": "Runtime selection",
                   "data_source_name": "Apica Monitoring"
                 }
@@ -26,9 +26,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Member List Degraded Prob Count Rate [ /minute ]",
+                    "name": "Member List Degraded Prob Count Rate [ / 2 minutes ]",
                     "options": {
-                        "description": "Member List Degraded Prob Count Rate [ /minute ]",
+                        "description": "Member List Degraded Prob Count Rate [ / 2 minutes ]",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
@@ -43,7 +43,7 @@
                         "upperLimit": ""
                     },
                     "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~'.*',customer=~'.*',runtime=~'.*'}[2m])) by (pod,service)&duration=1h&step=2m",
-                    "schema": ""
+                    "schema": "consul_memberlist_probeNode_count"
                 },
                 {
                     "chart_type": "line",
@@ -65,7 +65,7 @@
                         "upperLimit": ""
                     },
                     "query": "consul_autopilot_failure_tolerance{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "consul_autopilot_failure_tolerance"
                 },
                 {
                     "chart_type": "line",
@@ -87,7 +87,7 @@
                         "upperLimit": ""
                     },
                     "query": "consul_autopilot_healthy{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "consul_autopilot_healthy"
                 },
                 {
                     "chart_type": "line",
@@ -109,7 +109,7 @@
                         "upperLimit": ""
                     },
                     "query": "consul_session_ttl_active{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
-                    "schema": ""
+                    "schema": "consul_session_ttl_active"
                 }
             ],
             "title": "consul_cluster_1",
