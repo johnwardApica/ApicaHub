@@ -1,7 +1,22 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [
+            {
+                "customer": {
+                  "query": "group by (customer) (target_info{customer=~'.*',runtime=~'.*'})",
+                  "name": "Customer Selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              },
+              {
+                "runtime": {
+                  "query": "group by (runtime) (target_info{customer=~'.*',runtime=~'.*'})",
+                  "name": "Runtime selection",
+                  "data_source_name": "Apica Monitoring"
+                }
+              }
+        ]
     },
     "tabs": [
         {
@@ -27,7 +42,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~'.*'}[2m])) by (pod,service)&duration=1h&step=2m",
+                    "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~'.*',customer=~'.*',runtime=~'.*'}[2m])) by (pod,service)&duration=1h&step=2m",
                     "schema": ""
                 },
                 {
@@ -49,7 +64,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_autopilot_failure_tolerance{namespace=~'.*'}&duration=1h&step=5m",
+                    "query": "consul_autopilot_failure_tolerance{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -71,7 +86,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_autopilot_healthy{namespace=~'.*'}&duration=1h&step=5m",
+                    "query": "consul_autopilot_healthy{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 },
                 {
@@ -93,7 +108,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_session_ttl_active{namespace=~'.*'}&duration=1h&step=5m",
+                    "query": "consul_session_ttl_active{namespace=~'.*',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": ""
                 }
             ],
@@ -125,7 +140,7 @@
                   },
                   "upperLimit": ""
                 },
-                "query": "consul_catalog_service_not_found_total{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "query": "consul_catalog_service_not_found_total{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_catalog_service_not_found_total"
               },
               {
@@ -148,7 +163,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_raft_leader_lastContact_count{}&duration=1h&step=5m",
+                "query": "consul_raft_leader_lastContact_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_leader_lastContact_count"
             },
             {
@@ -171,7 +186,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "COUNT (consul_memberlist_gossip_sum > 0) BY (labels)",
+                "query": "COUNT (consul_memberlist_gossip_sum{customer=~'.*',runtime=~'.*'} > 0) BY (labels)",
                 "schema": "consul_memberlist_gossip_sum"
             },
             {
@@ -194,7 +209,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "sum(irate(consul_host_cpu_idle[5m])) * 100",
+                "query": "sum(irate(consul_host_cpu_idle{customer=~'.*',runtime=~'.*'}[5m])) * 100",
                 "schema": "consul_host_cpu_idle"
             },
             {
@@ -217,7 +232,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "node_load1{}&duration=1h&step=5m",
+                "query": "node_load1{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "node_load1"
             },
             {
@@ -240,7 +255,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "node_load5{}&duration=1h&step=5m",
+                "query": "node_load5{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "node_load5"
             },
             {
@@ -263,14 +278,14 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "node_load15{}&duration=1h&step=5m",
+                "query": "node_load15{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "node_load15"
             },
               {
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Consul Peers and Leaders - peers",
-                "query": "consul_raft_peers{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "query": "consul_raft_peers{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_peers",
                 "options": {
                   "description": "Consul Peers and Leaders - peers",
@@ -292,7 +307,7 @@
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Consul Peers and Leaders - leader",
-                "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_leader_dispatchLog_count",
                 "options": {
                   "description": "Consul Peers and Leaders - leader",
@@ -314,7 +329,7 @@
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Consul Peers and Leaders - serf lan members",
-                "query": "consul_serf_lan_members{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "query": "consul_serf_lan_members{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_serf_lan_members",
                 "options": {
                   "description": "Consul Peers and Leaders - serf lan members",
@@ -336,7 +351,7 @@
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Unhealthy Consul Services",
-                "query": "sum by (service_name, status) (consul_autopilot_healthy{status!='passing',customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
+                "query": "sum by (service_name, status) (consul_autopilot_healthy{status!='passing',customer=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                 "schema": "consul_autopilot_healthy",
                 "options": {
                   "description": "Unhealthy Consul Services",
@@ -358,7 +373,7 @@
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Unhealthy Consul Nodes",
-                "query": "consul_health_node_status{status!='passing',customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "query": "consul_health_node_status{status!='passing',customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_health_node_status",
                 "options": {
                   "description": "Unhealthy Consul Nodes",
@@ -380,7 +395,7 @@
                 "chart_type": "line",
                 "data_source_name": "Apica Monitoring",
                 "name": "Consul Services and Checks",
-                "query": "sum by (node,service_id,status) (consul_health_service_status{customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
+                "query": "sum by (node,service_id,status) (consul_health_service_status{customer=~'.*',runtime=~'.*'})&duration=1h&step=5m",
                 "schema": "consul_health_service_status",
                 "options": {
                   "description": "Consul Services and Checks",
@@ -425,7 +440,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "irate(consul_memberlist_tcp_accept_total{}[5m])&duration=1h&step=5m",
+                "query": "irate(consul_memberlist_tcp_accept_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                 "schema": "consul_memberlist_tcp_accept_total"
             },
             {
@@ -447,7 +462,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "irate(consul_memberlist_udp_sent_total[5m])&duration=1h&step=5m",
+                "query": "irate(consul_memberlist_udp_sent_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                 "schema": "consul_memberlist_udp_sent_total"
             },
             {
@@ -469,7 +484,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_raft_leader_dispatchLog_count{}&duration=1h&step=5m",
+                "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_leader_dispatchLog_count"
             },
             {
@@ -491,7 +506,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_raft_replication_heartbeat{}&duration=1h&step=5m",
+                "query": "consul_raft_replication_heartbeat{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_replication_heartbeat"
             },
             {
@@ -513,7 +528,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "irate(consul_raft_leader_dispatchLog[5m])&duration=1h&step=5m",
+                "query": "irate(consul_raft_leader_dispatchLog{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                 "schema": "consul_raft_leader_dispatchLog"
             },
             {
@@ -535,7 +550,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_raft_commitTime_count{}&duration=1h&step=5m",
+                "query": "consul_raft_commitTime_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_commitTime_count"
             },
             {
@@ -557,7 +572,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "delta(consul_raft_apply_total[5m])&duration=1h&step=5m",
+                "query": "delta(consul_raft_apply_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                 "schema": "consul_raft_apply_total"
             },
             {
@@ -579,7 +594,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_raft_leader_lastcontact{}&duration=1h&step=5m",
+                "query": "consul_raft_leader_lastcontact{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_raft_leader_lastcontact"
             },
             {
@@ -601,7 +616,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "delta(consul_rpc_query_total{}[5m])&duration=1h&step=5m",
+                "query": "delta(consul_rpc_query_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                 "schema": "consul_rpc_query_total"
             },
             {
@@ -623,7 +638,7 @@
                     },
                     "upperLimit": ""
                 },
-                "query": "consul_serf_coordinate_adjustment_ms_count{}&duration=1h&step=5m",
+                "query": "consul_serf_coordinate_adjustment_ms_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_serf_coordinate_adjustment_ms_count"
             }
         ]
@@ -651,7 +666,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_raft_commitTime_count&duration=1h&step=5m",
+                    "query": "consul_raft_commitTime_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_raft_commitTime_count"
                 },
                 {
@@ -673,7 +688,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_raft_apply_total[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_raft_apply_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_raft_apply_total"
                 }
             ],
@@ -703,7 +718,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_raft_leader_lastContact_count{}&duration=1h&step=5m",
+                    "query": "consul_raft_leader_lastContact_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_raft_leader_lastContact_count"
                 },
                 {
@@ -725,7 +740,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_raft_state_candidate_total[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_raft_state_candidate_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_raft_state_candidate_total"
                 },
                 {
@@ -747,7 +762,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_raft_state_candidate_total[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_raft_state_candidate_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_raft_state_candidate_total"
                 },
                 {
@@ -769,7 +784,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_autopilot_healthy{}&duration=1h&step=5m",
+                    "query": "consul_autopilot_healthy{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_autopilot_healthy"
                 }
             ],
@@ -799,7 +814,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_dns_stale_queries_total[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_dns_stale_queries_total{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_dns_stale_queries_total"
                 },
                 {
@@ -821,7 +836,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_dns_query_count{}&duration=1h&step=5m",
+                    "query": "consul_dns_query_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_dns_query_count"
                 }
             ],
@@ -851,7 +866,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_kvs_apply_count[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_kvs_apply_count{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_kvs_apply_count"
                 },
                 {
@@ -873,7 +888,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_kvs_apply_count{}&duration=1h&step=5m",
+                    "query": "consul_kvs_apply_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_kvs_apply_count"
                 },
                 {
@@ -895,7 +910,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_txn_apply_count{}&duration=1h&step=5m",
+                    "query": "consul_txn_apply_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_txn_apply_count"
                 }
             ],
@@ -925,7 +940,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_acl_ResolveToken_count[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_acl_ResolveToken_count{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_acl_ResolveToken_count"
                 },
                 {
@@ -947,7 +962,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_acl_ResolveToken_count{}&duration=1h&step=5m",
+                    "query": "consul_acl_ResolveToken_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_acl_ResolveToken_count"
                 },
                 {
@@ -969,7 +984,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_acl_apply_count[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_acl_apply_count{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_acl_apply_count"
                 },
                 {
@@ -991,7 +1006,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_acl_apply{}&duration=1h&step=5m",
+                    "query": "consul_acl_apply{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_acl_apply"
                 }
             ],
@@ -1023,7 +1038,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_catalog_register_count[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_catalog_register_count{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_catalog_register_count"
                 },
                 {
@@ -1045,7 +1060,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "rate(consul_catalog_deregister_count[5m])&duration=1h&step=5m",
+                    "query": "rate(consul_catalog_deregister_count{customer=~'.*',runtime=~'.*'}[5m])&duration=1h&step=5m",
                     "schema": "consul_catalog_deregister_count"
                 },
                 {
@@ -1067,7 +1082,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_catalog_register_count{}&duration=1h&step=5m",
+                    "query": "consul_catalog_register_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_catalog_register_count"
                 },
                 {
@@ -1089,7 +1104,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "consul_catalog_deregister_count{}&duration=1h&step=5m",
+                    "query": "consul_catalog_deregister_count{customer=~'.*',runtime=~'.*'}&duration=1h&step=5m",
                     "schema": "consul_catalog_deregister_count"
                 }
             ]
