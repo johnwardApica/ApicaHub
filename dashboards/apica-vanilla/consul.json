@@ -33,6 +33,490 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
+                    "name": "Member List Degraded Timeout Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List Degraded Timeout Count Rate [ /minute ]",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_degraded_timeout{namespace=~'.*'}[2m])) by (pod,service)&duration=1h&step=2m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Dead Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Dead Count Rate [ /minute ]",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Health Score [ /minute ]",
+                    "options": {
+                        "description": "Member List Health Score [ /minute ]",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_health_score{namespace=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Suspect Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Suspect Count Rate [ /minute ]",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod,service)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List TCP Accept Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List TCP Accept Count Rate [ /minute ]",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_tcp_accept{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List UDP Sent Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List UDP Sent Count Rate [ /minute ]",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_udp_sent{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List UDP Received Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List UDP Received Count Rate [ /minute ]",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_udp_received{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List TCP Connect Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List TCP Connect Count Rate [ /minute ]",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List TCP Connect Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List TCP Connect Count Rate [ /minute ]",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_tcp_connect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List TCP Sent Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List TCP Sent Count Rate [ /minute ]",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_tcp_sent{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Gossip Time - p50",
+                    "options": {
+                        "description": "Member List Gossip Time - p50",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Gossip Time - p90",
+                    "options": {
+                        "description": "Member List Gossip Time - p90",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.9\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Gossip Time - p99",
+                    "options": {
+                        "description": "Member List Gossip Time - p99",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_gossip{namespace=~'.*' quantile=~\"0.99\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Gossip Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List Gossip Count Rate [ /minute ]",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_gossip_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Alive Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Alive Count Rate [ /minute ]",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_alive{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Dead Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Dead Count Rate [ /minute ]",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_dead{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Suspect Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Suspect Count Rate [ /minute ]",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List MSG Suspect Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List MSG Suspect Count Rate [ /minute ]",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_msg_suspect{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Serf Member Failed Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Serf Member Failed Count Rate [ /minute ]",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_serf_member_failed{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Serf Member Flap Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Serf Member Flap Count Rate [ /minute ]",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_serf_member_flap{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Serf Member Left Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Serf Member Left Count Rate [ /minute ]",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_serf_member_left{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Serf Events Count [ /minute ]",
+                    "options": {
+                        "description": "Serf Events Count [ /minute ]",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_serf_events{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
                     "name": "AutoPilot Failure Tolerance Count ",
                     "options": {
                         "description": "AutoPilot Failure Tolerance Count ",
@@ -95,6 +579,182 @@
                     },
                     "query": "consul_session_ttl_active{namespace=~'.*'}&duration=1h&step=5m",
                     "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List ProbeNode Time",
+                    "options": {
+                        "description": "Member List ProbeNode Time",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_probeNode{namespace=~'.*'quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List Prob Node Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List Prob Node Count Rate [ /minute ]",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_probeNode_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List PushPullNode Time",
+                    "options": {
+                        "description": "Member List PushPullNode Time",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "consul_memberlist_pushPullNode{namespace=~'.*'quantile=~\"0.5\"}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Member List PushPullNode Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Member List PushPullNode Count Rate [ /minute ]",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_memberlist_pushPullNode_count{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Catalog Service Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Catalog Service Count Rate [ /minute ]",
+                        "order": 31,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_catalog_service_query{namespace=~'.*'}[1m])) by (exported_service)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Catalog Service Tags Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Catalog Service Tags Count Rate [ /minute ]",
+                        "order": 32,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_catalog_service_query_tags{namespace=~'.*'}[1m])) by (exported_service)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Health Service Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Health Service Count Rate [ /minute ]",
+                        "order": 33,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_health_service_query{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Health Service Tags Count Rate [ /minute ]",
+                    "options": {
+                        "description": "Health Service Tags Count Rate [ /minute ]",
+                        "order": 34,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(rate(consul_health_service_query_tags{namespace=~'.*'}[1m])) by (pod)&duration=1h&step=5m",
+                    "schema": ""
                 }
             ],
             "title": "consul_cluster_1",
@@ -127,6 +787,138 @@
                 },
                 "query": "consul_catalog_service_not_found_total{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
                 "schema": "consul_catalog_service_not_found_total"
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Consul Peers and Leaders - peers",
+                "query": "consul_raft_peers{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "schema": "consul_raft_peers",
+                "options": {
+                  "description": "Consul Peers and Leaders - peers",
+                  "order": 2,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Consul Peers and Leaders - leader",
+                "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "schema": "consul_raft_leader_dispatchLog_count",
+                "options": {
+                  "description": "Consul Peers and Leaders - leader",
+                  "order": 3,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Consul Peers and Leaders - serf lan members",
+                "query": "consul_serf_lan_members{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "schema": "consul_serf_lan_members",
+                "options": {
+                  "description": "Consul Peers and Leaders - serf lan members",
+                  "order": 4,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Unhealthy Consul Services",
+                "query": "sum by (service_name, status) (consul_autopilot_healthy{status!='passing',customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
+                "schema": "consul_autopilot_healthy",
+                "options": {
+                  "description": "Unhealthy Consul Services",
+                  "order": 5,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Unhealthy Consul Nodes",
+                "query": "consul_health_node_status{status!='passing',customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
+                "schema": "consul_health_node_status",
+                "options": {
+                  "description": "Unhealthy Consul Nodes",
+                  "order": 6,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
+              },
+              {
+                "chart_type": "line",
+                "data_source_name": "Apica Monitoring",
+                "name": "Consul Services and Checks",
+                "query": "sum by (node,service_id,status) (consul_health_service_status{customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
+                "schema": "consul_health_service_status",
+                "options": {
+                  "description": "Consul Services and Checks",
+                  "order": 7,
+                  "plot": {
+                    "errorColumn": "",
+                    "groupBy": "",
+                    "x": "Timestamp",
+                    "xLabel": "Timestamp",
+                    "y": [
+                      "value"
+                    ],
+                    "yLabel": "value"
+                  },
+                  "upperLimit": ""
+                }
               },
               {
                 "chart_type": "counter",
@@ -265,139 +1057,7 @@
                 },
                 "query": "node_load15{}&duration=1h&step=5m",
                 "schema": "node_load15"
-            },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Consul Peers and Leaders - peers",
-                "query": "consul_raft_peers{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
-                "schema": "consul_raft_peers",
-                "options": {
-                  "description": "Consul Peers and Leaders - peers",
-                  "order": 8,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Consul Peers and Leaders - leader",
-                "query": "consul_raft_leader_dispatchLog_count{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
-                "schema": "consul_raft_leader_dispatchLog_count",
-                "options": {
-                  "description": "Consul Peers and Leaders - leader",
-                  "order": 9,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Consul Peers and Leaders - serf lan members",
-                "query": "consul_serf_lan_members{customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
-                "schema": "consul_serf_lan_members",
-                "options": {
-                  "description": "Consul Peers and Leaders - serf lan members",
-                  "order": 10,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Unhealthy Consul Services",
-                "query": "sum by (service_name, status) (consul_autopilot_healthy{status!='passing',customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
-                "schema": "consul_autopilot_healthy",
-                "options": {
-                  "description": "Unhealthy Consul Services",
-                  "order": 11,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Unhealthy Consul Nodes",
-                "query": "consul_health_node_status{status!='passing',customer=~'.*',hostname=~'.*'}&duration=1h&step=5m",
-                "schema": "consul_health_node_status",
-                "options": {
-                  "description": "Unhealthy Consul Nodes",
-                  "order": 12,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              },
-              {
-                "chart_type": "line",
-                "data_source_name": "Apica Monitoring",
-                "name": "Consul Services and Checks",
-                "query": "sum by (node,service_id,status) (consul_health_service_status{customer=~'.*',hostname=~'.*'})&duration=1h&step=5m",
-                "schema": "consul_health_service_status",
-                "options": {
-                  "description": "Consul Services and Checks",
-                  "order": 13,
-                  "plot": {
-                    "errorColumn": "",
-                    "groupBy": "",
-                    "x": "Timestamp",
-                    "xLabel": "Timestamp",
-                    "y": [
-                      "value"
-                    ],
-                    "yLabel": "value"
-                  },
-                  "upperLimit": ""
-                }
-              }
+            }
         ]
     },
     {

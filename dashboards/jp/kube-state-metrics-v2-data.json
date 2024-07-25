@@ -36,7 +36,7 @@
                     "data_source_name": "Apica Monitoring",
                     "name": "Cluster Memory Requested",
                     "options": {
-                        "description": "Cluster Memory  Requested query",
+                        "description": "Cluster Memory  Requested",
                         "label": "Cluster Memory  Requested",
                         "order": 4,
                         "plot": {
@@ -57,9 +57,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Pod Capacity - allocatable query",
+                    "name": "Cluster Pod Capacity - allocatable",
                     "options": {
-                        "description": "Cluster Pod Capacity - allocatable query",
+                        "description": "Cluster Pod Capacity - allocatable",
                         "order": 5,
                         "plot": {
                             "errorColumn": "",
@@ -79,9 +79,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Pod Capacity - requested query",
+                    "name": "Cluster Pod Capacity - requested",
                     "options": {
-                        "description": "Cluster Pod Capacity - requested query",
+                        "description": "Cluster Pod Capacity - requested",
                         "order": 6,
                         "plot": {
                             "errorColumn": "",
@@ -101,9 +101,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster CPU Capacity - allocatable query",
+                    "name": "Cluster CPU Capacity - allocatable",
                     "options": {
-                        "description": "Cluster CPU Capacity - allocatable query",
+                        "description": "Cluster CPU Capacity - allocatable",
                         "order": 7,
                         "plot": {
                             "errorColumn": "",
@@ -123,9 +123,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster CPU Capacity - capacity query",
+                    "name": "Cluster CPU Capacity - capacity",
                     "options": {
-                        "description": "Cluster CPU Capacity - capacity query",
+                        "description": "Cluster CPU Capacity - capacity",
                         "order": 8,
                         "plot": {
                             "errorColumn": "",
@@ -145,9 +145,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster CPU Capacity - requested query",
+                    "name": "Cluster CPU Capacity - requested",
                     "options": {
-                        "description": "Cluster CPU Capacity - requested query",
+                        "description": "Cluster CPU Capacity - requested",
                         "order": 9,
                         "plot": {
                             "errorColumn": "",
@@ -167,9 +167,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster CPU Capacity - limited query",
+                    "name": "Cluster CPU Capacity - limited",
                     "options": {
-                        "description": "Cluster CPU Capacity - limited query",
+                        "description": "Cluster CPU Capacity - limited",
                         "order": 10,
                         "plot": {
                             "errorColumn": "",
@@ -189,9 +189,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Mem Capacity - allocatable query",
+                    "name": "Cluster Mem Capacity - allocatable",
                     "options": {
-                        "description": "Cluster Mem Capacity - allocatable query",
+                        "description": "Cluster Mem Capacity - allocatable",
                         "order": 11,
                         "plot": {
                             "errorColumn": "",
@@ -211,9 +211,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Mem Capacity - capacity query",
+                    "name": "Cluster Mem Capacity - capacity",
                     "options": {
-                        "description": "Cluster Mem Capacity - capacity query",
+                        "description": "Cluster Mem Capacity - capacity",
                         "order": 12,
                         "plot": {
                             "errorColumn": "",
@@ -233,9 +233,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Mem Capacity - requested query",
+                    "name": "Cluster Mem Capacity - requested",
                     "options": {
-                        "description": "Cluster Mem Capacity - requested query",
+                        "description": "Cluster Mem Capacity - requested",
                         "order": 13,
                         "plot": {
                             "errorColumn": "",
@@ -255,9 +255,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Cluster Mem Capacity - limited query",
+                    "name": "Cluster Mem Capacity - limited",
                     "options": {
-                        "description": "Cluster Mem Capacity - limited query",
+                        "description": "Cluster Mem Capacity - limited",
                         "order": 14,
                         "plot": {
                             "errorColumn": "",
@@ -285,9 +285,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Number Of Nodes query",
+                    "name": "Number Of Nodes",
                     "options": {
-                        "description": "Number Of Nodes query",
+                        "description": "Number Of Nodes",
                         "label": "Number Of Nodes",
                         "order": 16,
                         "plot": {
@@ -308,9 +308,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Nodes Unavailable query",
+                    "name": "Nodes Unavailable",
                     "options": {
-                        "description": "Nodes Unavailable query",
+                        "description": "Nodes Unavailable",
                         "label": "Nodes Unavailable",
                         "order": 17,
                         "plot": {
@@ -331,9 +331,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Node NotReady query",
+                    "name": "Node NotReady",
                     "options": {
-                        "description": "Node NotReady query",
+                        "description": "Node NotReady",
                         "order": 18,
                         "plot": {
                             "errorColumn": "",
@@ -353,9 +353,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Node Pressure query",
+                    "name": "Node Pressure",
                     "options": {
-                        "description": "Node Pressure query",
+                        "description": "Node Pressure",
                         "order": 20,
                         "plot": {
                             "errorColumn": "",
@@ -375,9 +375,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Node Pressure query",
+                    "name": "Node Pressure",
                     "options": {
-                        "description": "Node Pressure query",
+                        "description": "Node Pressure",
                         "order": 21,
                         "plot": {
                             "errorColumn": "",
@@ -397,9 +397,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "node number query",
+                    "name": "node number",
                     "options": {
-                        "description": "node number query",
+                        "description": "node number",
                         "order": 22,
                         "plot": {
                             "errorColumn": "",
@@ -427,9 +427,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Deployment Replicas - Up To Date query",
+                    "name": "Deployment Replicas - Up To Date",
                     "options": {
-                        "description": "Deployment Replicas - Up To Date query",
+                        "description": "Deployment Replicas - Up To Date",
                         "order": 24,
                         "plot": {
                             "errorColumn": "",
@@ -449,9 +449,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Deployment Replicas query",
+                    "name": "Deployment Replicas",
                     "options": {
-                        "description": "Deployment Replicas query",
+                        "description": "Deployment Replicas",
                         "label": "Deployment Replicas",
                         "order": 25,
                         "plot": {
@@ -472,9 +472,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Deployment Replicas - Updated query",
+                    "name": "Deployment Replicas - Updated",
                     "options": {
-                        "description": "Deployment Replicas - Updated query",
+                        "description": "Deployment Replicas - Updated",
                         "label": "Deployment Replicas - Updated",
                         "order": 26,
                         "plot": {
@@ -495,9 +495,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Deployment Replicas - Unavailable query",
+                    "name": "Deployment Replicas - Unavailable",
                     "options": {
-                        "description": "Deployment Replicas - Unavailable query",
+                        "description": "Deployment Replicas - Unavailable",
                         "label": "Deployment Replicas - Unavailable",
                         "order": 27,
                         "plot": {
@@ -526,9 +526,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Statefulset Replicas - Up To Date query",
+                    "name": "Statefulset Replicas - Up To Date",
                     "options": {
-                        "description": "Statefulset Replicas - Up To Date query",
+                        "description": "Statefulset Replicas - Up To Date",
                         "order": 29,
                         "plot": {
                             "errorColumn": "",
@@ -556,9 +556,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods restart in 30m query",
+                    "name": "Pods restart in 30m",
                     "options": {
-                        "description": "Pods restart in 30m query",
+                        "description": "Pods restart in 30m",
                         "order": 32,
                         "plot": {
                             "errorColumn": "",
@@ -578,9 +578,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Evicted query",
+                    "name": "Evicted",
                     "options": {
-                        "description": "Evicted query",
+                        "description": "Evicted",
                         "order": 33,
                         "plot": {
                             "errorColumn": "",
@@ -600,9 +600,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods Running query",
+                    "name": "Pods Running",
                     "options": {
-                        "description": "Pods Running query",
+                        "description": "Pods Running",
                         "label": "Pods Running",
                         "order": 34,
                         "plot": {
@@ -623,9 +623,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods Succeeded query",
+                    "name": "Pods Succeeded",
                     "options": {
-                        "description": "Pods Succeeded query",
+                        "description": "Pods Succeeded",
                         "label": "Pods Succeeded",
                         "order": 35,
                         "plot": {
@@ -646,9 +646,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods Failed query",
+                    "name": "Pods Failed",
                     "options": {
-                        "description": "Pods Failed query",
+                        "description": "Pods Failed",
                         "label": "Pods Failed",
                         "order": 36,
                         "plot": {
@@ -669,9 +669,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods Pending query",
+                    "name": "Pods Pending",
                     "options": {
-                        "description": "Pods Pending query",
+                        "description": "Pods Pending",
                         "label": "Pods Pending",
                         "order": 37,
                         "plot": {
@@ -692,9 +692,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Pods Unknown query",
+                    "name": "Pods Unknown",
                     "options": {
-                        "description": "Pods Unknown query",
+                        "description": "Pods Unknown",
                         "label": "Pods Unknown",
                         "order": 38,
                         "plot": {
@@ -723,9 +723,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Containers Running query",
+                    "name": "Containers Running",
                     "options": {
-                        "description": "Containers Running query",
+                        "description": "Containers Running",
                         "label": "Containers Running",
                         "order": 40,
                         "plot": {
@@ -746,9 +746,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Containers Waiting query",
+                    "name": "Containers Waiting",
                     "options": {
-                        "description": "Containers Waiting query",
+                        "description": "Containers Waiting",
                         "label": "Containers Waiting",
                         "order": 41,
                         "plot": {
@@ -769,9 +769,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Containers Terminated query",
+                    "name": "Containers Terminated",
                     "options": {
-                        "description": "Containers Terminated query",
+                        "description": "Containers Terminated",
                         "label": "Containers Terminated",
                         "order": 42,
                         "plot": {
@@ -792,9 +792,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Containers Restarts (Last 30 Minutes) query",
+                    "name": "Containers Restarts (Last 30 Minutes)",
                     "options": {
-                        "description": "Containers Restarts (Last 30 Minutes) query",
+                        "description": "Containers Restarts (Last 30 Minutes)",
                         "label": "Containers Restarts (Last 30 Minutes)",
                         "order": 43,
                         "plot": {
@@ -815,9 +815,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "CPU Cores Requested by Containers query",
+                    "name": "CPU Cores Requested by Containers",
                     "options": {
-                        "description": "CPU Cores Requested by Containers query",
+                        "description": "CPU Cores Requested by Containers",
                         "label": "CPU Cores Requested by Containers",
                         "order": 44,
                         "plot": {
@@ -838,9 +838,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Memory Requested By Containers query",
+                    "name": "Memory Requested By Containers",
                     "options": {
-                        "description": "Memory Requested By Containers query",
+                        "description": "Memory Requested By Containers",
                         "label": "Memory Requested By Containers",
                         "order": 45,
                         "plot": {
@@ -869,9 +869,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Jobs Succeeded query",
+                    "name": "Jobs Succeeded",
                     "options": {
-                        "description": "Jobs Succeeded query",
+                        "description": "Jobs Succeeded",
                         "label": "Jobs Succeeded",
                         "order": 1,
                         "plot": {
@@ -892,9 +892,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Job last success time from now query",
+                    "name": "Job last success time from now",
                     "options": {
-                        "description": "Job last success time from now query",
+                        "description": "Job last success time from now",
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
@@ -914,9 +914,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Jobs Failed query",
+                    "name": "Jobs Failed",
                     "options": {
-                        "description": "Jobs Failed query",
+                        "description": "Jobs Failed",
                         "label": "Jobs Failed",
                         "order": 3,
                         "plot": {
@@ -937,9 +937,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Job failed query",
+                    "name": "Job failed",
                     "options": {
-                        "description": "Job failed query",
+                        "description": "Job failed",
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
@@ -959,9 +959,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Jobs Active query",
+                    "name": "Jobs Active",
                     "options": {
-                        "description": "Jobs Active query",
+                        "description": "Jobs Active",
                         "label": "Jobs Active",
                         "order": 5,
                         "plot": {
@@ -990,9 +990,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "pvc is bound query",
+                    "name": "pvc is bound",
                     "options": {
-                        "description": "pvc is bound query",
+                        "description": "pvc is bound",
                         "label": "pvc is bound",
                         "order": 60,
                         "plot": {
@@ -1013,9 +1013,9 @@
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "pvc is not bound query",
+                    "name": "pvc is not bound",
                     "options": {
-                        "description": "pvc is not bound query",
+                        "description": "pvc is not bound",
                         "label": "pvc is not bound",
                         "order": 61,
                         "plot": {
@@ -1036,9 +1036,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "pvc query",
+                    "name": "pvc",
                     "options": {
-                        "description": "pvc query",
+                        "description": "pvc",
                         "order": 62,
                         "plot": {
                             "errorColumn": "",
