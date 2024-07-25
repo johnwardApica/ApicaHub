@@ -9,12 +9,12 @@
             "order": "1",
             "queriesList": [
                 {
-                    "chart_type": "counter",
+                    "chart_type": "gauge",
                     "data_source_name": "Apica Monitoring",
                     "name": "Cluster CPU Requested",
                     "options": {
-                        "description": "Cluster CPU Requested",
-                        "label": "Cluster CPU Requested",
+                        "description": "% Cluster CPU Requested",
+                        "label": "% Cluster CPU Requested",
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
@@ -28,16 +28,16 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "round(sum(kube_pod_container_resource_requests{resource='cpu'})/ sum(kube_node_status_allocatable{}),0.01)&duration=1h&step=5m",
+                    "query": "(sum(kube_pod_container_resource_requests{resource='cpu'})/ sum(kube_node_status_allocatable{}))*1024^3*100&duration=1h&step=5m",
                     "schema": "kube_pod_container_resource_requests"
                 },
                 {
-                    "chart_type": "counter",
+                    "chart_type": "gauge",
                     "data_source_name": "Apica Monitoring",
                     "name": "Cluster Memory Requested",
                     "options": {
-                        "description": "Cluster Memory  Requested",
-                        "label": "Cluster Memory  Requested",
+                        "description": "% Cluster Memory  Requested",
+                        "label": "% Cluster Memory  Requested",
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
@@ -287,8 +287,8 @@
                     "data_source_name": "Apica Monitoring",
                     "name": "Number Of Nodes",
                     "options": {
-                        "description": "Number Of Nodes",
-                        "label": "Number Of Nodes",
+                        "description": "Nodes",
+                        "label": "Nodes",
                         "order": 16,
                         "plot": {
                             "errorColumn": "",
@@ -427,9 +427,9 @@
                 {
                     "chart_type": "Table",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Deployment Replicas - Up To Date",
+                    "name": "Deployment Replicas - Table",
                     "options": {
-                        "description": "Deployment Replicas - Up To Date",
+                        "description": "Deployment Replicas",
                         "order": 24,
                         "plot": {
                             "errorColumn": "",
@@ -594,7 +594,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "kube_pod_status_reason{ reason='Evicted'}==1&duration=1h&step=5m",
+                    "query": "kube_pod_status_reason{reason='Evicted'}&duration=1h&step=5m",
                     "schema": "kube_pod_status_reason"
                 },
                 {
