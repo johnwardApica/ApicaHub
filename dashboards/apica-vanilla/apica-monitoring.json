@@ -1,0 +1,192 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Apica Cluster Monitoring",
+            "order": "1",
+            "title": "Apica Cluster Monitoring",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Messages / sec",
+                    "options": {
+                        "description": "Messages / sec",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(rate(logiq_message_count[5m])),1)",
+                    "schema": "logiq_message_count"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Log events (24h)",
+                    "options": {
+                        "description": "Log events (24h)",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(increase(logiq_message_count[24h]))/1000000,0.001)",
+                    "schema": "logiq_message_count"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total ingested bytes (30d)",
+                    "options": {
+                        "description": "Total ingested bytes (30d)",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(increase(logiq_data_received_bytes[30d]))/1000000000,0.01)",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest capacity utilization",
+                    "options": {
+                        "description": "Ingest capacity utilization",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "((sum(rate(logiq_data_received_bytes[5m]))*3600/1000000000*1)/(count (count by (pod) (logiq_data_received_bytes))))*100",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "# Messages/sec by Namespace",
+                    "options": {
+                        "description": "# Messages/sec by Namespace",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "exported_namespace",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[1h])),1)&duration=30d&step=1h",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Daily GB/h 30d",
+                    "options": {
+                        "description": "Daily GB/h 30d",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(increase(logiq_data_received_bytes[1h]))/1000000000,0.01)&duration=30d&step=1h",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Connections",
+                    "options": {
+                        "description": "Connections",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "operation",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Connections/sec"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~'logiq-flash-\\d|logiq-flash-\\d\\d',connectionType='HTTP'}[5m]))&duration=6h&step=5m",
+                    "schema": "logiq_client_connect_count"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GB Ingested / day",
+                    "options": {
+                        "description": "GB / day",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(increase(logiq_data_received_bytes[24h]))/1000000000,0.001)&duration=30d&step=24h",
+                    "schema": "logiq_data_received_bytes"
+                }
+            ]
+        }
+    ]
+}
