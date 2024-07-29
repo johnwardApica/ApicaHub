@@ -164,7 +164,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~'logiq-flash-/\\d|logiq-flash-/\\d/\\d',connectionType='HTTP'}[5m]))&duration=6h&step=5m",
+                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~'logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d',connectionType='HTTP'}[5m]))&duration=6h&step=5m",
                     "schema": "logiq_client_connect_count"
                 },
                 {
