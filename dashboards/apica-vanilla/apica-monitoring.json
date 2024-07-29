@@ -16,6 +16,7 @@
                     "name": "Messages / sec",
                     "options": {
                         "description": "Messages / sec",
+                        "label": "events / sec",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
@@ -37,6 +38,7 @@
                     "data_source_name": "Apica Monitoring",
                     "name": "Log events (24h)",
                     "options": {
+                        "label": "million",
                         "description": "Log events (24h)",
                         "order": 2,
                         "plot": {
@@ -59,6 +61,7 @@
                     "data_source_name": "Apica Monitoring",
                     "name": "Total ingested bytes (30d)",
                     "options": {
+                        "label": "GB",
                         "description": "Total ingested bytes (30d)",
                         "order": 3,
                         "plot": {
@@ -91,7 +94,7 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Messages/sec"
                         },
                         "upperLimit": ""
                     },
@@ -113,7 +116,7 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Gb/h"
                         },
                         "upperLimit": ""
                     },
@@ -135,7 +138,7 @@
                             "y": [
                                 "value"
                             ],
-                            "yLabel": "value"
+                            "yLabel": "Gb/h"
                         },
                         "upperLimit": ""
                     },
@@ -161,7 +164,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~'logiq-flash-\\d|logiq-flash-\\d\\d',connectionType='HTTP'}[5m]))&duration=6h&step=5m",
+                    "query": "sum by (operation) (rate(logiq_client_connect_count{pod=~'logiq-flash-/\\d|logiq-flash-/\\d/\\d',connectionType='HTTP'}[5m]))&duration=6h&step=5m",
                     "schema": "logiq_client_connect_count"
                 },
                 {
