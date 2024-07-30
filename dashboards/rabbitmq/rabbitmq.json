@@ -1,0 +1,508 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "RabbitMQ",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ messages delivered",
+                    "options": {
+                        "description": "RMQ messages delivered",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(increase(rabbitmq_channel_messages_delivered_total[5m]),1)&duration=1h&step=5m",
+                    "schema": "rabbitmq_channel_messages_delivered_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Memory available",
+                    "options": {
+                        "description": "RMQ Memory available",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rabbitmq_process_resident_memory_bytes/(1024^3),0.1)&duration=1h&step=5m",
+                    "schema": "rabbitmq_process_resident_memory_bytes"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Messages ready to deliver",
+                    "options": {
+                        "description": "RMQ Messages ready to deliver",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(rabbitmq_queue_messages_ready[5m])&duration=1h&step=5m",
+                    "schema": "rabbitmq_queue_messages_ready"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Unacknowledged messages",
+                    "options": {
+                        "description": "RMQ Unacknowledged messages",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(rabbitmq_queue_messages_unacked[5m])&duration=1h&step=5m",
+                    "schema": "rabbitmq_queue_messages_unacked"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Queues",
+                    "options": {
+                        "description": "RMQ Queues",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_queues&duration=6h&step=5m",
+                    "schema": "rabbitmq_queues"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Authentication attempts",
+                    "options": {
+                        "description": "RMQ Authentication attempts",
+                        "label": "Attempts",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_auth_attempts_total",
+                    "schema": "rabbitmq_auth_attempts_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Queued messages",
+                    "options": {
+                        "description": "RMQ Queued messages",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(rabbitmq_queue_messages[5m])&duration=1h&step=5m",
+                    "schema": "rabbitmq_queue_messages"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Disk space available",
+                    "options": {
+                        "description": "RMQ Disk space available",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rabbitmq_disk_space_available_bytes/(1024^3),0.1)&duration=1h&step=5m",
+                    "schema": "rabbitmq_disk_space_available_bytes"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Consumers",
+                    "options": {
+                        "description": "RMQ Consumers",
+                        "label": " Consumers",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_consumers",
+                    "schema": "rabbitmq_consumers"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ tcp sockets available",
+                    "options": {
+                        "description": "RMQ tcp sockets available",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_process_max_tcp_sockets&duration=1h&step=5m",
+                    "schema": "rabbitmq_process_max_tcp_sockets"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Messages Published / sec",
+                    "options": {
+                        "description": "RMQ Messages Published / sec",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(increase(rabbitmq_channel_messages_published_total[60s])),1)&duration=1h&step=5m",
+                    "schema": "rabbitmq_channel_messages_published_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Auth attempts succeeded",
+                    "options": {
+                        "description": "RMQ Auth attempts succeeded",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_auth_attempts_succeeded_total&duration=1h&step=5m",
+                    "schema": "rabbitmq_auth_attempts_succeeded_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Messages confirmed to publishers / sec",
+                    "options": {
+                        "description": "RMQ Messages confirmed to publishers / sec",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(increase(rabbitmq_channel_messages_confirmed_total[60s]))&duration=2h&step=5m",
+                    "schema": "rabbitmq_channel_messages_confirmed_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Messages routed to queues / sec",
+                    "options": {
+                        "description": "RMQ Messages routed to queues / sec",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(increase(rabbitmq_queue_messages_published_total[60s]))&duration=1h&step=5m",
+                    "schema": "rabbitmq_queue_messages_published_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Unroutable messages dropped / sec",
+                    "options": {
+                        "description": "RMQ Unroutable messages dropped / sec",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(increase(rabbitmq_channel_messages_unroutable_dropped_total[60s]))&duration=1h&step=5m",
+                    "schema": "rabbitmq_channel_messages_unroutable_dropped_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Uptime",
+                    "options": {
+                        "description": "RMQ Uptime",
+                        "label": "Days",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rabbitmq_erlang_uptime_seconds/(3600*24),1)",
+                    "schema": "rabbitmq_erlang_uptime_seconds"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Auth attempts Failed",
+                    "options": {
+                        "description": "RMQ Auth attempts Failed",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_auth_attempts_failed_total&duration=1h&step=5m",
+                    "schema": "rabbitmq_auth_attempts_failed_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RabbitMQ version",
+                    "options": {
+                        "description": "RabbitMQ version",
+                        "label": " ",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_build_info",
+                    "schema": "rabbitmq_build_info"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ File descriptors available",
+                    "options": {
+                        "description": "RMQ File descriptors available",
+                        "label": " ",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_process_max_fds",
+                    "schema": "rabbitmq_process_max_fds"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Channels",
+                    "options": {
+                        "description": "RMQ Channels",
+                        "label": "Channels",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_channels",
+                    "schema": "rabbitmq_channels"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Connections",
+                    "options": {
+                        "description": "RMQ Connections",
+                        "label": "Connections",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rabbitmq_connections",
+                    "schema": "rabbitmq_connections"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "RMQ Erlang processes",
+                    "options": {
+                        "description": "RMQ Erlang processes",
+                        "label": " ",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "erlang_vm_process_count",
+                    "schema": "erlang_vm_process_count"
+                }
+            ],
+            "title": "RabbitMQ",
+            "type": "metrics"
+        }
+    ]
+}

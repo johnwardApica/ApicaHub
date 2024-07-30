@@ -1,0 +1,283 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Kube Cluster Stats",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total Memory by Node",
+                    "options": {
+                        "description": "Total Memory by Node",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round((sum(machine_memory_bytes)by(node))/(1024^3),0.1)",
+                    "schema": "machine_memory_bytes"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total CPU Cores",
+                    "options": {
+                        "description": "Total CPU Cores",
+                        "label": "",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_capacity_cpu_cores) / 2",
+                    "schema": "kube_node_status_capacity_cpu_cores"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total Node Memory",
+                    "options": {
+                        "description": "Total Node Memory",
+                        "label": "GiB",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(round(kube_node_status_capacity_memory_bytes/1073741824,0.1))/2",
+                    "schema": "kube_node_status_capacity_memory_bytes"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pod Restarts",
+                    "options": {
+                        "description": "Pod Restarts",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum by (container,namespace) (kube_pod_container_status_restarts_total) \u003e 0",
+                    "schema": "kube_pod_container_status_restarts_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pods By Ready status",
+                    "options": {
+                        "description": "Pods By Ready status",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_ready) by (condition)",
+                    "schema": "kube_pod_status_ready"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "P-Volume Capacity",
+                    "options": {
+                        "description": "P-Volume Capacity",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(round(kube_persistentvolume_capacity_bytes/1073741824,0.01)/2)by(pod)",
+                    "schema": "kube_persistentvolume_capacity_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total-Pods Configurable/Node",
+                    "options": {
+                        "description": "Total-Pods Configurable/Node",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_node_status_capacity_pods/2)by(node)",
+                    "schema": "kube_node_status_capacity_pods"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Kube Total Nodes",
+                    "options": {
+                        "description": "Kube Total Nodes",
+                        "label": "Nodes",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(:kube_pod_info_node_count:)",
+                    "schema": "kube_pod_info_node_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Available Memory by Node",
+                    "options": {
+                        "description": "Available Memory by Node",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(node_memory_MemAvailable_bytes/(1024*1024*1024),0.1)",
+                    "schema": "node_memory_MemAvailable_bytes"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pod By Phase",
+                    "options": {
+                        "description": "Pod By Phase",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kube_pod_status_phase) by (phase)",
+                    "schema": "kube_pod_status_phase"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Cluster CPU Usage",
+                    "options": {
+                        "description": "Cluster CPU Usage",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum (rate (container_cpu_usage_seconds_total{id=\"/\"}[5m])) / sum (machine_cpu_cores) * 100",
+                    "schema": "container_cpu_usage_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Available Pods By Namespace",
+                    "options": {
+                        "description": "Available Pods By Namespace",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "count by (exported_namespace) ((count by (exported_pod, exported_namespace) (kube_pod_status_scheduled_time)))",
+                    "schema": "kube_pod_status_scheduled_time)))"
+                }
+            ],
+            "title": "Kube Cluster Stats",
+            "type": "metrics"
+        }
+    ]
+}

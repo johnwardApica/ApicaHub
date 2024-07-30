@@ -1,0 +1,170 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "EC2 Monitoring",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Memory utilization",
+                    "options": {
+                        "description": "Memory utilization",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "((node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / (node_memory_MemTotal_bytes )) * 100",
+                    "schema": "node_memory_MemTotal_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Network TX",
+                    "options": {
+                        "description": "Network TX",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(rate(node_network_transmit_bytes_total{device=~\"eth0\"}[5m])),1)&duration=1h&step=5m",
+                    "schema": "node_network_transmit_bytes_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Page major and minor fault operations",
+                    "options": {
+                        "description": "Page major and minor fault operations",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(node_vmstat_pgfault[5m])&duration=1h&step=1m",
+                    "schema": "node_vmstat_pgfault"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Node Memory Usage (1h)",
+                    "options": {
+                        "description": "Node Memory Usage (1h)",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(((node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / (node_memory_MemTotal_bytes))*100)&duration=1h&step=1m",
+                    "schema": "node_memory_MemTotal_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Network RX",
+                    "options": {
+                        "description": "Network RX",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(rate(node_network_receive_bytes_total{device=~\"eth0\"}[5m])),1)&duration=1h&step=5m",
+                    "schema": "node_network_receive_bytes_total"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "Node Current CPU Usage",
+                    "options": {
+                        "description": "Node Current CPU Usage",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(((count(count(node_cpu_seconds_total{job=\"prometheus\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',job=\"prometheus\"}[1m])))) * 100) / count(count(node_cpu_seconds_total{job=\"prometheus\"}) by (cpu))",
+                    "schema": "node_cpu_seconds_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "EC2-Monitoring",
+                    "name": "CPU Time [mode]",
+                    "options": {
+                        "description": "CPU Time [mode]",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(sum by (mode)(rate(node_cpu_seconds_total{mode!~'idle'}[5m])) * 100)&duration=1h&step=1m",
+                    "schema": "node_cpu_seconds_total"
+                }
+            ],
+            "title": "EC2 Monitoring",
+            "type": "metrics"
+        }
+    ]
+}

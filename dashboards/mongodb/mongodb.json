@@ -1,0 +1,772 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Mongodb",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Heap Memory Usage",
+                    "options": {
+                        "description": "Heap Memory Usage",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_extra_info_heap_usage_bytes&duration=2h&step=5m",
+                    "schema": "mongodb_extra_info_heap_usage_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Document Operations",
+                    "options": {
+                        "description": "Document Operations",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_metrics_document_total{job=\"mongodb-metrics\"}[5m])*300,1)&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_metrics_document_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Query Operations",
+                    "options": {
+                        "description": "Query Operations",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_op_counters_total{job=\"mongodb-metrics\"}[5m])*300,1)&duration=3h&step=5m",
+                    "schema": "mongodb_op_counters_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Metrics Created/Min",
+                    "options": {
+                        "description": "Metrics Created/Min",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_connections_metrics_created_total[5m])*60,1)&duration=2h&step=1m",
+                    "schema": "mongodb_connections_metrics_created_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "UpTime",
+                    "options": {
+                        "description": "UpTime",
+                        "label": "Days",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "floor(mongodb_instance_uptime_seconds/86400)",
+                    "schema": "mongodb_instance_uptime_seconds"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Currently available connections",
+                    "options": {
+                        "description": "Currently available connections",
+                        "label": "Connections",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_connections{state=\"available\"}",
+                    "schema": "mongodb_connections"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Total available Connections",
+                    "options": {
+                        "description": "Total available Connections",
+                        "label": "Connections",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum by(__name__,type)(mongodb_connections{state!=\"active\"})",
+                    "schema": "mongodb_connections"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Mongodb Version",
+                    "options": {
+                        "description": "Mongodb Version",
+                        "label": " ",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_version_info",
+                    "schema": "mongodb_version_info"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Active Connections",
+                    "options": {
+                        "description": "Active Connections",
+                        "label": "Connections",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_connections{state=\"active\"}",
+                    "schema": "mongodb_connections"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Open Connections",
+                    "options": {
+                        "description": "Open Connections",
+                        "label": "Connections",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_connections{state=\"current\"}",
+                    "schema": "mongodb_connections"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "DB Size",
+                    "options": {
+                        "description": "DB Size",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_db_data_size_bytes&duration=5h&step=5m",
+                    "schema": "mongodb_mongod_db_data_size_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "CPU Usage",
+                    "options": {
+                        "description": "CPU Usage",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(process_cpu_seconds_total{job=\"mongodb-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "process_cpu_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Metrics Operations",
+                    "options": {
+                        "description": "Metrics Operations",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_metrics_operation_total&duration=2h&step=5m",
+                    "schema": "mongodb_mongod_metrics_operation_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "No.of Objects i.e. documents (counter)",
+                    "options": {
+                        "description": "No.of Objects i.e. documents (counter)",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_db_objects_total&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_db_objects_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Asserts",
+                    "options": {
+                        "description": "Asserts",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_asserts_total&duration=6h&step=5m",
+                    "schema": "mongodb_asserts_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Total Metrics Created",
+                    "options": {
+                        "description": "Total Metrics Created",
+                        "label": " ",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_connections_metrics_created_total",
+                    "schema": "mongodb_connections_metrics_created_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Memory",
+                    "options": {
+                        "description": "Memory",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "    mongodb_memory&duration=3h&step=5m",
+                    "schema": "    mongodb_memory"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Total Memory Used",
+                    "options": {
+                        "description": "Total Memory Used",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(mongodb_memory{type=~\"resident|virtual\"})&duration=2h&step=5m",
+                    "schema": "mongodb_memory"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Collections/db",
+                    "options": {
+                        "description": "Collections/db",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_db_collections_total&duration=5h&step=5m",
+                    "schema": "mongodb_mongod_db_collections_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Network Sent",
+                    "options": {
+                        "description": "Network Sent",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_network_bytes_total{state=\"out_bytes\"}[5m])*300,1)&duration=3h&step=5m",
+                    "schema": "mongodb_network_bytes_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "wiredTiger Transactions (rate)",
+                    "options": {
+                        "description": "wiredTiger Transactions (rate)",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_wiredtiger_transactions_total[5m])*300,1)&duration=4h&step=5m",
+                    "schema": "mongodb_mongod_wiredtiger_transactions_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Storage Engine",
+                    "options": {
+                        "description": "Storage Engine",
+                        "label": " ",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_storage_engine",
+                    "schema": "mongodb_mongod_storage_engine"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Network Received",
+                    "options": {
+                        "description": "Network Received",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_network_bytes_total{state=\"in_bytes\"}[5m])*300,1)&duration=3h&step=5m",
+                    "schema": "mongodb_network_bytes_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Index Size (counter)",
+                    "options": {
+                        "description": "Index Size (counter)",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_db_index_size_bytes&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_db_index_size_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Replica QPS",
+                    "options": {
+                        "description": "Replica QPS",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_op_counters_repl_total[5m])*120,1)&duration=3h&step=2m",
+                    "schema": "mongodb_op_counters_repl_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Query Executor Operations",
+                    "options": {
+                        "description": "Query Executor Operations",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_metrics_query_executor_total[5m])*300,1)&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_metrics_query_executor_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "wiredTiger Transactions (counter)",
+                    "options": {
+                        "description": "wiredTiger Transactions (counter)",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_wiredtiger_transactions_total&duration=4h&step=5m",
+                    "schema": "mongodb_mongod_wiredtiger_transactions_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "QPS (type)",
+                    "options": {
+                        "description": "QPS (type)",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_op_counters_total{type!=\"command\"}[5m])*120,1)&duration=3h&step=2m",
+                    "schema": "mongodb_op_counters_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "QPS (sum)",
+                    "options": {
+                        "description": "QPS (sum)",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum(rate(mongodb_op_counters_total{type!=\"command\"}[5m]))*120,1)&duration=3h&step=2m",
+                    "schema": "mongodb_op_counters_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Query Operation Latency",
+                    "options": {
+                        "description": "Query Operation Latency",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_op_latencies_latency_total[5m]),0.1)&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_op_latencies_latency_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Queued Operations",
+                    "options": {
+                        "description": "Queued Operations",
+                        "order": 31,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_global_lock_current_queue[5m])*120,0.1)&duration=3h&step=2m",
+                    "schema": "mongodb_mongod_global_lock_current_queue"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Page Faults",
+                    "options": {
+                        "description": "Page Faults",
+                        "order": 32,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_extra_info_page_faults_total&duration=5h&step=5m",
+                    "schema": "mongodb_extra_info_page_faults_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "No.of Indexes (counter)",
+                    "options": {
+                        "description": "No.of Indexes (counter)",
+                        "order": 33,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mongodb_mongod_db_indexes_total&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_db_indexes_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "wiredTiger Log Operations",
+                    "options": {
+                        "description": "wiredTiger Log Operations",
+                        "order": 34,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mongodb_mongod_wiredtiger_log_operations_total[5m])*300,0.1)&duration=3h&step=5m",
+                    "schema": "mongodb_mongod_wiredtiger_log_operations_total"
+                }
+            ],
+            "title": "Mongodb",
+            "type": "metrics"
+        }
+    ]
+}

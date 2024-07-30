@@ -1,0 +1,456 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "MySql Database Monitor",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "MySql Questions (rate)",
+                    "options": {
+                        "description": "MySql Questions (rate)",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_questions[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_questions"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Queries causing full table Scans",
+                    "options": {
+                        "description": "Queries causing full table Scans",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_select_scan[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_select_scan"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pages Created in Innodb",
+                    "options": {
+                        "description": "Pages Created in Innodb",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_innodb_pages_created[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_status_innodb_pages_created"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pages read from Innodb",
+                    "options": {
+                        "description": "Pages read from Innodb",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_innodb_pages_read[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_status_innodb_pages_read"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Innodb Buffer pool size (rate)",
+                    "options": {
+                        "description": "Innodb Buffer pool size (rate)",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_variables_innodb_buffer_pool_size[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_variables_innodb_buffer_pool_size"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total Connections to mysqld (rate)",
+                    "options": {
+                        "description": "Total Connections to mysqld (rate)",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_connections[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_status_connections"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Transactions by Handlers (rate) ",
+                    "options": {
+                        "description": "Transactions by Handlers (rate) ",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_handlers_total[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_status_handlers_total"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Top 5 Commands Hourly",
+                    "options": {
+                        "description": "Top 5 Commands Hourly",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(topk(5, rate(mysql_global_status_commands_total[1h])\u003e0),0.01)&duration=6h&step=30m",
+                    "schema": "mysql_global_status_commands_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Total Status Commands (rate)",
+                    "options": {
+                        "description": "Total Status Commands (rate)",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_commands_total[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_commands_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "No.of Read Requests (rate)",
+                    "options": {
+                        "description": "No.of Read Requests (rate)",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_innodb_buffer_pool_read_requests[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_innodb_buffer_pool_read_requests"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Pages written in Innodb",
+                    "options": {
+                        "description": "Pages written in Innodb",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_innodb_pages_written[5m])&duration=6h&step=5m",
+                    "schema": "mysql_global_status_innodb_pages_written"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Top 5 Commands of last 5 min",
+                    "options": {
+                        "description": "Top 5 Commands of last 5 min",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(topk(5, rate(mysql_global_status_commands_total[5m])\u003e0),0.01)",
+                    "schema": "mysql_global_status_commands_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Server Status Variables",
+                    "options": {
+                        "description": "Server Status Variables",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_queries[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_queries"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Threads Cached",
+                    "options": {
+                        "description": "Threads Cached",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mysql_global_status_threads_cached&duration=2h&step=5m",
+                    "schema": "mysql_global_status_threads_cached"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "MySql Queries/Sec",
+                    "options": {
+                        "description": "MySql Queries/Sec",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(mysql_global_status_queries[5m])&duration=2h&step=5m",
+                    "schema": "mysql_global_status_queries"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Connections in last 24h",
+                    "options": {
+                        "description": "Connections in last 24h",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mysql_global_status_threads_connected&duration=24h&step=5m",
+                    "schema": "mysql_global_status_threads_connected"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Threads Created in last 24h",
+                    "options": {
+                        "description": "Threads Created in last 24h",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "mysql_global_status_threads_created&duration=24h&step=5m",
+                    "schema": "mysql_global_status_threads_created"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Network Traffic Received (rate)",
+                    "options": {
+                        "description": "Network Traffic Received (rate)",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mysql_global_status_bytes_received[5m]),0.01)&duration=6h&step=10m",
+                    "schema": "mysql_global_status_bytes_received"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Network Traffic Sent (rate)",
+                    "options": {
+                        "description": "Network Traffic Sent (rate)",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mysql_global_status_bytes_sent[5m])/(1024),0.01)&duration=6h&step=10m",
+                    "schema": "mysql_global_status_bytes_sent"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "Rows Operations",
+                    "options": {
+                        "description": "Rows Operations",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(mysql_global_status_innodb_row_ops_total[5m]),0.01)&duration=6h&step=5m",
+                    "schema": "mysql_global_status_innodb_row_ops_total"
+                }
+            ],
+            "title": "MySql Database Monitor",
+            "type": "metrics"
+        }
+    ]
+}
