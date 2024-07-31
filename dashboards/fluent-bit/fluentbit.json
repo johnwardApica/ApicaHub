@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "area",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Input Bytes Processing Rate",
                     "options": {
                         "description": "Input Bytes Processing Rate",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Output Bytes Processing Rate",
                     "options": {
                         "description": "Output Bytes Processing Rate",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Input Records Processing Rate",
                     "options": {
                         "description": "Input Records Processing Rate",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Output Record Processing Rate",
                     "options": {
                         "description": "Output Record Processing Rate",
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Output Retry/Failed Rates",
                     "options": {
                         "description": "Output Retry/Failed Rates",
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Output Error Rate",
                     "options": {
                         "description": "Output Error Rate",
@@ -142,7 +142,7 @@
                 },
                 {
                     "chart_type": "Table",
-                    "data_source_name": "logiq",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Fluent Bit Version",
                     "options": {
                         "description": "Fluent Bit Version",

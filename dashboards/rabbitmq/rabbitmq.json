@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ messages delivered",
                     "options": {
                         "description": "RMQ messages delivered",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Memory available",
                     "options": {
                         "description": "RMQ Memory available",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Messages ready to deliver",
                     "options": {
                         "description": "RMQ Messages ready to deliver",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Unacknowledged messages",
                     "options": {
                         "description": "RMQ Unacknowledged messages",
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Queues",
                     "options": {
                         "description": "RMQ Queues",
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Authentication attempts",
                     "options": {
                         "description": "RMQ Authentication attempts",
@@ -143,7 +143,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Queued messages",
                     "options": {
                         "description": "RMQ Queued messages",
@@ -165,7 +165,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Disk space available",
                     "options": {
                         "description": "RMQ Disk space available",
@@ -187,7 +187,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Consumers",
                     "options": {
                         "description": "RMQ Consumers",
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ tcp sockets available",
                     "options": {
                         "description": "RMQ tcp sockets available",
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Messages Published / sec",
                     "options": {
                         "description": "RMQ Messages Published / sec",
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Auth attempts succeeded",
                     "options": {
                         "description": "RMQ Auth attempts succeeded",
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Messages confirmed to publishers / sec",
                     "options": {
                         "description": "RMQ Messages confirmed to publishers / sec",
@@ -298,7 +298,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Messages routed to queues / sec",
                     "options": {
                         "description": "RMQ Messages routed to queues / sec",
@@ -320,7 +320,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Unroutable messages dropped / sec",
                     "options": {
                         "description": "RMQ Unroutable messages dropped / sec",
@@ -342,7 +342,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Uptime",
                     "options": {
                         "description": "RMQ Uptime",
@@ -365,7 +365,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Auth attempts Failed",
                     "options": {
                         "description": "RMQ Auth attempts Failed",
@@ -387,7 +387,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RabbitMQ version",
                     "options": {
                         "description": "RabbitMQ version",
@@ -410,7 +410,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ File descriptors available",
                     "options": {
                         "description": "RMQ File descriptors available",
@@ -433,7 +433,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Channels",
                     "options": {
                         "description": "RMQ Channels",
@@ -456,7 +456,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Connections",
                     "options": {
                         "description": "RMQ Connections",
@@ -479,7 +479,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "RMQ Erlang processes",
                     "options": {
                         "description": "RMQ Erlang processes",

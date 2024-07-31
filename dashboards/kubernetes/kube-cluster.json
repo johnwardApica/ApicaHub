@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total Memory by Node",
                     "options": {
                         "description": "Total Memory by Node",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total CPU Cores",
                     "options": {
                         "description": "Total CPU Cores",
@@ -55,7 +55,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total Node Memory",
                     "options": {
                         "description": "Total Node Memory",
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Pod Restarts",
                     "options": {
                         "description": "Pod Restarts",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Pods By Ready status",
                     "options": {
                         "description": "Pods By Ready status",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "P-Volume Capacity",
                     "options": {
                         "description": "P-Volume Capacity",
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total-Pods Configurable/Node",
                     "options": {
                         "description": "Total-Pods Configurable/Node",
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Kube Total Nodes",
                     "options": {
                         "description": "Kube Total Nodes",
@@ -189,7 +189,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Available Memory by Node",
                     "options": {
                         "description": "Available Memory by Node",
@@ -211,7 +211,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Pod By Phase",
                     "options": {
                         "description": "Pod By Phase",
@@ -233,7 +233,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Cluster CPU Usage",
                     "options": {
                         "description": "Cluster CPU Usage",
@@ -255,7 +255,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Available Pods By Namespace",
                     "options": {
                         "description": "Available Pods By Namespace",

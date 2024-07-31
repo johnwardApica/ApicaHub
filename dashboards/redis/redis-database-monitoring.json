@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Key Space Total",
                     "options": {
                         "description": "Redis Key Space Total",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Min Redis Allocator RSS Bytes",
                     "options": {
                         "description": "Min Redis Allocator RSS Bytes",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Allocator Active Bytes",
                     "options": {
                         "description": "Redis Allocator Active Bytes",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Connected Clients",
                     "options": {
                         "description": "Redis Connected Clients",
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Cpu Sys Seconds Total",
                     "options": {
                         "description": "Redis Cpu Sys Seconds Total",
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "AVG-Redis Allocator RSS Bytes",
                     "options": {
                         "description": "AVG-Redis Allocator RSS Bytes",
@@ -142,7 +142,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Commands Total",
                     "options": {
                         "description": "Redis Commands Total",
@@ -164,7 +164,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Cpu User Seconds Total",
                     "options": {
                         "description": "Redis Cpu User Seconds Total",
@@ -186,7 +186,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis DB Keys Expiring Duration",
                     "options": {
                         "description": "Redis DB Keys Expiring Duration",
@@ -208,7 +208,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Net Output Bytes Total",
                     "options": {
                         "description": "Redis Net Output Bytes Total",
@@ -230,7 +230,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Command Process Total",
                     "options": {
                         "description": "Redis Command Process Total",
@@ -252,7 +252,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis DB Keys",
                     "options": {
                         "description": "Redis DB Keys",
@@ -274,7 +274,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Net Input Bytes Total",
                     "options": {
                         "description": "Redis Net Input Bytes Total",
@@ -296,7 +296,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Keyspace Misses Total",
                     "options": {
                         "description": "Redis Keyspace Misses Total",
@@ -318,7 +318,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Keyspace Hits Total",
                     "options": {
                         "description": "Redis Keyspace Hits Total",
@@ -340,7 +340,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Redis Command Duration(sec)",
                     "options": {
                         "description": "Redis Command Duration(sec)",

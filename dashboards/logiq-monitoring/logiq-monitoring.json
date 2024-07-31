@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "go_memstats_heap_alloc_bytes - ingest",
                     "options": {
                         "description": "go_memstats_heap_alloc_bytes - ingest",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "logiq_back_pressure_counter",
                     "options": {
                         "description": "logiq_back_pressure_counter",
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Mover",
                     "options": {
                         "description": "Mover",
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "GB/h (last 8d)",
                     "options": {
                         "description": "GB/h (last 8d)",
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Per pod ingest rate",
                     "options": {
                         "description": "Per pod ingest rate",
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "go_memstats_heap_alloc_bytes - api",
                     "options": {
                         "description": "go_memstats_heap_alloc_bytes - api",
@@ -142,7 +142,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Ingest free disk space (%)",
                     "options": {
                         "description": "Ingest free disk space (%)",
@@ -164,7 +164,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "GB/h",
                     "options": {
                         "description": "GB/h",
@@ -186,7 +186,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "# Messages/sec by Namespace",
@@ -208,7 +208,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Batch size [5m]",
                     "options": {
                         "description": "Batch size [5m]",
@@ -230,7 +230,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "IngestDb files",
                     "options": {
                         "description": "IngestDb files",
@@ -252,7 +252,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "logiq_metadata_db_usage",
                     "options": {
                         "description": "logiq_metadata_db_usage",
@@ -274,7 +274,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Ingest free disk %  per pod",
                     "options": {
                         "description": "Ingest free disk %  per pod",

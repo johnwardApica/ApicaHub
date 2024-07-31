@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Daily GB/h",
                     "options": {
                         "description": "Daily GB/h",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Log events (24h)",
                     "options": {
                         "description": "Log events (24h)",
@@ -55,7 +55,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Ingest capacity utilization",
                     "options": {
                         "description": "Ingest capacity utilization",
@@ -77,7 +77,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Messages / sec",
                     "options": {
                         "description": "Messages / sec",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "# Messages/sec by Namespace",
                     "options": {
                         "description": "# Messages/sec by Namespace",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total ingested bytes (30d)",
                     "options": {
                         "description": "Total ingested bytes (30d)",
@@ -145,7 +145,7 @@
                 },
                 {
                     "chart_type": "bar",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Connections",
                     "options": {
                         "description": "Connections",
@@ -167,7 +167,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "GB per day",
                     "options": {
                         "description": "GB per day",

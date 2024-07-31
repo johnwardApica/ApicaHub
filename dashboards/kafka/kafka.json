@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "CPU Usage",
                     "options": {
                         "description": "CPU Usage",
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Offline Partitions",
                     "options": {
                         "description": "Offline Partitions",
@@ -55,7 +55,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Used Memory %",
                     "options": {
                         "description": "Used Memory %",
@@ -77,7 +77,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Kafka Broker(s)",
                     "options": {
                         "description": "Kafka Broker(s)",
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Network Bytes Received/Sec",
                     "options": {
                         "description": "Network Bytes Received/Sec",
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Active Controller(s)",
                     "options": {
                         "description": "Active Controller(s)",
@@ -145,7 +145,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Java Peak Threads",
                     "options": {
                         "description": "Java Peak Threads",
@@ -167,7 +167,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Broker UpTime",
                     "options": {
                         "description": "Broker UpTime",
@@ -190,7 +190,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Kafka Exporter Version",
                     "options": {
                         "description": "Kafka Exporter Version",
@@ -213,7 +213,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Network Bytes Sent/Sec",
                     "options": {
                         "description": "Network Bytes Sent/Sec",
@@ -235,7 +235,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Received Messages/Sec",
                     "options": {
                         "description": "Received Messages/Sec",
@@ -257,7 +257,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Partition Leaders",
                     "options": {
                         "description": "Partition Leaders",
@@ -280,7 +280,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "JVM Heap Memory Used",
                     "options": {
                         "description": "JVM Heap Memory Used",
@@ -302,7 +302,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Producer Conversations/Sec",
                     "options": {
                         "description": "Producer Conversations/Sec",
@@ -324,7 +324,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Free Memory %",
                     "options": {
                         "description": "Free Memory %",
@@ -346,7 +346,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Open File Descriptor",
                     "options": {
                         "description": "Open File Descriptor",
@@ -368,7 +368,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Channel Manager Queue Size",
                     "options": {
                         "description": "Channel Manager Queue Size",
@@ -390,7 +390,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "ZOOKeeper auth failures/sec",
                     "options": {
                         "description": "ZOOKeeper auth failures/sec",
@@ -412,7 +412,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Fetch Queue Size",
                     "options": {
                         "description": "Fetch Queue Size",
@@ -434,7 +434,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Produce Queue Size",
                     "options": {
                         "description": "Produce Queue Size",
@@ -456,7 +456,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Request Queue Size",
                     "options": {
                         "description": "Request Queue Size",
@@ -478,7 +478,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Data read from Linux Disk",
                     "options": {
                         "description": "Data read from Linux Disk",
@@ -501,7 +501,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Data written to Linux Disk",
                     "options": {
                         "description": "Data written to Linux Disk",
@@ -524,7 +524,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total Physical Memory",
                     "options": {
                         "description": "Total Physical Memory",
@@ -547,7 +547,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Virtual Memory Size",
                     "options": {
                         "description": "Virtual Memory Size",
@@ -570,7 +570,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Fetch Request rate",
                     "options": {
                         "description": "Fetch Request rate",
@@ -592,7 +592,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Network Request rate",
                     "options": {
                         "description": "Network Request rate",
@@ -614,7 +614,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Producer Request rate",
                     "options": {
                         "description": "Producer Request rate",
@@ -636,7 +636,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "ZOO Keeper request latency",
                     "options": {
                         "description": "ZOO Keeper request latency",
@@ -658,7 +658,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Partitions by Topics",
                     "options": {
                         "description": "Partitions by Topics",
@@ -680,7 +680,7 @@
                 },
                 {
                     "chart_type": "counter",
-                    "data_source_name": "LogiqMonitoring",
+                    "data_source_name": "Apica Monitoring",
                     "name": "Total Partitions",
                     "options": {
                         "description": "Total Partitions",
