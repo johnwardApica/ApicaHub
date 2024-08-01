@@ -2,7 +2,7 @@
     "header": {
         "dateTimeRange": true,
         "dropdowns": [],
-        "data_source_type": "logiq_prometheus"
+        "data_source_type": "apica_ascent_prometheus"
     },
     "tabs": [
         {
