@@ -1,7 +1,8 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "logiq_prometheus"
     },
     "tabs": [
         {
