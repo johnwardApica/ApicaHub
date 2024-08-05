@@ -676,7 +676,7 @@
         {
             "key": "Prometheus Tab 2",
             "order": "2",
-            "q": [
+            "queriesList": [
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
