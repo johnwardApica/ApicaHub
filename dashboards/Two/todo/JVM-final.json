@@ -56,10 +56,6 @@
                         "description": "JVM CPU Utilization Percentage",
                         "order": 2,
                         "label": "%",
-                        "zone": {
-                            "alert": 60,
-                            "danger": 80
-                        },
                         "upperLimit": "1"
                     },
                     "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',k8s_pod_name=~'.*'}*100&duration=1h&step=5m",
