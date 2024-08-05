@@ -32,7 +32,7 @@
                     "options": {
                         "label": "Up (1) / Down (0)",
                         "description": "Status",
-                        "order": 1,
+                        "order": 5,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -54,7 +54,7 @@
                     "name": "JVM CPU Utilization",
                     "options": {
                         "description": "JVM CPU Utilization Ratio",
-                        "order": 4,
+                        "order": 1,
                         "plot": {
                             "x": "Timestamp",
                             "xLabel": "Time",
@@ -72,7 +72,7 @@
                     "name": "Uptime",
                     "options": {
                         "description": "Uptime",
-                        "order": 3,
+                        "order": 2,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -94,7 +94,7 @@
                     "name": "Start time",
                     "options": {
                         "description": "Start time",
-                        "order": 4,
+                        "order": 3,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -116,7 +116,7 @@
                     "name": "Loaded Classes",
                     "options": {
                         "description": "Number of loaded JVM classes",
-                        "order": 5,
+                        "order": 4,
                         "plot": {
                             "x": "Timestamp",
                             "xLabel": "Time",
