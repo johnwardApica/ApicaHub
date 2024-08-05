@@ -49,16 +49,21 @@
                     "schema": "up"
                 },
                 {
-                    "chart_type": "gauge",
+                    "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "JVM CPU Utilization Percentage",
+                    "name": "JVM CPU Utilization",
                     "options": {
-                        "description": "JVM CPU Utilization Percentage",
-                        "order": 2,
-                        "label": "%",
-                        "upperLimit": ""
+                        "description": "JVM CPU Utilization Ratio",
+                        "order": 4,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Utilization Ratio"
+                        },
+                        "upperLimit": "1"
                     },
-                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',k8s_pod_name=~'.*'}*100&duration=1h&step=5m",
+                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.',k8s_pod_name=~'.'}&duration=1h&step=5m",
                     "schema": "process_runtime_jvm_cpu_utilization_ratio"
                 },
                 {
