@@ -205,7 +205,7 @@
                 "schema": "non_heap_memory_usage_used",
                 "options": {
                   "label": "%",
-                  "order": 10,
+                  "order": 11,
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Bytes",
