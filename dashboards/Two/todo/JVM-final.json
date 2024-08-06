@@ -32,7 +32,7 @@
                     "options": {
                         "label": "Up (1) / Down (0)",
                         "description": "Status",
-                        "order": 5,
+                        "order": 1,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
@@ -49,21 +49,29 @@
                     "schema": "up"
                 },
                 {
-                    "chart_type": "line",
+                    "chart_type": "gauge",
                     "data_source_name": "Apica Monitoring",
                     "name": "JVM CPU Utilization",
                     "options": {
-                        "description": "JVM CPU Utilization Ratio",
-                        "order": 1,
-                        "plot": {
-                            "x": "Timestamp",
-                            "xLabel": "Time",
-                            "y": ["value"],
-                            "yLabel": "Utilization Ratio"
+                        "description": "JVM CPU Utilization %",
+                        "order": 2,
+                        "zone": {
+                            "alert": 60,
+                            "danger": 80
                         },
-                        "upperLimit": "1"
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
                     },
-                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',k8s_pod_name=~'.*'}&duration=1h&step=5m",
+                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',k8s_pod_name=~'.*'}*100&duration=1h&step=5m",
                     "schema": "process_runtime_jvm_cpu_utilization_ratio"
                 },
                 {
@@ -101,7 +109,7 @@
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
-                            "groupBy": "",
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Timestamp",
                             "y": [
@@ -122,6 +130,7 @@
                         "description": "Amount of memory committed to JVM",
                         "order": 2,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -140,6 +149,7 @@
                         "description": "Memory usage after last garbage collection",
                         "order": 3,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -158,6 +168,7 @@
                         "description": "Limit of memory that can be used by JVM",
                         "order": 4,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -171,20 +182,40 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Memory Usage vs Committed",
+                    "name": "Memory Used",
                     "options": {
-                        "description": "Comparison of used memory to committed memory",
+                        "description": "Used memory",
                         "order": 5,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
-                            "y": ["Used", "Committed"],
+                            "y": ["value"],
                             "yLabel": "Bytes"
                         },
                         "upperLimit": ""
                     },
-                    "query": "jvm_memory_used_bytes{job=~'.*',k8s_pod_name=~'.*'} or jvm_memory_committed_bytes{job=~'.*',k8s_pod_name=~'.*'}&duration=1h&step=5m",
+                    "query": "jvm_memory_used_bytes{job=~'.*',k8s_pod_name=~'.*'}&duration=1h&step=5m",
                     "schema": "jvm_memory_used_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Committed",
+                    "options": {
+                        "description": "Committed memory",
+                        "order": 5,
+                        "plot": {
+                            "groupBy": "jvm_memory_pool_name",
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_committed_bytes{job=~'.*',k8s_pod_name=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_committed_bytes"
                 },
                 {
                     "chart_type": "line",
@@ -194,6 +225,7 @@
                         "description": "Ratio of committed memory to memory limit",
                         "order": 6,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -212,6 +244,7 @@
                         "description": "Rate of memory allocation per second",
                         "order": 7,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -230,6 +263,7 @@
                         "description": "Trend of memory usage over time",
                         "order": 8,
                         "plot": {
+                            "groupBy": "jvm_memory_pool_name",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
@@ -248,6 +282,7 @@
                         "description": "Initial amount of memory requested by JVM",
                         "order": 9,
                         "plot": {
+                            "groupBy": "pool",
                             "x": "Timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
