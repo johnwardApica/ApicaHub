@@ -63,52 +63,8 @@
                         },
                         "upperLimit": "1"
                     },
-                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.',k8s_pod_name=~'.'}&duration=1h&step=5m",
+                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',k8s_pod_name=~'.*'}&duration=1h&step=5m",
                     "schema": "process_runtime_jvm_cpu_utilization_ratio"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Uptime",
-                    "options": {
-                        "description": "Uptime",
-                        "order": 2,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "time() - (process_start_time_seconds{job=~'.*',k8s_pod_name=~'.*'})&duration=1h&step=5m",
-                    "schema": ""
-                },
-                {
-                    "chart_type": "table",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Start time",
-                    "options": {
-                        "description": "Start time",
-                        "order": 3,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "process_start_time_seconds{job=~'.*',k8s_pod_name=~'.*'}*1000&duration=1h&step=5m",
-                    "schema": "process_start_time_seconds"
                 },
                 {
                     "chart_type": "line",
