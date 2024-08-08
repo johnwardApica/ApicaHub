@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Fluent Bit"
     },
     "tabs": [
         {
-            "key": "fluent-bit",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -163,7 +165,7 @@
                     "schema": "fluentbit_build_info"
                 }
             ],
-            "title": "fluent-bit",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

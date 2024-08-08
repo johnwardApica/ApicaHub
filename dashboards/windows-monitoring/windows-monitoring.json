@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "",
+        "title": "Windows"
     },
     "tabs": [
         {
-            "key": "Windows Monitoring",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -252,7 +254,7 @@
                     "schema": "windows_net_bytes_received_total"
                 }
             ],
-            "title": "Windows Monitoring",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

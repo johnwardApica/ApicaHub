@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Logs Overview"
     },
     "tabs": [
         {
-            "key": "Logs overview",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -188,7 +190,7 @@
                     "schema": "logiq_data_received_bytes"
                 }
             ],
-            "title": "Logs overview",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

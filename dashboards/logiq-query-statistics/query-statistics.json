@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "pg",
+        "title": "Apica Query Statistics"
     },
     "tabs": [
         {
-            "key": "Query statistics",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -142,7 +144,7 @@
                     "schema": "queryHist"
                 }
             ],
-            "title": "Query statistics",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

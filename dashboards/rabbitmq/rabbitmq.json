@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "RabbitMQ"
     },
     "tabs": [
         {
-            "key": "RabbitMQ",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -501,7 +503,7 @@
                     "schema": "erlang_vm_process_count"
                 }
             ],
-            "title": "RabbitMQ",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "",
+        "title": "AWS EC2"
     },
     "tabs": [
         {
-            "key": "EC2 Monitoring",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -163,7 +165,7 @@
                     "schema": "node_cpu_seconds_total"
                 }
             ],
-            "title": "EC2 Monitoring",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

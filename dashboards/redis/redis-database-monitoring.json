@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Redis"
     },
     "tabs": [
         {
-            "key": "Redis Database Status",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -361,7 +363,7 @@
                     "schema": "redis_commands_duration_seconds_total"
                 }
             ],
-            "title": "Redis Database Status",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

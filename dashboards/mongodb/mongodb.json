@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "MongoDB"
     },
     "tabs": [
         {
-            "key": "Mongodb",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -765,7 +767,7 @@
                     "schema": "mongodb_mongod_wiredtiger_log_operations_total"
                 }
             ],
-            "title": "Mongodb",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

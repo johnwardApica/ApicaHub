@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Memcached"
     },
     "tabs": [
         {
-            "key": "MemCached",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -323,7 +325,7 @@
                     "schema": "memcached_connections_total"
                 }
             ],
-            "title": "MemCached",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

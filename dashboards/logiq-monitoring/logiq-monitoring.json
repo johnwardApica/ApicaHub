@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Apica Monitoring"
     },
     "tabs": [
         {
-            "key": "LOGIQ Monitoring",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -295,7 +297,7 @@
                     "schema": "logiq_file_sizes_bytes"
                 }
             ],
-            "title": "LOGIQ Monitoring",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

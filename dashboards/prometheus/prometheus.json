@@ -2,11 +2,12 @@
     "header": {
         "dateTimeRange": true,
         "dropdowns": [],
-        "data_source_type": "apica_ascent_prometheus"
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Prometheus"
     },
     "tabs": [
         {
-            "key": "Prometheus",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -714,7 +715,7 @@
                     "schema": "go_memstats_heap_alloc_bytes"
                 }
             ],
-            "title": "Prometheus",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

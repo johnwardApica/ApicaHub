@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Kafka"
     },
     "tabs": [
         {
-            "key": "Kafka",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -702,7 +704,7 @@
                     "schema": "kafka_controller_kafkacontroller_globalpartitioncount_value"
                 }
             ],
-            "title": "Kafka",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

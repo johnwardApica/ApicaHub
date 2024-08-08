@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Kubernetes"
     },
     "tabs": [
         {
-            "key": "Kube Cluster Stats",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -276,7 +278,7 @@
                     "schema": "kube_pod_status_scheduled_time)))"
                 }
             ],
-            "title": "Kube Cluster Stats",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

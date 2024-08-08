@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "MySQL"
     },
     "tabs": [
         {
-            "key": "MySql Database Monitor",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -449,7 +451,7 @@
                     "schema": "mysql_global_status_innodb_row_ops_total"
                 }
             ],
-            "title": "MySql Database Monitor",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

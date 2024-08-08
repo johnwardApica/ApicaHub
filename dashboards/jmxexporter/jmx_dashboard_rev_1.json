@@ -1,11 +1,13 @@
 {
     "header": {
         "dateTimeRange": true,
-        "dropdowns": []
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "JVM Monitoring"
     },
     "tabs": [
         {
-            "key": "JMX Dashboard",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -1780,7 +1782,7 @@
                     "schema": "jvm_threads_deadlocked_monitor"
                 }
             ],
-            "title": "JMX Dashboard",
+            "title": "Overview",
             "type": "metrics"
         }
     ]
