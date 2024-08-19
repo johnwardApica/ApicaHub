@@ -1,0 +1,332 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Memcached"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory allocated to slab pages",
+                    "options": {
+                        "description": "Memory allocated to slab pages",
+                        "label": "Bytes",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_malloced_bytes",
+                    "schema": "memcached_malloced_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "No.of bytes sent to network",
+                    "options": {
+                        "description": "No.of bytes sent to network",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(memcached_written_bytes_total[5m]),0.01)&duration=2h&step=5m",
+                    "schema": "memcached_written_bytes_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Max Connections",
+                    "options": {
+                        "description": "Max Connections",
+                        "label": " ",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_max_connections",
+                    "schema": "memcached_max_connections"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "MemCached Version",
+                    "options": {
+                        "description": "MemCached Version",
+                        "label": " ",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_version",
+                    "schema": "memcached_version"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Up Time",
+                    "options": {
+                        "description": "Up Time",
+                        "label": "Days",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "floor(memcached_uptime_seconds/86400)",
+                    "schema": "memcached_uptime_seconds"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total No.of Items stored",
+                    "options": {
+                        "description": "Total No.of Items stored",
+                        "label": "Items",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_items_total",
+                    "schema": "memcached_items_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total Reclaims",
+                    "options": {
+                        "description": "Total Reclaims",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(memcached_items_reclaimed_total)&duration=2h&step=5m",
+                    "schema": "memcached_items_reclaimed_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Current Connections",
+                    "options": {
+                        "description": "Current Connections",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(memcached_current_connections)&duration=2h&step=5m",
+                    "schema": "memcached_current_connections"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "MemCache Total Commands",
+                    "options": {
+                        "description": "MemCache Total Commands",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_commands_total&duration=2h&step=5m",
+                    "schema": "memcached_commands_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "No.of bytes read from network",
+                    "options": {
+                        "description": "No.of bytes read from network",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(memcached_read_bytes_total[5m])&duration=2h&step=5m",
+                    "schema": "memcached_read_bytes_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Storage allocated for memcache",
+                    "options": {
+                        "description": "Storage allocated for memcache",
+                        "label": "MiB",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "memcached_limit_bytes/(1024^2)",
+                    "schema": "memcached_limit_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "% of storage used",
+                    "options": {
+                        "description": "% of storage used",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(sum(memcached_current_bytes) / sum(memcached_limit_bytes))*100&duration=2h&step=5m",
+                    "schema": "memcached_current_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total no.of Evictions",
+                    "options": {
+                        "description": "Total no.of Evictions",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(memcached_items_evicted_total)&duration=2h&step=5m",
+                    "schema": "memcached_items_evicted_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "No.of connections opened",
+                    "options": {
+                        "description": "No.of connections opened",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(memcached_connections_total[5m]),0.01)&duration=6h&step=5m",
+                    "schema": "memcached_connections_total"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

@@ -1,0 +1,304 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Apica Monitoring"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "go memstats heap alloc bytes - ingest",
+                    "options": {
+                        "description": "go memstats heap alloc bytes - ingest",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(round(go_memstats_heap_alloc_bytes{namespace=\"lflow\",pod=~\"logiq-flash-\\\\d|logiq-flash-ml-\\\\d\"}/1000000000,0.1))&duration=1h&step=5m",
+                    "schema": "go_memstats_heap_alloc_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "apica back pressure counter",
+                    "options": {
+                        "description": "apica back pressure counter",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "logiq_back_pressure_counter",
+                    "schema": "logiq_back_pressure_counter"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Mover",
+                    "options": {
+                        "description": "Mover",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "logiq_mover_count{operation=~\".*\"}",
+                    "schema": "logiq_mover_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GB/h (last 8d)",
+                    "options": {
+                        "description": "GB/h (last 8d)",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(increase(logiq_data_received_bytes[5m]))/1000000000*12,0.01)&duration=8d&step=1h",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Per pod ingest rate",
+                    "options": {
+                        "description": "Per pod ingest rate",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (pod)(increase(logiq_data_received_bytes[5m]))*12/1000000000,0.01)",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "go memstats heap alloc bytes - api",
+                    "options": {
+                        "description": "go memstats heap alloc bytes - api",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(go_memstats_heap_alloc_bytes{namespace=\"lflow\",pod=~\"logiq-flash-ml-\\\\d|logiq-flash-ml-\\\\d\\\\d\"}/1000000000,0.1)&duration=4h&step=60s",
+                    "schema": "go_memstats_heap_alloc_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest free disk space (%)",
+                    "options": {
+                        "description": "Ingest free disk space (%)",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(logiq_file_sizes_bytes{pod=~\"logiq-flash-\\\\d|logiq-flash-ml-\\\\d\",fileName=\"free\"}/(1000000000*498)*100,0.01)",
+                    "schema": "logiq_file_sizes_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GB/h",
+                    "options": {
+                        "description": "GB/h",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(increase(logiq_data_received_bytes[5m]))/1000000000*12,0.01)&duration=1d&step=1h",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "# Messages/sec by Namespace",
+                    "options": {
+                        "description": "# Messages/sec by Namespace",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[5m])),1)&duration=30d&step=1h",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Batch size [5m]",
+                    "options": {
+                        "description": "Batch size [5m]",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round((increase(logiq_json_batch_size_count_sum[5m]))/(increase(logiq_json_batch_size_count_count[5m])),1)",
+                    "schema": "logiq_json_batch_size_count_sum"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "IngestDb files",
+                    "options": {
+                        "description": "IngestDb files",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=logiq_ingestdb_files_count&duration=2h&step=60s",
+                    "schema": "logiq_ingestdb_files_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "apica metadata db usage",
+                    "options": {
+                        "description": "apica metadata db usage",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "logiq_metadata_db_usage&duration=12h&step=1h",
+                    "schema": "logiq_metadata_db_usage"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest free disk %  per pod",
+                    "options": {
+                        "description": "Ingest free disk %  per pod",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "100 * (sum by (pod) (logiq_file_sizes_bytes{pod=~\"logiq-flash-\\\\d\\\\d|logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d\\\\d\",fileName=\"free\"})/sum by (pod) (logiq_file_sizes_bytes{pod=~\"logiq-flash-\\\\d\\\\d|logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d\\\\d\",fileName=\"all\"}))&duration=12d&step=18h\n",
+                    "schema": "logiq_file_sizes_bytes"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

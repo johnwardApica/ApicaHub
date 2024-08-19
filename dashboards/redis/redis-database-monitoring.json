@@ -1,0 +1,370 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Redis"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Key Space Total",
+                    "options": {
+                        "description": "Redis Key Space Total",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=rate(redis_keyspace_hits_total[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_keyspace_hits_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Min Redis Allocator RSS Bytes",
+                    "options": {
+                        "description": "Min Redis Allocator RSS Bytes",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "min(redis_allocator_rss_bytes)&duration=1h&step=1m",
+                    "schema": "redis_allocator_rss_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Allocator Active Bytes",
+                    "options": {
+                        "description": "Redis Allocator Active Bytes",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(redis_allocator_active_bytes)&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_allocator_active_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Connected Clients",
+                    "options": {
+                        "description": "Redis Connected Clients",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_connected_clients[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_connected_clients"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Cpu Sys Seconds Total",
+                    "options": {
+                        "description": "Redis Cpu Sys Seconds Total",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=rate(redis_cpu_sys_seconds_total[5m])&duration={{ duration }}&step=1m",
+                    "schema": "redis_cpu_sys_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "AVG-Redis Allocator RSS Bytes",
+                    "options": {
+                        "description": "AVG-Redis Allocator RSS Bytes",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(redis_allocator_rss_bytes)&duration=1h&step=1m",
+                    "schema": "redis_allocator_rss_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Commands Total",
+                    "options": {
+                        "description": "Redis Commands Total",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_commands_total{cmd=~\"get|mget|del\"}[5m])&duration=3h&step=60s\n\n",
+                    "schema": "redis_commands_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Cpu User Seconds Total",
+                    "options": {
+                        "description": "Redis Cpu User Seconds Total",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_cpu_user_seconds_total[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_cpu_user_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis DB Keys Expiring Duration",
+                    "options": {
+                        "description": "Redis DB Keys Expiring Duration",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "redis_db_keys_expiring&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_db_keys_expiring"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Net Output Bytes Total",
+                    "options": {
+                        "description": "Redis Net Output Bytes Total",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_net_output_bytes_total[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_net_output_bytes_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Command Process Total",
+                    "options": {
+                        "description": "Redis Command Process Total",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_commands_processed_total[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_commands_processed_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis DB Keys",
+                    "options": {
+                        "description": "Redis DB Keys",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=rate(redis_db_keys[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_db_keys"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Net Input Bytes Total",
+                    "options": {
+                        "description": "Redis Net Input Bytes Total",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_net_input_bytes_total[5m])&duration=1h&step=1m",
+                    "schema": "redis_net_input_bytes_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Keyspace Misses Total",
+                    "options": {
+                        "description": "Redis Keyspace Misses Total",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "irate(redis_keyspace_misses_total[5m])&duration=1h&step=1m",
+                    "schema": "redis_keyspace_misses_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Keyspace Hits Total",
+                    "options": {
+                        "description": "Redis Keyspace Hits Total",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_keyspace_hits_total[5m])&duration={{ duration }}&step={{ step }}\n",
+                    "schema": "redis_keyspace_hits_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Redis Command Duration(sec)",
+                    "options": {
+                        "description": "Redis Command Duration(sec)",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(redis_commands_duration_seconds_total{cmd=~\"get|mget|del|hmget|hdel\"}[5m])&duration={{ duration }}&step={{ step }}",
+                    "schema": "redis_commands_duration_seconds_total"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

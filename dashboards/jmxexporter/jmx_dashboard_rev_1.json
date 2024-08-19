@@ -1,0 +1,1789 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "JVM Monitoring"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "State - State query",
+                    "options": {
+                        "description": "State - State query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_info{job=\"{{job}}\", instance=\"{{app}}\"}&duration=1h&step=5m",
+                    "schema": "jvm_info"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Uptime query",
+                    "options": {
+                        "description": "Uptime query",
+                        "label": "Hours",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(java_lang_Runtime_Uptime{}/3600000, 0.01)&duration=1h&step=5m",
+                    "schema": "java_lang_Runtime_Uptime"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JDK query",
+                    "options": {
+                        "description": "JDK query",
+                        "label": "JDK",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "label_join(jvm_info{}, \"jdk\", \", \", \"vendor\", \"runtime\", \"version\")&duration=1h&step=5m",
+                    "schema": "jvm_info"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Utilization - Memory Utilization query",
+                    "options": {
+                        "description": "Memory Utilization - Memory Utilization query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "100 - (100 * java_lang_OperatingSystem_FreePhysicalMemorySize{} / on(instance) java_lang_OperatingSystem_TotalPhysicalMemorySize{})&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_FreePhysicalMemorySize"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "SWAP Utilization - SWAP Utilization query",
+                    "options": {
+                        "description": "SWAP Utilization - SWAP Utilization query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "100 - (java_lang_OperatingSystem_FreeSwapSpaceSize{} / on(instance) java_lang_OperatingSystem_TotalSwapSpaceSize{} * 100)&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_FreeSwapSpaceSize"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU load - System query",
+                    "options": {
+                        "description": "CPU load - System query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_SystemCpuLoad{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_SystemCpuLoad"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU load - Process query",
+                    "options": {
+                        "description": "CPU load - Process query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_ProcessCpuLoad{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_ProcessCpuLoad"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Process Memory - Virtual query",
+                    "options": {
+                        "description": "Process Memory - Virtual query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_virtual_memory_bytes{}&duration=1h&step=5m",
+                    "schema": "process_virtual_memory_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Used [$memarea] - Used query",
+                    "options": {
+                        "description": "JVM Memory Used [$memarea] - Used query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_used{}&duration=1h&step=5m",
+                    "schema": "jvm_memory_bytes_used"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cpu Time - Process query",
+                    "options": {
+                        "description": "Cpu Time - Process query",
+                        "label": "Cpu Time",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_ProcessCpuTime{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_ProcessCpuTime"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Open File Descriptors - Descriptors query",
+                    "options": {
+                        "description": "Open File Descriptors - Descriptors query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_open_fds{}&duration=1h&step=5m",
+                    "schema": "process_open_fds"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Usage [$memarea] - System query",
+                    "options": {
+                        "description": "JVM Memory Usage [$memarea] - System query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_used{} / ignoring(area) group_left java_lang_OperatingSystem_TotalPhysicalMemorySize{} *100&duration=1h&step=5m",
+                    "schema": "jvm_memory_bytes_used"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC count rate query",
+                    "options": {
+                        "description": "GC count rate query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_gc_collection_seconds_count{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_gc_collection_seconds_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Deadlocked query",
+                    "options": {
+                        "description": "JVM Threads current - Deadlocked query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_deadlocked{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Deadlocked query",
+                    "options": {
+                        "description": "JVM Threads current increase - Deadlocked query",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_deadlocked{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Deadlocked query",
+                    "options": {
+                        "description": "JVM Threads current rate - Deadlocked query",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_threads_deadlocked{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count increase - unloaded query",
+                    "options": {
+                        "description": "Class Loading count increase - unloaded query",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_ClassLoading_UnloadedClassCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_UnloadedClassCount"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cpu Time - Current Thread query",
+                    "options": {
+                        "description": "Cpu Time - Current Thread query",
+                        "label": "Cpu Time",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Threading_CurrentThreadCpuTime{}&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_CurrentThreadCpuTime"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Usage [$memarea] - JVM query",
+                    "options": {
+                        "description": "JVM Memory Usage [$memarea] - JVM query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_used{} / (jvm_memory_bytes_max{ job=\"{{job}}\",instance=\"{{app}}\"} \u003e=0) *100&duration=1h&step=5m",
+                    "schema": "jvm_memory_bytes_used"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Cpu Time - Total Spent query",
+                    "options": {
+                        "description": "Cpu Time - Total Spent query",
+                        "label": "Cpu Time",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_cpu_seconds_total{}&duration=1h&step=5m",
+                    "schema": "process_cpu_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Free query",
+                    "options": {
+                        "description": "Physical memory - Free query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_FreePhysicalMemorySize{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_FreePhysicalMemorySize"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory committed query",
+                    "options": {
+                        "description": "JVM Memory committed query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_committed{}&duration=1h&step=5m",
+                    "schema": "jvm_memory_bytes_committed"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC Time rate query",
+                    "options": {
+                        "description": "GC Time rate query",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_gc_collection_seconds_sum{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_gc_collection_seconds_sum"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Peak query",
+                    "options": {
+                        "description": "JVM Threads current - Peak query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_peak{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_peak"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Peak query",
+                    "options": {
+                        "description": "JVM Threads current increase - Peak query",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_peak{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_peak"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Peak query",
+                    "options": {
+                        "description": "JVM Threads current rate - Peak query",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_threads_peak{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_peak"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded increase - total query",
+                    "options": {
+                        "description": "Classes Loaded increase - total query",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_classes_loaded_total{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_classes_loaded_total"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU System load average - CPU System load average query",
+                    "options": {
+                        "description": "CPU System load average - CPU System load average query",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_SystemCpuLoad{} * 100&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_SystemCpuLoad"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Total query",
+                    "options": {
+                        "description": "Physical memory - Total query",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_TotalPhysicalMemorySize{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_TotalPhysicalMemorySize"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Process Load (1m avg) - CPU Process Load  1m avg query",
+                    "options": {
+                        "description": "CPU Process Load (1m avg) - CPU Process Load  1m avg query",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg_over_time(java_lang_OperatingSystem_ProcessCpuLoad{}[1m]) * 100&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_ProcessCpuLoad"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Committed VM query",
+                    "options": {
+                        "description": "Physical memory - Committed VM query",
+                        "order": 31,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_CommittedVirtualMemorySize{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_CommittedVirtualMemorySize"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory pool [$mempool] - Max query",
+                    "options": {
+                        "description": "Memory pool [$mempool] - Max query",
+                        "order": 32,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_pool_bytes_max{job=\"{{job}}\",instance=\"{{app}}\"}&duration=1h&step=5m",
+                    "schema": "jvm_memory_pool_bytes_max"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads - Current query",
+                    "options": {
+                        "description": "JVM Threading Threads - Current query",
+                        "order": 33,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Threading_ThreadCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_ThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads increase - Current query",
+                    "options": {
+                        "description": "JVM Threading Threads increase - Current query",
+                        "order": 34,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_Threading_ThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_ThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads rate - Current query",
+                    "options": {
+                        "description": "JVM Threading Threads rate - Current query",
+                        "order": 35,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_Threading_ThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_ThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count rate - unloaded query",
+                    "options": {
+                        "description": "Class Loading count rate - unloaded query",
+                        "order": 36,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_ClassLoading_UnloadedClassCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_UnloadedClassCount"
+                },
+                {
+                    "chart_type": "gauge",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU System Load (1m avg) - CPU System Load  1m avg query",
+                    "options": {
+                        "description": "CPU System Load (1m avg) - CPU System Load  1m avg query",
+                        "order": 37,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg_over_time(java_lang_OperatingSystem_SystemCpuLoad{}[1m]) * 100&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_SystemCpuLoad"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Process Memory - Resident query",
+                    "options": {
+                        "description": "Process Memory - Resident query",
+                        "order": 38,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_resident_memory_bytes{}&duration=1h&step=5m",
+                    "schema": "process_resident_memory_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory pool [$mempool] - Used query",
+                    "options": {
+                        "description": "Memory pool [$mempool] - Used query",
+                        "order": 39,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_pool_bytes_used{job=\"{{job}}\",instance=\"{{app}}\"}&duration=1h&step=5m",
+                    "schema": "jvm_memory_pool_bytes_used"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Used [$memarea] - Max query",
+                    "options": {
+                        "description": "JVM Memory Used [$memarea] - Max query",
+                        "order": 40,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_max{job=\"{{job}}\",instance=\"{{app}}\"}&duration=1h&step=5m",
+                    "schema": "jvm_memory_bytes_max"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory pool [$mempool] - Committed query",
+                    "options": {
+                        "description": "Memory pool [$mempool] - Committed query",
+                        "order": 41,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_pool_bytes_committed{job=\"{{job}}\",instance=\"{{app}}\"}&duration=1h&step=5m",
+                    "schema": "jvm_memory_pool_bytes_committed"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads - Peak query",
+                    "options": {
+                        "description": "JVM Threading Threads - Peak query",
+                        "order": 42,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Threading_PeakThreadCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_PeakThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads increase - Peak query",
+                    "options": {
+                        "description": "JVM Threading Threads increase - Peak query",
+                        "order": 43,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_Threading_PeakThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_PeakThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads rate - Peak query",
+                    "options": {
+                        "description": "JVM Threading Threads rate - Peak query",
+                        "order": 44,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_Threading_PeakThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_PeakThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count - unloaded query",
+                    "options": {
+                        "description": "Class Loading count - unloaded query",
+                        "order": 45,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_ClassLoading_UnloadedClassCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_UnloadedClassCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded rate - total query",
+                    "options": {
+                        "description": "Classes Loaded rate - total query",
+                        "order": 46,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_classes_loaded_total{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_classes_loaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory pool [$mempool] - Committed Rate query",
+                    "options": {
+                        "description": "Memory pool [$mempool] - Committed Rate query",
+                        "order": 47,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_memory_pool_bytes_committed{job=\"{{job}}\",instance=\"{{app}}\"}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_memory_pool_bytes_committed"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC count increase query",
+                    "options": {
+                        "description": "GC count increase query",
+                        "order": 48,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_gc_collection_seconds_count{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_gc_collection_seconds_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads - Daemon query",
+                    "options": {
+                        "description": "JVM Threading Threads - Daemon query",
+                        "order": 49,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Threading_DaemonThreadCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_DaemonThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads - Started query",
+                    "options": {
+                        "description": "JVM Threading Threads - Started query",
+                        "order": 50,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Threading_TotalStartedThreadCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_TotalStartedThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Daemon query",
+                    "options": {
+                        "description": "JVM Threads current - Daemon query",
+                        "order": 51,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_daemon{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_daemon"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Deadlocked monitor query",
+                    "options": {
+                        "description": "JVM Threads current - Deadlocked monitor query",
+                        "order": 52,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_deadlocked_monitor{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked_monitor"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads increase - Daemon query",
+                    "options": {
+                        "description": "JVM Threading Threads increase - Daemon query",
+                        "order": 53,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_Threading_DaemonThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_DaemonThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads increase - Started query",
+                    "options": {
+                        "description": "JVM Threading Threads increase - Started query",
+                        "order": 54,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_Threading_TotalStartedThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_TotalStartedThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Current query",
+                    "options": {
+                        "description": "JVM Threads current - Current query",
+                        "order": 55,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_current{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_current"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Current query",
+                    "options": {
+                        "description": "JVM Threads current increase - Current query",
+                        "order": 56,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_current{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_current"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Current query",
+                    "options": {
+                        "description": "JVM Threads current rate - Current query",
+                        "order": 57,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_current{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_current"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded - total query",
+                    "options": {
+                        "description": "Classes Loaded - total query",
+                        "order": 58,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_classes_loaded_total{}&duration=1h&step=5m",
+                    "schema": "jvm_classes_loaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Daemon query",
+                    "options": {
+                        "description": "JVM Threads current increase - Daemon query",
+                        "order": 59,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_daemon{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_daemon"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Started Total query",
+                    "options": {
+                        "description": "JVM Threads current increase - Started Total query",
+                        "order": 60,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_started_total{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_started_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Started Total query",
+                    "options": {
+                        "description": "JVM Threads current rate - Started Total query",
+                        "order": 61,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_threads_started_total{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_started_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count rate - loaded query",
+                    "options": {
+                        "description": "Class Loading count rate - loaded query",
+                        "order": 62,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_ClassLoading_LoadedClassCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_LoadedClassCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current increase - Deadlocked monitor query",
+                    "options": {
+                        "description": "JVM Threads current increase - Deadlocked monitor query",
+                        "order": 63,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_threads_deadlocked_monitor{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked_monitor"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded increase - currently query",
+                    "options": {
+                        "description": "Classes Loaded increase - currently query",
+                        "order": 64,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_classes_currently_loaded {}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_classes_currently_loaded"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads rate - Daemon query",
+                    "options": {
+                        "description": "JVM Threading Threads rate - Daemon query",
+                        "order": 65,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_Threading_DaemonThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_DaemonThreadCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count - loaded query",
+                    "options": {
+                        "description": "Class Loading count - loaded query",
+                        "order": 66,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_ClassLoading_LoadedClassCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_LoadedClassCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded rate - currently query",
+                    "options": {
+                        "description": "Classes Loaded rate - currently query",
+                        "order": 67,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_classes_currently_loaded {}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_classes_currently_loaded"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Status - Status query",
+                    "options": {
+                        "description": "Status - Status query",
+                        "label": "",
+                        "order": 68,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_info{}&duration=1h&step=5m",
+                    "schema": "jvm_info"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Cores - CPU Cores query",
+                    "options": {
+                        "description": "CPU Cores - CPU Cores query",
+                        "label": "CPU Cores",
+                        "order": 69,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_AvailableProcessors{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_AvailableProcessors"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current - Started Total query",
+                    "options": {
+                        "description": "JVM Threads current - Started Total query",
+                        "order": 70,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_started_total{}&duration=1h&step=5m",
+                    "schema": "jvm_threads_started_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC Time increase query",
+                    "options": {
+                        "description": "GC Time increase query",
+                        "order": 71,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_gc_collection_seconds_sum{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_gc_collection_seconds_sum"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading count increase - loaded query",
+                    "options": {
+                        "description": "Class Loading count increase - loaded query",
+                        "order": 72,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(java_lang_ClassLoading_LoadedClassCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_ClassLoading_LoadedClassCount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Classes Loaded - currently query",
+                    "options": {
+                        "description": "Classes Loaded - currently query",
+                        "order": 73,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_classes_currently_loaded {}&duration=1h&step=5m",
+                    "schema": "jvm_classes_currently_loaded"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threading Threads rate - Started query",
+                    "options": {
+                        "description": "JVM Threading Threads rate - Started query",
+                        "order": 74,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(java_lang_Threading_TotalStartedThreadCount{}[1h])&duration=1h&step=5m",
+                    "schema": "java_lang_Threading_TotalStartedThreadCount"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Start time - Start time query",
+                    "options": {
+                        "description": "Start time - Start time query",
+                        "label": "Start time",
+                        "order": 75,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_Runtime_StartTime{}&duration=1h&step=5m",
+                    "schema": "java_lang_Runtime_StartTime"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Open file descriptors - Open FDs query",
+                    "options": {
+                        "description": "Open file descriptors - Open FDs query",
+                        "label": "Open File Descriptors",
+                        "order": 76,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_OperatingSystem_OpenFileDescriptorCount{}&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_OpenFileDescriptorCount"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total SWAP - Total SWAP query",
+                    "options": {
+                        "description": "Total SWAP - Total SWAP query",
+                        "label": "Mb",
+                        "order": 77,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(java_lang_OperatingSystem_TotalSwapSpaceSize{}/1000000, 0.01)&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_TotalSwapSpaceSize"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total RAM query",
+                    "options": {
+                        "description": "Total RAM query",
+                        "label": "Mb",
+                        "order": 78,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(java_lang_OperatingSystem_TotalPhysicalMemorySize{}/1000000, 0.01)&duration=1h&step=5m",
+                    "schema": "java_lang_OperatingSystem_TotalPhysicalMemorySize"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Daemon query",
+                    "options": {
+                        "description": "JVM Threads current rate - Daemon query",
+                        "order": 79,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_threads_daemon{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_daemon"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Threads current rate - Deadlocked monitor query",
+                    "options": {
+                        "description": "JVM Threads current rate - Deadlocked monitor query",
+                        "order": 80,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_threads_deadlocked_monitor{}[1h])&duration=1h&step=5m",
+                    "schema": "jvm_threads_deadlocked_monitor"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

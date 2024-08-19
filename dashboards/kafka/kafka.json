@@ -1,0 +1,711 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Kafka"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Usage",
+                    "options": {
+                        "description": "CPU Usage",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(process_cpu_seconds_total{job=\"kafka-metrics\"}[5m])*100&duration=5h&step=5m",
+                    "schema": "process_cpu_seconds_total"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Offline Partitions",
+                    "options": {
+                        "description": "Offline Partitions",
+                        "label": "  ",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_controller_kafkacontroller_offlinepartitionscount_value",
+                    "schema": "kafka_controller_kafkacontroller_offlinepartitionscount_value"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Used Memory %",
+                    "options": {
+                        "description": "Used Memory %",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(((java_lang_operatingsystem_totalphysicalmemorysize{job=\"kafka-jmx-metrics\"}-java_lang_operatingsystem_freephysicalmemorysize{job=\"kafka-jmx-metrics\"})/java_lang_operatingsystem_totalphysicalmemorysize{job=\"kafka-jmx-metrics\"}*100),0.01)&duration=3h&step=5m",
+                    "schema": "java_lang_operatingsystem_totalphysicalmemorysize"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Kafka Broker(s)",
+                    "options": {
+                        "description": "Kafka Broker(s)",
+                        "label": " ",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_brokers",
+                    "schema": "kafka_brokers"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Network Bytes Received/Sec",
+                    "options": {
+                        "description": "Network Bytes Received/Sec",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_bytesinpersec_count[5m])*300,1)&duration=2h&step=5m",
+                    "schema": "kafka_server_brokertopicmetrics_total_bytesinpersec_count"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Active Controller(s)",
+                    "options": {
+                        "description": "Active Controller(s)",
+                        "label": "  ",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_controller_kafkacontroller_activecontrollercount_value",
+                    "schema": "kafka_controller_kafkacontroller_activecontrollercount_value"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Java Peak Threads",
+                    "options": {
+                        "description": "Java Peak Threads",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_threading_peakthreadcount{job=\"kafka-jmx-metrics\"}&duration=3h&step=5m",
+                    "schema": "java_lang_threading_peakthreadcount"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Broker UpTime",
+                    "options": {
+                        "description": "Broker UpTime",
+                        "label": " Days",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "floor(java_lang_runtime_uptime/86400000)",
+                    "schema": "java_lang_runtime_uptime"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Kafka Exporter Version",
+                    "options": {
+                        "description": "Kafka Exporter Version",
+                        "label": " ",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_exporter_build_info",
+                    "schema": "kafka_exporter_build_info"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Network Bytes Sent/Sec",
+                    "options": {
+                        "description": "Network Bytes Sent/Sec",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_bytesoutpersec_count[5m])*300,1)&duration=2h&step=5m",
+                    "schema": "kafka_server_brokertopicmetrics_total_bytesoutpersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Received Messages/Sec",
+                    "options": {
+                        "description": "Received Messages/Sec",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_messagesinpersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,1)&duration=3h&step=2m",
+                    "schema": "kafka_server_brokertopicmetrics_total_messagesinpersec_count"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Partition Leaders",
+                    "options": {
+                        "description": "Partition Leaders",
+                        "label": " ",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_server_replicamanager_total_leadercount_value",
+                    "schema": "kafka_server_replicamanager_total_leadercount_value"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Heap Memory Used",
+                    "options": {
+                        "description": "JVM Heap Memory Used",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(java_lang_memory_heapmemoryusage_used[5m])/(1024^2),0.01)&duration=2h&step=5m",
+                    "schema": "java_lang_memory_heapmemoryusage_used"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Producer Conversations/Sec",
+                    "options": {
+                        "description": "Producer Conversations/Sec",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_producemessageconversionspersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,1)&duration=3h&step=2m",
+                    "schema": "kafka_server_brokertopicmetrics_total_producemessageconversionspersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Free Memory %",
+                    "options": {
+                        "description": "Free Memory %",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round((java_lang_operatingsystem_freephysicalmemorysize/java_lang_operatingsystem_totalphysicalmemorysize)*100,0.01)&duration=3h&step=5m",
+                    "schema": "java_lang_operatingsystem_freephysicalmemorysize"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Open File Descriptor",
+                    "options": {
+                        "description": "Open File Descriptor",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "java_lang_operatingsystem_openfiledescriptorcount{job=\"kafka-jmx-metrics\"}&duration=6h&step=5m",
+                    "schema": "java_lang_operatingsystem_openfiledescriptorcount"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Channel Manager Queue Size",
+                    "options": {
+                        "description": "Channel Manager Queue Size",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_controller_controllerchannelmanager_queuesize_value{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_controller_controllerchannelmanager_queuesize_value"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "ZOOKeeper auth failures/sec",
+                    "options": {
+                        "description": "ZOOKeeper auth failures/sec",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_sessionexpirelistener_total_zookeeperauthfailurespersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_sessionexpirelistener_total_zookeeperauthfailurespersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Fetch Queue Size",
+                    "options": {
+                        "description": "Fetch Queue Size",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_fetch_queue_size{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_fetch_queue_size"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Produce Queue Size",
+                    "options": {
+                        "description": "Produce Queue Size",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_produce_queue_size{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_produce_queue_size"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Request Queue Size",
+                    "options": {
+                        "description": "Request Queue Size",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_request_queue_size{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_request_queue_size"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Data read from Linux Disk",
+                    "options": {
+                        "description": "Data read from Linux Disk",
+                        "label": "KiBytes",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(kafka_server_kafkaserver_total_linux_disk_read_bytes_value{job=\"kafka-jmx-metrics\"}/(1024^1),0.01)",
+                    "schema": "kafka_server_kafkaserver_total_linux_disk_read_bytes_value"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Data written to Linux Disk",
+                    "options": {
+                        "description": "Data written to Linux Disk",
+                        "label": "MiB",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(kafka_server_kafkaserver_total_linux_disk_write_bytes_value{job=\"kafka-jmx-metrics\"}/(1024^2),0.01)",
+                    "schema": "kafka_server_kafkaserver_total_linux_disk_write_bytes_value"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total Physical Memory",
+                    "options": {
+                        "description": "Total Physical Memory",
+                        "label": " GiB",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(java_lang_operatingsystem_totalphysicalmemorysize{job=\"kafka-jmx-metrics\"}/(1024^3))",
+                    "schema": "java_lang_operatingsystem_totalphysicalmemorysize"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Virtual Memory Size",
+                    "options": {
+                        "description": "Virtual Memory Size",
+                        "label": " GiB",
+                        "order": 25,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(java_lang_operatingsystem_committedvirtualmemorysize{job=\"kafka-jmx-metrics\"}/(1024^3))",
+                    "schema": "java_lang_operatingsystem_committedvirtualmemorysize"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Fetch Request rate",
+                    "options": {
+                        "description": "Fetch Request rate",
+                        "order": 26,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_totalfetchrequestspersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_brokertopicmetrics_total_totalfetchrequestspersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Network Request rate",
+                    "options": {
+                        "description": "Network Request rate",
+                        "order": 27,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_network_requestmetrics_requestspersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_network_requestmetrics_requestspersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Producer Request rate",
+                    "options": {
+                        "description": "Producer Request rate",
+                        "order": 28,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_brokertopicmetrics_total_totalproducerequestspersec_count{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_brokertopicmetrics_total_totalproducerequestspersec_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "ZOO Keeper request latency",
+                    "options": {
+                        "description": "ZOO Keeper request latency",
+                        "order": 29,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(rate(kafka_server_zookeeperclientmetrics_total_zookeeperrequestlatencyms_count{job=\"kafka-jmx-metrics\"}[5m])*120,0.01)&duration=3h&step=2m",
+                    "schema": "kafka_server_zookeeperclientmetrics_total_zookeeperrequestlatencyms_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Partitions by Topics",
+                    "options": {
+                        "description": "Partitions by Topics",
+                        "order": 30,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(kafka_topic_partitions{job=\"kafka-metrics\"}) by (topic)&duration=3h&step=5m",
+                    "schema": "kafka_topic_partitions"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total Partitions",
+                    "options": {
+                        "description": "Total Partitions",
+                        "label": " ",
+                        "order": 31,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "kafka_controller_kafkacontroller_globalpartitioncount_value",
+                    "schema": "kafka_controller_kafkacontroller_globalpartitioncount_value"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

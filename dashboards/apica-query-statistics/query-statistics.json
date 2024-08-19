@@ -1,0 +1,151 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "pg",
+        "title": "Apica Query Statistics"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Flash",
+                    "name": "Users (15d)",
+                    "options": {
+                        "description": "Users (15d)",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select count(*), createdby from queryhistory where createdby != '' and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by createdby order by count desc",
+                    "schema": "queryyHistoey"
+                },
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Flash",
+                    "name": "Query history (15d)",
+                    "options": {
+                        "description": "Query history (15d)",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select * from queryhistory where to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY'",
+                    "schema": "queryyHistoey"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Flash",
+                    "name": "Query count",
+                    "options": {
+                        "description": "Query count",
+                        "label": "Queries",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select count(*) from queryhistory",
+                    "schema": "queryHist"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Flash",
+                    "name": "Query search range (15d)",
+                    "options": {
+                        "description": "Query search range (15d)",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select count(*),durationsec/60 as durationmin, durationsec/3600 as durationhr from queryhistory where requesttype in (2,4) and durationsec \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by durationsec",
+                    "schema": "queryHist"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Flash",
+                    "name": "TTFR (Seconds) (15d)",
+                    "options": {
+                        "description": "TTFR (Seconds) (15d)",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select count(*),timetofirst from queryhistory where timetofirst \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '15 DAY' group by timetofirst",
+                    "schema": "queryHist"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Flash",
+                    "name": "Bubble - TTFR (seconds)",
+                    "options": {
+                        "description": "Bubble - TTFR (seconds)",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "select count(*),count(*),timetofirst,requesttype from queryhistory where timetofirst \u003e 0 and to_timestamp(createdat) \u003e NOW() - INTERVAL '30 DAY' group by timetofirst,requesttype",
+                    "schema": "queryHist"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}

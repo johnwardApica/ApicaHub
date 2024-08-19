@@ -1,0 +1,172 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Fluent Bit"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Input Bytes Processing Rate",
+                    "options": {
+                        "description": "Input Bytes Processing Rate",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_input_bytes_total[5m])) by (instance, name)&duration=10m&step=15",
+                    "schema": "fluentbit_input_bytes_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Output Bytes Processing Rate",
+                    "options": {
+                        "description": "Output Bytes Processing Rate",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_output_proc_bytes_total[5m])) by (instance, name)&duration=10m&step=10",
+                    "schema": "fluentbit_output_proc_bytes_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Input Records Processing Rate",
+                    "options": {
+                        "description": "Input Records Processing Rate",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_input_records_total[5m])) by (instance, name)&duration=10m&step=10",
+                    "schema": "fluentbit_input_records_total"
+                },
+                {
+                    "chart_type": "area",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Output Record Processing Rate",
+                    "options": {
+                        "description": "Output Record Processing Rate",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_output_proc_records_total[5m])) by (instance, name)&duration=10m&step=15",
+                    "schema": "fluentbit_output_proc_records_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Output Retry/Failed Rates",
+                    "options": {
+                        "description": "Output Retry/Failed Rates",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_output_retries_total[1m])) by (instance, name)&duration=10m&step=15",
+                    "schema": "fluentbit_output_retries_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Output Error Rate",
+                    "options": {
+                        "description": "Output Error Rate",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=sum(rate(fluentbit_output_errors_total[1m])) by (instance, name)&duration=10m&step=10",
+                    "schema": "fluentbit_output_errors_total"
+                },
+                {
+                    "chart_type": "Table",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Fluent Bit Version",
+                    "options": {
+                        "description": "Fluent Bit Version",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "fluentbit_build_info",
+                    "schema": "fluentbit_build_info"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}
