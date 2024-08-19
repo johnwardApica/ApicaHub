@@ -11,14 +11,15 @@
 
 ## Steps to import
 
-* Download for ex: logs-overview.json
-* Run apicactl to import the file logs-overview.json
+* Download for ex: apica-monitoring.json
+* Run apicactl to import the file apica-monitoring.json
 
 ```
-logiqctl create dashboard -f logs-overview.json
+apicactl create dashboard -f apica-monitoring.json
 
 ```
 
 ## Screenshot
 
-![image info](./logs-overview.png)
+![image info](./apica-monitoring.png)
+

@@ -10,10 +10,10 @@
 ## Steps to import
 
 * Download the file windows-monitoring.json
-* Run logiqctl to import the windows-monitoring.json
+* Run apicactl to import the windows-monitoring.json
 
 ```
-logiqctl create dashboard -f windows-monitoring.json
+apicactl create dashboard -f windows-monitoring.json
 ```
 
 ## Screenshot

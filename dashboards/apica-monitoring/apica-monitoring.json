@@ -13,9 +13,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "go_memstats_heap_alloc_bytes - ingest",
+                    "name": "go memstats heap alloc bytes - ingest",
                     "options": {
-                        "description": "go_memstats_heap_alloc_bytes - ingest",
+                        "description": "go memstats heap alloc bytes - ingest",
                         "order": 1,
                         "plot": {
                             "errorColumn": "",
@@ -35,9 +35,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "logiq_back_pressure_counter",
+                    "name": "apica back pressure counter",
                     "options": {
-                        "description": "logiq_back_pressure_counter",
+                        "description": "apica back pressure counter",
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
@@ -123,9 +123,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "go_memstats_heap_alloc_bytes - api",
+                    "name": "go memstats heap alloc bytes - api",
                     "options": {
-                        "description": "go_memstats_heap_alloc_bytes - api",
+                        "description": "go memstats heap alloc bytes - api",
                         "order": 6,
                         "plot": {
                             "errorColumn": "",
@@ -255,9 +255,9 @@
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "logiq_metadata_db_usage",
+                    "name": "apica metadata db usage",
                     "options": {
-                        "description": "logiq_metadata_db_usage",
+                        "description": "apica metadata db usage",
                         "order": 12,
                         "plot": {
                             "errorColumn": "",

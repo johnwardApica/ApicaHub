@@ -14,7 +14,7 @@
 * Run apicactl to import the mongodb.json
 
 ```
-logiqctl create dashboard -f mongodb.json
+apicactl create dashboard -f mongodb.json
 ```
 
 ## Screenshot

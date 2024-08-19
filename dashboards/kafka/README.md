@@ -14,7 +14,7 @@
 * Run apicactl to import the kafka.json
 
 ```
-logiqctl create dashboard -f kafka.json
+apicactl create dashboard -f kafka.json
 
 ```
 

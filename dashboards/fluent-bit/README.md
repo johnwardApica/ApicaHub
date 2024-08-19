@@ -14,7 +14,7 @@
 * Run apicactl to import the dashboard json
 
 ```
-logiqctl create dashboard -f fluentbit.json
+apicactl create dashboard -f fluentbit.json
 ```
 
 ## Screenshot

@@ -1,4 +1,4 @@
-# Logiq cluster monitoring
+# Apica cluster monitoring
 
 ## Features
 * Monitor Amazon EC2 instances
@@ -14,7 +14,7 @@
 * Run apicactl to import the dashboard
 
 ```
-logiqctl create dashboard -f ec2-monitoring.json
+apicactl create dashboard -f ec2-monitoring.json
 ```
 
 ## Screenshot

@@ -14,7 +14,7 @@
 * Run apicactl to import the rabbitmq.json
 
 ```
-logiqctl create dashboard -f rabbitmq.json
+apicactl create dashboard -f rabbitmq.json
 ```
 
 ## Screenshot
