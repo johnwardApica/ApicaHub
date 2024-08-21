@@ -1857,14 +1857,14 @@
       "dropdowns": [
         {
           "hostname": {
-            "query": "group by (hostname) (target_info{ostype=~'linux|windows',runtime=~'.*'})",
+            "query": "group by (hostname) (target_info{ostype=~'linux|windows'})",
             "name": "Atom Selection",
             "data_source_name": "Apica Monitoring"
           }
         },
         {
           "runtime": {
-            "query": "group by (runtime) (target_info{ostype=~'linux|windows'})",
+            "query": "group by (runtime) (target_info{ostype=~'linux|windows', hostname=~'.*'})",
             "name": "Runtime selection",
             "data_source_name": "Apica Monitoring"
           }
