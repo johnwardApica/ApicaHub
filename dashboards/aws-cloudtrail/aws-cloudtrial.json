@@ -1,0 +1,60 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "AWS Cloud Trail",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "logiq_reports",
+                    "name": "CloudTrail Events by Region",
+                    "options": {
+                        "description": "CloudTrail Events by Region",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "namespace: logiq:logflow.logiq.ai\napplication: cloudtrail\naggregate: count\ngroup_by:\n  - iso_country_code\n  - latitude\n  - longitude\nduration:\n  relative: 604800\n",
+                    "schema": "namespace: logiq:logflow.logiq.ai\napplication: cloudtrail\naggregate: count\ngroup_by:\n  - iso_country_code\n  - latitude\n  - longitude\nduration:\n  relative: 604800\n"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "logiq_reports",
+                    "name": "CloudTrail Events by Country",
+                    "options": {
+                        "description": "CloudTrail Events by Country",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "namespace: logiq:logflow.logiq.ai\napplication: cloudtrail\naggregate: count\ngroup_by:\n  - iso_country_code\nduration:\n  relative: 604800\n",
+                    "schema": "namespace: logiq:logflow.logiq.ai\napplication: cloudtrail\naggregate: count\ngroup_by:\n  - iso_country_code\nduration:\n  relative: 604800\n"
+                }
+            ],
+            "title": "AWS Cloud Trail",
+            "type": "metrics"
+        }
+    ]
+}

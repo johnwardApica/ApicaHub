@@ -1,0 +1,368 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "PG Database Stats",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Avg Cpu process",
+                    "options": {
+                        "description": "PG-Avg Cpu process",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=avg(rate(process_cpu_seconds_total{pod=\"postgres-0\"}[5m]))&duration=1h&step=5m",
+                    "schema": "process_cpu_seconds_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Updated",
+                    "options": {
+                        "description": "PG-Updated",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_tup_updated[5m])&duration={{ duration }}&step=5m",
+                    "schema": "pg_stat_database_tup_updated[5m])&duration="
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Connected Clients",
+                    "options": {
+                        "description": "PG-Connected Clients",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_numbackends[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_database_numbackends"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Idle Sessions",
+                    "options": {
+                        "description": "PG-Idle Sessions",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_activity_count{state=~\"idle|idle in transaction|idle in transaction (aborted)\"}[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_activity_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Deleted",
+                    "options": {
+                        "description": "PG-Deleted",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_tup_deleted[5m])&duration={{ duration }}&step=5m",
+                    "schema": "pg_stat_database_tup_deleted[5m])&duration="
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Settings",
+                    "options": {
+                        "description": "PG-Settings",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "{__name__=~\"pg_settings_.*\"}",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Open FIle Descriptors",
+                    "options": {
+                        "description": "PG-Open FIle Descriptors",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg(rate(process_open_fds{pod=\"postgres-0\"}[5m]))&duration=1h&step=5m",
+                    "schema": "process_open_fds"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Inserted",
+                    "options": {
+                        "description": "PG-Inserted",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_tup_inserted[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_database_tup_inserted"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Checkpont Stats",
+                    "options": {
+                        "description": "PG-Checkpont Stats",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(label_replace({__name__=~\"pg_stat_bgwriter_.*_write_time|pg_stat_bgwriter_.*_sync_time\"},\"metricname\", \"$1\", \"__name__\", \"(.*)\")[5m:])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Fetched",
+                    "options": {
+                        "description": "PG-Fetched",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=rate(pg_stat_database_tup_fetched[5m])&duration={{ duration }}&step=5m",
+                    "schema": "pg_stat_database_tup_fetched[5m])&duration="
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Buffers(bgwriter)",
+                    "options": {
+                        "description": "PG-Buffers(bgwriter)",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(label_replace({__name__=~\"pg_stat_bgwriter_buffers_.*\"},\"metricname\",\"$1\",\"__name__\",\"(.*)\")[5m:])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Transactions Commited",
+                    "options": {
+                        "description": "PG-Transactions Commited",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_xact_commit[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_database_xact_commit"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Activity",
+                    "options": {
+                        "description": "PG-Activity",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_activity_count[5m])&duration={{ duration }}&step=5m",
+                    "schema": "pg_stat_activity_count[5m])&duration="
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Transactions Rolled Back ",
+                    "options": {
+                        "description": "PG-Transactions Rolled Back ",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_xact_rollback[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_database_xact_rollback"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Conflicts & Deadlocks",
+                    "options": {
+                        "description": "PG-Conflicts & Deadlocks",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=rate(label_replace({__name__=~\"pg_.*conflicts|pg_.*_deadlocks\"}, \"metricname\", \"$1\", \"__name__\", \"(.*)\")[5m:])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqPrometheus",
+                    "name": "PG-Temp Files (Bytes)",
+                    "options": {
+                        "description": "PG-Temp Files (Bytes)",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(pg_stat_database_temp_bytes[5m])&duration=1h&step=5m",
+                    "schema": "pg_stat_database_temp_bytes"
+                }
+            ],
+            "title": "PG Database Stats",
+            "type": "metrics"
+        }
+    ]
+}
