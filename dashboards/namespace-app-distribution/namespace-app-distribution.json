@@ -1,0 +1,150 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": [],
+        "data_source_type": "apica_ascent_prometheus",
+        "title": "Apica Namespace & App Distribution"
+    },
+    "tabs": [
+        {
+            "key": "Overview",
+            "order": "1",
+            "queriesList": [
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Aggregate Messages by Namespace (30d)",
+                    "options": {
+                        "description": "Aggregate Messages by Namespace (30d)",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (increase(logiq_namespace_app_message_count[30d])),1)",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Namespace, App distribution (EVENTS) [24h]",
+                    "options": {
+                        "description": "Namespace, App distribution (EVENTS) [24h]",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(logiq:namespace_app_count_daily:increase,1)",
+                    "schema": "logiq:namespace_app_count_daily:increase,1)"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Messages by Namespace (30d)",
+                    "options": {
+                        "description": "Messages by Namespace (30d)",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (increase(logiq_namespace_app_message_count[24h])),1)&duration=30d&step=1h",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Namespace, App distribution (GB) [24h]",
+                    "options": {
+                        "description": "Namespace, App distribution (GB) [24h]",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(logiq:namespace_app_bytes_daily:increase/1000000000,0.001)",
+                    "schema": "logiq:namespace_app_bytes_daily:increase/1000000000,0.001)"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "# Messages/sec by Namespace",
+                    "options": {
+                        "description": "# Messages/sec by Namespace",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[5m])),1)&duration=39d&step=1h",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "bar",
+                    "data_source_name": "LogiqMonitoring",
+                    "name": "Aggregate Messages by Namespace (30d)",
+                    "options": {
+                        "description": "Aggregate Messages by Namespace (30d)",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (increase(logiq_namespace_app_message_count[30d])),1)",
+                    "schema": "logiq_namespace_app_message_count"
+                }
+            ],
+            "title": "Overview",
+            "type": "metrics"
+        }
+    ]
+}
