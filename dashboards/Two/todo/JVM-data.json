@@ -1,0 +1,461 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "JVM",
+            "order": "1",
+            "title": "JVM",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Status",
+                    "options": {
+                        "description": "Status",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "up{job=~'prom-host-metrics-collector',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "up"
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Uptime",
+                    "options": {
+                        "description": "Uptime",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "time() - (process_start_time_seconds{job=~'.*',instance=~'.*'})&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Start time",
+                    "options": {
+                        "description": "Start time",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_start_time_seconds{job=~'.*',instance=~'.*'}*1000&duration=1h&step=5m",
+                    "schema": "process_start_time_seconds"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory area - Used",
+                    "options": {
+                        "description": "Memory area - Used",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_used_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_used_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM CPU Utilization",
+                    "options": {
+                        "description": "JVM CPU Utilization Ratio",
+                        "order": 4,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Utilization Ratio"
+                        },
+                        "upperLimit": "1"
+                    },
+                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_cpu_utilization_ratio"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Loaded Classes",
+                    "options": {
+                        "description": "Number of loaded JVM classes",
+                        "order": 5,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Class Count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_classes_current_loaded{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_classes_current_loaded"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Committed",
+                    "options": {
+                        "description": "Amount of memory committed to JVM",
+                        "order": 6,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_committed_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_committed_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Usage After GC",
+                    "options": {
+                        "description": "Memory usage after last garbage collection",
+                        "order": 7,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_used_after_last_gc_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_used_after_last_gc_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Buffer Count",
+                    "options": {
+                        "description": "Number of buffers in the JVM",
+                        "order": 9,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Buffer Count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_buffer_count{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_buffer_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "System CPU Load (1m avg)",
+                    "options": {
+                        "description": "System CPU load average over 1 minute",
+                        "order": 10,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Load Average"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_system_cpu_load_1m{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_system_cpu_load_1m"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Total JVM Classes Loaded",
+                    "options": {
+                        "description": "Total number of classes loaded since JVM start",
+                        "order": 13,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Class Count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_classes_loaded_total{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_classes_loaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Buffer Usage",
+                    "options": {
+                        "description": "JVM buffer memory usage in bytes",
+                        "order": 14,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_buffer_usage_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_buffer_usage_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Classes Unloaded",
+                    "options": {
+                        "description": "Total number of classes unloaded since JVM start",
+                        "order": 17,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Class Count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_classes_unloaded_total{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_classes_unloaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "System CPU Utilization Ratio",
+                    "options": {
+                        "description": "Ratio of CPU utilization by the system",
+                        "order": 18,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Ratio"
+                        },
+                        "upperLimit": "1"
+                    },
+                    "query": "process_runtime_jvm_system_cpu_utilization_ratio{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_system_cpu_utilization_ratio"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Init",
+                    "options": {
+                        "description": "Initial amount of memory requested by JVM",
+                        "order": 19,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_memory_init_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_memory_init_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Memory Limit",
+                    "options": {
+                        "description": "Limit of memory that can be used by JVM",
+                        "order": 21,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_limit_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_limit_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Buffer Limit",
+                    "options": {
+                        "description": "Limit of buffer memory in the JVM",
+                        "order": 22,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_runtime_jvm_buffer_limit_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_buffer_limit_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Usage vs Committed",
+                    "options": {
+                        "description": "Comparison of used memory to committed memory",
+                        "order": 25,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["Used", "Committed"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_used_bytes{job=~'.*',instance=~'.*'} or jvm_memory_committed_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_used_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Commit Rate",
+                    "options": {
+                        "description": "Ratio of committed memory to memory limit",
+                        "order": 27,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Ratio"
+                        },
+                        "upperLimit": "1"
+                    },
+                    "query": "jvm_memory_committed_bytes{job=~'.*',instance=~'.*'} / jvm_memory_limit_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "jvm_memory_committed_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Loading Rate",
+                    "options": {
+                        "description": "Rate of class loading per minute",
+                        "order": 29,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Classes/min"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(process_runtime_jvm_classes_loaded_total{job=~'.*',instance=~'.*'}[5m]) * 60&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_classes_loaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class Unloading Rate",
+                    "options": {
+                        "description": "Rate of class unloading per minute",
+                        "order": 30,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Classes/min"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(process_runtime_jvm_classes_unloaded_total{job=~'.*',instance=~'.*'}[5m]) * 60&duration=1h&step=5m",
+                    "schema": "process_runtime_jvm_classes_unloaded_total"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Allocation Rate",
+                    "options": {
+                        "description": "Rate of memory allocation per second",
+                        "order": 36,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes/second"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "rate(jvm_memory_used_bytes{job=~'.*',instance=~'.*'}[5m])&duration=1h&step=5m",
+                    "schema": "memory_allocation_rate"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory Usage Trend",
+                    "options": {
+                        "description": "Trend of memory usage over time",
+                        "order": 39,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Bytes"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "avg_over_time(jvm_memory_used_bytes{job=~'.*',instance=~'.*'}[30m])&duration=1h&step=5m",
+                    "schema": "memory_usage_trend"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU Usage Saturation",
+                    "options": {
+                        "description": "How close CPU usage is to its limit",
+                        "order": 40,
+                        "plot": {
+                            "x": "Timestamp",
+                            "xLabel": "Time",
+                            "y": ["value"],
+                            "yLabel": "Ratio"
+                        },
+                        "upperLimit": "1"
+                    },
+                    "query": "process_runtime_jvm_cpu_utilization_ratio{job=~'.*',instance=~'.*'} / process_runtime_jvm_system_cpu_utilization_ratio{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": "cpu_usage_saturation"
+                }
+            ]
+        }
+    ]
+}

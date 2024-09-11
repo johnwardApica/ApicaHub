@@ -1,0 +1,493 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "JVM",
+            "order": "1",
+            "title": "JVM",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Status query",
+                    "options": {
+                        "description": "Status query",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "up{job=~'prom-host-metrics-collector',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Uptime query",
+                    "options": {
+                        "description": "Uptime query",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "time() - process_start_time_seconds{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Start time query",
+                    "options": {
+                        "description": "Start time query",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "process_start_time_seconds{job=~'.*',instance=~'.*'}*1000&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "JVM Version query",
+                    "options": {
+                        "description": "JVM Version query",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "label_join(jvm_info{job=~'.*',instance=~'.*'}, \"jdk\", \", \", \"vendor\", \"runtime\", \"version\")&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Available CPUs query",
+                    "options": {
+                        "description": "Available CPUs query",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_available_processors{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "System load average query",
+                    "options": {
+                        "description": "System load average query",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_system_load_average{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Open file descriptors query",
+                    "options": {
+                        "description": "Open file descriptors query",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_open_file_descriptor_count{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU load - System query",
+                    "options": {
+                        "description": "CPU load - System query",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_system_cpu_load{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "CPU load - JVM query",
+                    "options": {
+                        "description": "CPU load - JVM query",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_process_cpu_load{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory area [$memarea] - Used query",
+                    "options": {
+                        "description": "Memory area [$memarea] - Used query",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_used{area=\"$memarea\",job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory area [$memarea] - Max query",
+                    "options": {
+                        "description": "Memory area [$memarea] - Max query",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": " jvm_memory_bytes_max{area=\"$memarea\",job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory area [$memarea] - Usage % query",
+                    "options": {
+                        "description": "Memory area [$memarea] - Usage % query",
+                        "order": 12,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_bytes_used{area=\"$memarea\",job=~'.*',instance=~'.*'} / jvm_memory_bytes_max \u003e= 0&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC time query",
+                    "options": {
+                        "description": "GC time query",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_gc_collection_seconds_sum{job=~'.*',instance=~~'.*'}[$__interval])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Memory pool [$mempool] - Max query",
+                    "options": {
+                        "description": "Memory pool [$mempool] - Max query",
+                        "order": 14,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_memory_pool_bytes_max{pool=\"$mempool\",job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Class loading query",
+                    "options": {
+                        "description": "Class loading query",
+                        "order": 17,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_classes_loaded{job=~'.*', instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GC count increase query",
+                    "options": {
+                        "description": "GC count increase query",
+                        "order": 18,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "increase(jvm_gc_collection_seconds_count{job=~'.*',instance=~~'.*'}[$__interval])&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Threads used - JVM current threads query",
+                    "options": {
+                        "description": "Threads used - JVM current threads query",
+                        "order": 19,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_current{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Threads used - JVM daemon threads query",
+                    "options": {
+                        "description": "Threads used - JVM daemon threads query",
+                        "order": 20,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_daemon{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Threads used - JVM deadlocked threads query",
+                    "options": {
+                        "description": "Threads used - JVM deadlocked threads query",
+                        "order": 21,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "jvm_threads_deadlocked{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Total physical memory query",
+                    "options": {
+                        "description": "Physical memory - Total physical memory query",
+                        "order": 22,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_total_physical_memory_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Committed virtual memory query",
+                    "options": {
+                        "description": "Physical memory - Committed virtual memory query",
+                        "order": 23,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_committed_virtual_memory_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Physical memory - Free physical memory query",
+                    "options": {
+                        "description": "Physical memory - Free physical memory query",
+                        "order": 24,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "os_free_physical_memory_bytes{job=~'.*',instance=~'.*'}&duration=1h&step=5m",
+                    "schema": ""
+                }
+            ]
+        }
+    ]
+}

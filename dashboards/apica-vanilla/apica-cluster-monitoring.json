@@ -1,0 +1,283 @@
+{
+    "header": {
+        "dateTimeRange": true,
+        "dropdowns": []
+    },
+    "tabs": [
+        {
+            "key": "Apica Cluster Monitoring",
+            "order": "1",
+            "title": "Apica Cluster Monitoring",
+            "type": "metrics",
+            "queriesList": [
+                {
+                    "chart_type": "scatter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Mover",
+                    "options": {
+                        "description": "Mover Count",
+                        "label": "Mover Count",
+                        "order": 1,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "operation",
+                            "x": "pod",
+                            "xLabel": "pod",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "logiq_mover_count{operation=~'.*'}",
+                    "schema": "logiq_mover_count"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest - go_memstats_heap_alloc_bytes",
+                    "options": {
+                        "label": "GB",
+                        "description": "Number of heap bytes allocated and still in use in Ingest nodes",
+                        "order": 2,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "pod",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "(round(go_memstats_heap_alloc_bytes{namespace='lq8311',pod=~'logiq-flash-\\\\d|logiq-flash-ml-\\\\d'}/1000000000,0.1))&duration=1h&step=5m",
+                    "schema": "go_memstats_heap_alloc_bytes"
+                },
+                {
+                    "chart_type": "scatter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Per Pod Ingested Rate",
+                    "options": {
+                        "label": "GB",
+                        "description": "Total ingested bytes (30d)",
+                        "order": 3,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "pod",
+                            "xLabel": "pod",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (pod)(increase(logiq_data_received_bytes[5m]))*12/1000000000,0.01)",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "go_memstats_heap_alloc_bytes - API",
+                    "options": {
+                        "description": "Number of heap bytes allocated and still in use in API nodes",
+                        "order": 4,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "pod",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(go_memstats_heap_alloc_bytes{namespace='lq8311',pod=~'logiq-flash-ml-\\\\d|logiq-flash-ml-\\\\d\\\\d'}/1000000000,0.1)&duration=4h&step=60s",
+                    "schema": "go_memstats_heap_alloc_bytes"
+                },
+                {
+                    "chart_type": "scatter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Back Pressure",
+                    "options": {
+                        "description": "Back Pressure",
+                        "order": 5,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "pod",
+                            "xLabel": "pods",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Pressure count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "logiq_back_pressure_counter",
+                    "schema": "logiq_back_pressure_counter"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GB/h",
+                    "options": {
+                        "description": "GB/h",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb/h"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(increase(logiq_data_received_bytes[5m]))/1000000000*12,0.01)&duration=1d&step=1h",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "GB/h (7 days)",
+                    "options": {
+                        "description": "GB/h 7d",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb/h"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=round(sum(increase(logiq_data_received_bytes[5m]))/1000000000*12,0.01)&duration=7d&step=1h",
+                    "schema": "logiq_data_received_bytes"
+                },
+                {
+                    "chart_type": "scatter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest free disk space (%)",
+                    "options": {
+                        "description": "GB / day",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "pod",
+                            "xLabel": "pods",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(logiq_file_sizes_bytes{pod=~'logiq-flash-\\\\d|logiq-flash-ml-\\\\d',fileName='free'}/(1000000000*498)*100,0.01)",
+                    "schema": "logiq_file_sizes_bytes"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "# Messages/sec by Namespace",
+                    "options": {
+                        "description": "Number of messages per second by namespace",
+                        "order": 9,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "exported_namespace",
+                            "x": "value",
+                            "xLabel": "# Messages/sec",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round(sum by (exported_namespace) (rate(logiq_namespace_app_message_count[5m])),1)&duration=30d&step=1h",
+                    "schema": "logiq_namespace_app_message_count"
+                },
+                {
+                    "chart_type": "scatter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Batch size [5m]",
+                    "options": {
+                        "description": "Batch size [5m]",
+                        "order": 10,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "pod",
+                            "xLabel": "pods",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Size"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "round((increase(logiq_json_batch_size_count_sum[5m]))/(increase(logiq_json_batch_size_count_count[5m])),1)",
+                    "schema": "logiq_json_batch_size_count_sum"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "IngestDB Files Count",
+                    "options": {
+                        "description": "IngestDB Files Count",
+                        "order": 11,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "pod",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Count"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "query=logiq_ingestdb_files_count&duration=2h&step=60s",
+                    "schema": "logiq_json_batch_size_count_sum"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Ingest free disk % per pod",
+                    "options": {
+                        "description": "Ingest free disk % per pod",
+                        "order": 13,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "pod",
+                            "x": "Timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "Gb"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "100 * (sum by (pod) (logiq_file_sizes_bytes{pod=~'logiq-flash-\\\\d\\\\d|logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d\\\\d',fileName='free'})/sum by (pod) (logiq_file_sizes_bytes{pod=~'logiq-flash-\\\\d\\\\d|logiq-flash-\\\\d|logiq-flash-\\\\d\\\\d\\\\d',fileName='all'}))&duration=12d&step=18h",
+                    "schema": "logiq_file_sizes_bytes"
+                }
+            ]
+        }
+    ]
+}

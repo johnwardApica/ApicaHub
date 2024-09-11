@@ -5,9 +5,9 @@
     },
     "tabs": [
         {
-            "key": "Apica Cluster Monitoring",
+            "key": "Apica Ingest Monitoring",
             "order": "1",
-            "title": "Apica Cluster Monitoring",
+            "title": "Apica Ingest Monitoring",
             "type": "metrics",
             "queriesList": [
                 {
