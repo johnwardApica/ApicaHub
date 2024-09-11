@@ -7,7 +7,7 @@
     },
     "tabs": [
         {
-            "key": "AWS Cloud Trail",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -55,7 +55,7 @@
                     "schema": "namespace: logiq:logflow.logiq.ai\napplication: cloudtrail\naggregate: count\ngroup_by:\n  - iso_country_code\nduration:\n  relative: 604800\n"
                 }
             ],
-            "title": "AWS Cloud Trail",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

@@ -7,7 +7,7 @@
     },
     "tabs": [
         {
-            "key": "PG Database Stats",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -363,7 +363,7 @@
                     "schema": "pg_stat_database_temp_bytes"
                 }
             ],
-            "title": "PG Database Stats",
+            "title": "Overview",
             "type": "metrics"
         }
     ]

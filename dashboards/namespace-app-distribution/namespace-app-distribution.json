@@ -7,7 +7,7 @@
     },
     "tabs": [
         {
-            "key": "Namespace, App Distribution",
+            "key": "Overview",
             "order": "1",
             "queriesList": [
                 {
@@ -143,7 +143,7 @@
                     "schema": "logiq_namespace_app_message_count"
                 }
             ],
-            "title": "Namespace, App Distribution",
+            "title": "Overview",
             "type": "metrics"
         }
     ]
