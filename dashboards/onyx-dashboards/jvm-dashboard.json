@@ -17,7 +17,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -38,7 +38,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Hrs",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -60,7 +60,7 @@
                     "xLabel": "Timestamp",
                     "yLabel": "value",
                     "label": "Actual",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -82,7 +82,7 @@
                     "xLabel": "Timestamp",
                     "yLabel": "value",
                     "label": "",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -103,7 +103,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Count",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -125,7 +125,7 @@
                     "xLabel": "Timestamp",
                     "yLabel": "value",
                     "label": "Actual vs Max",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -146,7 +146,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "%",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -167,7 +167,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Bytes",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -188,7 +188,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Bytes",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -209,7 +209,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Bytes",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -230,7 +230,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "%",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -251,7 +251,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Count",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],
@@ -272,7 +272,7 @@
                   "plot": {
                     "xLabel": "Timestamp",
                     "yLabel": "Seconds",
-                    "x": "Timestamp",
+                    "x": "timestamp",
                     "y": [
                       "value"
                     ],

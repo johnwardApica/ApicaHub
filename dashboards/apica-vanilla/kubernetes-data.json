@@ -10,7 +10,7 @@
             "queriesList": [
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global CPU  Usage - Real query",
                     "options": {
                         "description": "Global CPU  Usage - Real query",
@@ -18,7 +18,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -32,7 +32,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global CPU  Usage - Requests query",
                     "options": {
                         "description": "Global CPU  Usage - Requests query",
@@ -40,7 +40,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -54,7 +54,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global CPU  Usage - Limits query",
                     "options": {
                         "description": "Global CPU  Usage - Limits query",
@@ -62,7 +62,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -76,7 +76,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global RAM Usage - Real query",
                     "options": {
                         "description": "Global RAM Usage - Real query",
@@ -84,7 +84,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -98,7 +98,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global RAM Usage - Requests query",
                     "options": {
                         "description": "Global RAM Usage - Requests query",
@@ -106,7 +106,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -120,7 +120,7 @@
                 },
                 {
                     "chart_type": "gauge",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Global RAM Usage - Limits query",
                     "options": {
                         "description": "Global RAM Usage - Limits query",
@@ -128,7 +128,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -151,7 +151,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -173,7 +173,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -196,7 +196,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -219,7 +219,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -242,7 +242,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -265,7 +265,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -288,7 +288,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -311,7 +311,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -334,7 +334,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -357,7 +357,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -380,7 +380,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -403,7 +403,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -425,7 +425,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -447,7 +447,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -469,7 +469,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -491,7 +491,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -513,7 +513,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -535,7 +535,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -557,7 +557,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -579,7 +579,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -601,7 +601,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -623,7 +623,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -645,7 +645,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -667,7 +667,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -689,7 +689,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -711,7 +711,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -733,7 +733,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -755,7 +755,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"

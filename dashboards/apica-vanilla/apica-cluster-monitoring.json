@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Mover",
                     "options": {
                         "description": "Mover Count",
@@ -35,7 +35,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Ingest - go_memstats_heap_alloc_bytes",
                     "options": {
                         "label": "GB",
@@ -44,7 +44,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "pod",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -58,7 +58,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Per Pod Ingested Rate",
                     "options": {
                         "label": "GB",
@@ -81,7 +81,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "go_memstats_heap_alloc_bytes - API",
                     "options": {
                         "description": "Number of heap bytes allocated and still in use in API nodes",
@@ -89,7 +89,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "pod",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -103,7 +103,7 @@
                 },
                 {
                     "chart_type": "scatter",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Back Pressure",
                     "options": {
                         "description": "Back Pressure",
@@ -125,7 +125,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "GB/h",
                     "options": {
                         "description": "GB/h",
@@ -133,7 +133,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -155,7 +155,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -243,7 +243,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "pod",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -265,7 +265,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "pod",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"

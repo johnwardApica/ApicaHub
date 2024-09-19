@@ -3,7 +3,7 @@
         "dateTimeRange": true,
         "dropdowns": [],
         "data_source_type": "apica_ascent_prometheus",
-        "title": "Apica Monitoring"
+        "title": "Apica Cluster Monitoring"
     },
     "tabs": [
         {
@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "go memstats heap alloc bytes - ingest",
                     "options": {
                         "description": "go memstats heap alloc bytes - ingest",
@@ -20,7 +20,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -29,12 +29,12 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "(round(go_memstats_heap_alloc_bytes{namespace=\"lflow\",pod=~\"logiq-flash-\\\\d|logiq-flash-ml-\\\\d\"}/1000000000,0.1))&duration=1h&step=5m",
+                    "query": "(round(go_memstats_heap_alloc_bytes{namespace=\"lq\",pod=~\"logiq-flash-\\\\d|logiq-flash-ml-\\\\d\"}/1000000000,0.1))&duration=1h&step=5m",
                     "schema": "go_memstats_heap_alloc_bytes"
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "apica back pressure counter",
                     "options": {
                         "description": "apica back pressure counter",
@@ -42,7 +42,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Mover",
                     "options": {
                         "description": "Mover",
@@ -64,7 +64,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "GB/h (last 8d)",
                     "options": {
                         "description": "GB/h (last 8d)",
@@ -86,7 +86,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Per pod ingest rate",
                     "options": {
                         "description": "Per pod ingest rate",
@@ -108,7 +108,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -130,7 +130,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -139,7 +139,7 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "query=round(go_memstats_heap_alloc_bytes{namespace=\"lflow\",pod=~\"logiq-flash-ml-\\\\d|logiq-flash-ml-\\\\d\\\\d\"}/1000000000,0.1)&duration=4h&step=60s",
+                    "query": "query=round(go_memstats_heap_alloc_bytes{namespace=\"lq\",pod=~\"logiq-flash-ml-\\\\d|logiq-flash-ml-\\\\d\\\\d\"}/1000000000,0.1)&duration=4h&step=60s",
                     "schema": "go_memstats_heap_alloc_bytes"
                 },
                 {
@@ -152,7 +152,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -174,7 +174,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -196,7 +196,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -218,7 +218,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -240,7 +240,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -262,7 +262,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -284,7 +284,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"

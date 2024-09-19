@@ -1,3 +1,5 @@
-# Apica Dashboards
+# Apica Hub
 
-Collection of public data explorer powered dashboards
+Collection of public resources that can be imported: 
+- Data Explorer powered dashboards.
+

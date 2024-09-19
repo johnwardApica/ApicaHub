@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Input Bytes Processing Rate",
                     "options": {
                         "description": "Input Bytes Processing Rate",
@@ -20,7 +20,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Output Bytes Processing Rate",
                     "options": {
                         "description": "Output Bytes Processing Rate",
@@ -42,7 +42,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Input Records Processing Rate",
                     "options": {
                         "description": "Input Records Processing Rate",
@@ -64,7 +64,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "area",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Output Record Processing Rate",
                     "options": {
                         "description": "Output Record Processing Rate",
@@ -86,7 +86,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Output Retry/Failed Rates",
                     "options": {
                         "description": "Output Retry/Failed Rates",
@@ -108,7 +108,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Output Error Rate",
                     "options": {
                         "description": "Output Error Rate",
@@ -130,7 +130,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "Table",
-                    "data_source_name": "Apica Monitoring",
+                    "data_source_name": "Apica Metrics",
                     "name": "Fluent Bit Version",
                     "options": {
                         "description": "Fluent Bit Version",
@@ -152,7 +152,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"

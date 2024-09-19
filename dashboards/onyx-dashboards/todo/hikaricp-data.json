@@ -5,21 +5,20 @@
     },
     "tabs": [
         {
-            "key": "JDBC Connections",
+            "key": "Number of connections",
             "order": "1",
             "queriesList": [
                 {
-                    "chart_type": "counter",
+                    "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Min query",
+                    "name": "Connections - Active connections",
                     "options": {
-                        "description": "Min query",
-                        "label": "Min",
+                        "description": "Connections - Active connections",
                         "order": 2,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -28,21 +27,20 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "jdbc_connections_min{}&duration=1h&step=5m",
-                    "schema": "jdbc_connections_min"
+                    "query": "sum(hikaricp_active_connections{})&duration=1h&step=5m",
+                    "schema": "hikaricp_active_connections"
                 },
                 {
-                    "chart_type": "counter",
+                    "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Active query",
+                    "name": "Connections - Idle connections",
                     "options": {
-                        "description": "Active query",
-                        "label": "Active",
+                        "description": "Connections - Idle connections",
                         "order": 3,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -51,21 +49,20 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "jdbc_connections_active{}&duration=1h&step=5m",
-                    "schema": "jdbc_connections_active"
+                    "query": "sum(hikaricp_idle_connections{})&duration=1h&step=5m",
+                    "schema": "hikaricp_idle_connections"
                 },
                 {
-                    "chart_type": "counter",
+                    "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Max query",
+                    "name": "Connections - Pending threads",
                     "options": {
-                        "description": "Max query",
-                        "label": "Max",
+                        "description": "Connections - Pending threads",
                         "order": 4,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -74,95 +71,21 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "jdbc_connections_max{}&duration=1h&step=5m",
-                    "schema": "jdbc_connections_max"
-                }
-            ],
-            "title": "JDBC Connections",
-            "type": "metrics"
-        },
-        {
-            "key": "Hikari Connections",
-            "order": "2",
-            "queriesList": [
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Connections - Active connections query",
-                    "options": {
-                        "description": "Connections - Active connections query",
-                        "order": 6,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "hikaricp_connections_active{}&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_active"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Connections - Idle connections query",
-                    "options": {
-                        "description": "Connections - Idle connections query",
-                        "order": 7,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "hikaricp_connections_idle{}&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_idle"
-                },
-                {
-                    "chart_type": "line",
-                    "data_source_name": "Apica Monitoring",
-                    "name": "Connections - Pending threads query",
-                    "options": {
-                        "description": "Connections - Pending threads query",
-                        "order": 8,
-                        "plot": {
-                            "errorColumn": "",
-                            "groupBy": "",
-                            "x": "Timestamp",
-                            "xLabel": "Timestamp",
-                            "y": [
-                                "value"
-                            ],
-                            "yLabel": "value"
-                        },
-                        "upperLimit": ""
-                    },
-                    "query": "hikaricp_connections_pending{}&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_pending"
+                    "query": "sum(hikaricp_pending_threads{})&duration=1h&step=5m",
+                    "schema": "hikaricp_pending_threads"
                 },
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Max query",
+                    "name": "Min",
                     "options": {
-                        "description": "Max query",
-                        "label": "Max",
-                        "order": 9,
+                        "description": "Min",
+                        "label": "Min",
+                        "order": 5,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -171,21 +94,88 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "hikaricp_connections_max{}&duration=1h&step=5m",
+                    "query": "sum(hikaricp_min_connections{})&duration=1h&step=5m",
+                    "schema": "hikaricp_min_connections"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Connections per instance - Active connections",
+                    "options": {
+                        "description": "Connections per instance - Active connections",
+                        "order": 6,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "hikaricp_active_connections{}&duration=1h&step=5m",
+                    "schema": "hikaricp_active_connections"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Connections per instance - Pending threads",
+                    "options": {
+                        "description": "Connections per instance - Pending threads",
+                        "order": 7,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "hikaricp_pending_threads{}&duration=1h&step=5m",
+                    "schema": "hikaricp_pending_threads"
+                },
+                {
+                    "chart_type": "counter",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Max",
+                    "options": {
+                        "description": "Max",
+                        "label": "Max",
+                        "order": 8,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(hikaricp_connections_max{})&duration=1h&step=5m",
                     "schema": "hikaricp_connections_max"
                 },
                 {
                     "chart_type": "counter",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Min query",
+                    "name": "Total Timeout",
                     "options": {
-                        "description": "Min query",
-                        "label": "Min",
-                        "order": 10,
+                        "description": "Total Timeout",
+                        "label": "Total Timeout",
+                        "order": 9,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -194,21 +184,28 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "hikaricp_connections_min{}&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_min"
-                },
+                    "query": "sum(hikaricp_connection_timeout_total{})&duration=1h&step=5m",
+                    "schema": "hikaricp_connection_timeout_total"
+                }
+            ],
+            "title": "Number of connections",
+            "type": "metrics"
+        },
+        {
+            "key": "Connection durations",
+            "order": "2",
+            "queriesList": [
                 {
-                    "chart_type": "counter",
+                    "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Total Timeout query",
+                    "name": "Connections Time - Usage time",
                     "options": {
-                        "description": "Total Timeout query",
-                        "label": "Total Timeout",
+                        "description": "Connections Time - Usage time",
                         "order": 11,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -217,20 +214,20 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "hikaricp_connections_timeout_total{}&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_timeout_total"
+                    "query": "irate(hikaricp_connections_usage_milliseconds_sum{}[1h]) / irate(hikaricp_connection_usage_millis_count{}[1h])&duration=1h&step=5m",
+                    "schema": "hikaricp_connections_usage_milliseconds_sum"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Connections Time - Usage time query",
+                    "name": "Connections Time - Creation time",
                     "options": {
-                        "description": "Connections Time - Usage time query",
+                        "description": "Connections Time - Creation time",
                         "order": 12,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -239,20 +236,20 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(hikaricp_connections_usage_seconds_sum{}[5m]) / irate(hikaricp_connections_usage_seconds_count{}[5m])&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_usage_seconds_sum"
+                    "query": "irate(hikaricp_connections_usage_milliseconds_sum{}[1h]) / irate(hikaricp_connection_creation_millis_count{}[1h])&duration=1h&step=5m",
+                    "schema": "hikaricp_connections_usage_milliseconds_sum"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Connections Time - Creation time query",
+                    "name": "Connections Time - Connection acquired",
                     "options": {
-                        "description": "Connections Time - Creation time query",
+                        "description": "Connections Time - Connection acquired",
                         "order": 13,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -261,20 +258,20 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(hikaricp_connections_creation_seconds_sum{}[5m]) / irate(hikaricp_connections_creation_seconds_count{}[5m])&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_creation_seconds_sum"
+                    "query": "irate(hikaricp_connection_acquired_nanos_sum{}[1h]) / irate(hikaricp_connection_acquired_nanos_count{}[1h])&duration=1h&step=5m",
+                    "schema": "hikaricp_connection_acquired_nanos_sum"
                 },
                 {
                     "chart_type": "line",
                     "data_source_name": "Apica Monitoring",
-                    "name": "Connections Time - Acquire time query",
+                    "name": "Connection usage",
                     "options": {
-                        "description": "Connections Time - Acquire time query",
+                        "description": "Connection usage",
                         "order": 14,
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -283,11 +280,55 @@
                         },
                         "upperLimit": ""
                     },
-                    "query": "irate(hikaricp_connections_acquire_seconds_sum{}[5m]) / irate(hikaricp_connections_acquire_seconds_count{}[5m])&duration=1h&step=5m",
-                    "schema": "hikaricp_connections_acquire_seconds_sum"
+                    "query": "sum(round(rate(hikaricp_connection_usage_millis_bucket{}[1h]) * 1h_ms / 1000)) by (le)&duration=1h&step=5m",
+                    "schema": "hikaricp_connection_usage_millis_bucket"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Connection creation",
+                    "options": {
+                        "description": "Connection creation",
+                        "order": 15,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(round(rate(hikaricp_connection_creation_millis_bucket{}[1h]) * 1h_ms / 1000)) by (le)&duration=1h&step=5m",
+                    "schema": "hikaricp_connection_creation_millis_bucket"
+                },
+                {
+                    "chart_type": "line",
+                    "data_source_name": "Apica Monitoring",
+                    "name": "Connection acquired time",
+                    "options": {
+                        "description": "Connection acquired time",
+                        "order": 16,
+                        "plot": {
+                            "errorColumn": "",
+                            "groupBy": "",
+                            "x": "timestamp",
+                            "xLabel": "Timestamp",
+                            "y": [
+                                "value"
+                            ],
+                            "yLabel": "value"
+                        },
+                        "upperLimit": ""
+                    },
+                    "query": "sum(round(rate(hikaricp_connection_acquired_nanos_bucket{}[1h]) * 1h_ms / 1000)) by (le)&duration=1h&step=5m",
+                    "schema": "hikaricp_connection_acquired_nanos_bucket"
                 }
             ],
-            "title": "Hikari Connections",
+            "title": "Connection durations",
             "type": "metrics"
         }
     ]

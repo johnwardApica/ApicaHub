@@ -19,7 +19,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -40,7 +40,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -61,7 +61,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -83,7 +83,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -103,7 +103,7 @@
                         "description": "JVM CPU Utilization Ratio",
                         "order": 4,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Utilization Ratio"
@@ -121,7 +121,7 @@
                         "description": "Number of loaded JVM classes",
                         "order": 5,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Class Count"
@@ -139,7 +139,7 @@
                         "description": "Amount of memory committed to JVM",
                         "order": 6,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -157,7 +157,7 @@
                         "description": "Memory usage after last garbage collection",
                         "order": 7,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -175,7 +175,7 @@
                         "description": "Number of buffers in the JVM",
                         "order": 9,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Buffer Count"
@@ -193,7 +193,7 @@
                         "description": "System CPU load average over 1 minute",
                         "order": 10,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Load Average"
@@ -211,7 +211,7 @@
                         "description": "Total number of classes loaded since JVM start",
                         "order": 13,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Class Count"
@@ -229,7 +229,7 @@
                         "description": "JVM buffer memory usage in bytes",
                         "order": 14,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -247,7 +247,7 @@
                         "description": "Total number of classes unloaded since JVM start",
                         "order": 17,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Class Count"
@@ -265,7 +265,7 @@
                         "description": "Ratio of CPU utilization by the system",
                         "order": 18,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Ratio"
@@ -283,7 +283,7 @@
                         "description": "Initial amount of memory requested by JVM",
                         "order": 19,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -301,7 +301,7 @@
                         "description": "Limit of memory that can be used by JVM",
                         "order": 21,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -319,7 +319,7 @@
                         "description": "Limit of buffer memory in the JVM",
                         "order": 22,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -337,7 +337,7 @@
                         "description": "Comparison of used memory to committed memory",
                         "order": 25,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["Used", "Committed"],
                             "yLabel": "Bytes"
@@ -355,7 +355,7 @@
                         "description": "Ratio of committed memory to memory limit",
                         "order": 27,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Ratio"
@@ -373,7 +373,7 @@
                         "description": "Rate of class loading per minute",
                         "order": 29,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Classes/min"
@@ -391,7 +391,7 @@
                         "description": "Rate of class unloading per minute",
                         "order": 30,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Classes/min"
@@ -409,7 +409,7 @@
                         "description": "Rate of memory allocation per second",
                         "order": 36,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes/second"
@@ -427,7 +427,7 @@
                         "description": "Trend of memory usage over time",
                         "order": 39,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Bytes"
@@ -445,7 +445,7 @@
                         "description": "How close CPU usage is to its limit",
                         "order": 40,
                         "plot": {
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Time",
                             "y": ["value"],
                             "yLabel": "Ratio"

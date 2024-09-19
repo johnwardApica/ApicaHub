@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Avg Cpu process",
                     "options": {
                         "description": "PG-Avg Cpu process",
@@ -20,7 +20,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Updated",
                     "options": {
                         "description": "PG-Updated",
@@ -42,7 +42,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -56,7 +56,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Connected Clients",
                     "options": {
                         "description": "PG-Connected Clients",
@@ -64,7 +64,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -78,7 +78,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Idle Sessions",
                     "options": {
                         "description": "PG-Idle Sessions",
@@ -86,7 +86,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -100,7 +100,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Deleted",
                     "options": {
                         "description": "PG-Deleted",
@@ -108,7 +108,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -122,7 +122,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Settings",
                     "options": {
                         "description": "PG-Settings",
@@ -130,7 +130,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -144,7 +144,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Open FIle Descriptors",
                     "options": {
                         "description": "PG-Open FIle Descriptors",
@@ -152,7 +152,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -166,7 +166,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Inserted",
                     "options": {
                         "description": "PG-Inserted",
@@ -174,7 +174,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -188,7 +188,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Checkpont Stats",
                     "options": {
                         "description": "PG-Checkpont Stats",
@@ -196,7 +196,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -210,7 +210,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Fetched",
                     "options": {
                         "description": "PG-Fetched",
@@ -218,7 +218,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -232,7 +232,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Buffers(bgwriter)",
                     "options": {
                         "description": "PG-Buffers(bgwriter)",
@@ -240,7 +240,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -254,7 +254,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Transactions Commited",
                     "options": {
                         "description": "PG-Transactions Commited",
@@ -262,7 +262,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -276,7 +276,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Activity",
                     "options": {
                         "description": "PG-Activity",
@@ -284,7 +284,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -298,7 +298,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Transactions Rolled Back ",
                     "options": {
                         "description": "PG-Transactions Rolled Back ",
@@ -306,7 +306,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -320,7 +320,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Conflicts & Deadlocks",
                     "options": {
                         "description": "PG-Conflicts & Deadlocks",
@@ -328,7 +328,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -342,7 +342,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "LogiqPrometheus",
+                    "data_source_name": "Apica Metrics",
                     "name": "PG-Temp Files (Bytes)",
                     "options": {
                         "description": "PG-Temp Files (Bytes)",
@@ -350,7 +350,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"

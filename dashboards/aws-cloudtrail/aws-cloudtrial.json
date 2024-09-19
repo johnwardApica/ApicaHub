@@ -12,7 +12,7 @@
             "queriesList": [
                 {
                     "chart_type": "line",
-                    "data_source_name": "logiq_reports",
+                    "data_source_name": "Apica Reports",
                     "name": "CloudTrail Events by Region",
                     "options": {
                         "description": "CloudTrail Events by Region",
@@ -20,7 +20,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
@@ -34,7 +34,7 @@
                 },
                 {
                     "chart_type": "line",
-                    "data_source_name": "logiq_reports",
+                    "data_source_name": "Apica Reports",
                     "name": "CloudTrail Events by Country",
                     "options": {
                         "description": "CloudTrail Events by Country",
@@ -42,7 +42,7 @@
                         "plot": {
                             "errorColumn": "",
                             "groupBy": "",
-                            "x": "Timestamp",
+                            "x": "timestamp",
                             "xLabel": "Timestamp",
                             "y": [
                                 "value"
